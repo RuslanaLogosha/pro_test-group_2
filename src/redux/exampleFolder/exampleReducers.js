@@ -15,15 +15,26 @@ const example = createReducer(initialState, {
   },
 });
 
+/* 
+если в редюсерах будут слишком объемные функции, которые будет неудобно читать - можно вынести
+функции в отдельный файл "functions" в этой же папке и импортировать их с вызовом внутри редюсеров
+*/
+const someFunc = (state, payload) => {
+  return;
+};
+const someFunc2 = (state, payload) => {
+  return;
+};
+
 const example2 = createReducer(
   // ! init state example #2
-  // { exampleInitialState },
+  {},
   {
-    [exampleActions.action3]: (state, { _payload }) => {
-      return {};
+    [exampleActions.action3]: (state, { payload }) => {
+      return someFunc(state, payload);
     },
     [exampleActions.action4]: (state, { payload }) => {
-      return { payload };
+      return someFunc2(state, payload);
     },
   },
 );
