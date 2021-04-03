@@ -1,0 +1,28 @@
+.signOutImgBox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 20px 0 21px;
+}
+
+.signOut {
+    display: flex;
+    height: 100%;
+    border-left: 1px solid #E2E3E5;
+
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+@media (max-width: 767px) {
+    .signOut {
+        display: none;
+    }
+}
+
+@media (min-width: 768px) {
+    .signOut {
+        display: flex;
+    }
+}

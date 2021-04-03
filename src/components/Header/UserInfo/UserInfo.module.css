@@ -1,0 +1,65 @@
+.userInfoBox {
+    display: flex;
+    margin-right: 20px;
+}
+
+.firstLetter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 30px;
+    height: 30px;
+
+    border: 0px solid white;
+    border-radius: 50%;
+    background-color: #fff;
+    box-shadow: 0px 1px 1px rgba(18, 29, 46, 0.1);
+
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 1.33;
+    margin-right: 7px;
+}
+
+.userName {
+    display: flex;
+    align-items: center;
+
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 1.33;
+
+    letter-spacing: 0.02em;
+
+    color: #000000;
+}
+
+@media (max-width: 767px) {
+    .userName {
+        display: none;
+    }
+}
+
+
+@media (min-width: 768px) {
+    .userName {
+        display: flex;
+    }
+}
+
+@media (min-width: 1280px) {
+    .userName {
+        display: flex;
+        font-size: 14px;
+
+    }
+
+    .firstLetter {
+        font-size: 14px;
+    }
+}
