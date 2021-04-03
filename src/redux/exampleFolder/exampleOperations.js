@@ -17,7 +17,7 @@ const getSomeExample = () => async dispatch => {
   }
 };
 
-
+// eslint-disable-next-line
 export default {
   getSomeExample,
 };

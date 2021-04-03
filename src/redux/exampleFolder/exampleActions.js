@@ -7,7 +7,7 @@ const example2 = createAction('TEST2_example');
 const someExampleRequest = createAction('SOME_someExampleRequest');
 const someExampleSuccess = createAction('SOME_someExampleSuccess');
 const someExampleError = createAction('SOME_someExampleError');
-
+// eslint-disable-next-line
 export default {
   example,
   example2,
