@@ -4,7 +4,7 @@ const getSomeExample2 = (state, some) => {
   return getSomeExample(state).find(item => item.some === some);
 };
 
-export const selectors = {
+export default {
   getSomeExample,
   getSomeExample2,
 };

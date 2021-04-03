@@ -1,6 +1,6 @@
 import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
 
-import { nameReducers } from './exampleFolder';
+import { exampleReducers } from './exampleFolder';
 // import { nameReducers2 } from './example2';
 // import { nameReducers3 } from './example3';
 
@@ -31,8 +31,8 @@ const namePersistConfig = {
 
 export const store = configureStore({
   reducer: {
-    someNameReducer: persistReducer(namePersistConfig, nameReducers),
-    // someNameReducer2: persistReducer(namePersistConfig2, nameReducers2),
+    someNameReducer: persistReducer(namePersistConfig, exampleReducers),
+    // someNameReducer2: persistReducer(namePersistConfig2, exampleReducers),
   },
 
   // ! этот мидлвар нужен при использовании redux-persist
