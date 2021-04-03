@@ -32,7 +32,7 @@
     ],
     "rules": {
       "import/no-anonymous-default-export": [
-        "warning",
+        "warn",
         {
           "allowCallExpression": false
         }
