@@ -12,7 +12,7 @@ function Navigation({ isLoggedIn }) {
         )}
         {isLoggedIn && (
           <li className={s.listItem}>
-            <a href="/">Materials</a>
+            <a href="/materials">Materials</a>
           </li>
         )}
         <li className={s.listItem}>
