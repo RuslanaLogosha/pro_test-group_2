@@ -1,10 +1,4 @@
 import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
-
-import { exampleReducers } from './exampleFolder';
-// import { nameReducers2 } from './example2';
-// import { nameReducers3 } from './example3';
-
-// ! ниже нужный импорт (при использовании redux-persist), исправляет некоторые баги , Репета показывал в каком-то видео
 import {
   persistStore,
   persistReducer,
@@ -15,32 +9,33 @@ import {
   PURGE,
   REGISTER,
 } from 'redux-persist';
-import storage from 'redux-persist/lib/storage'; // defaults to localStorage for web
+import storage from 'redux-persist/lib/storage';
+import { testScoreReducer } from './testScore';
+import { authReducer } from './auth';
 
-// ! пример конфигурации для redux-persist
-const namePersistConfig = {
-  key: 'authenticated',
+const authPersistConfig = {
+  key: 'auth',
   storage,
-  whitelist: ['isAuthenticated'],
+  whitelist: ['token'],
 };
-// const namePersistConfig2 = {
-//   key: 'tabs',
-//   storage,
-//   whitelist: ['items'],
-// };
 
-export const store = configureStore({
-  reducer: {
-    someNameReducer: persistReducer(namePersistConfig, exampleReducers),
-    // someNameReducer2: persistReducer(namePersistConfig2, exampleReducers),
-  },
-
-  // ! этот мидлвар нужен при использовании redux-persist
-  middleware: getDefaultMiddleware({
+const middleware = [
+  ...getDefaultMiddleware({
     serializableCheck: {
       ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
     },
   }),
+];
+
+const authPersistedReducer = persistReducer(authPersistConfig, authReducer);
+
+export const store = configureStore({
+  reducer: {
+    testScore: testScoreReducer,
+    auth: authPersistedReducer,
+  },
+  middleware,
+  devTools: process.env.NODE_ENV === 'development',
 });
 
 export const persistor = persistStore(store);
