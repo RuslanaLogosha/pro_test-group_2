@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import s from './Footer.module.css';
 import copyright from '../../images/copyright.svg';
 import heart from '../../images/favorite-heart-button.svg';
@@ -34,9 +35,9 @@ function Footer() {
         <span>
           by
           {/* тут будет линк в будущем */}
-          <a href="/" className={s.link}>
+          <Link to="/materials" className={s.link}>
             GoIT Students
-          </a>
+          </Link>
         </span>
       </div>
     </footer>
