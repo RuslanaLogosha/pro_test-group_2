@@ -1,0 +1,114 @@
+.mainContainer {
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 40px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 260px;
+  max-width: 1280px;
+  background-color: #f5f6fb;
+  font-family: var(--mainFont);
+}
+@media screen and (min-width: var(--mobile)) {
+  .mainContainer {
+    width: var(--mobile);
+  }
+}
+
+@media screen and (min-width: var(--tablet)) {
+  .mainContainer {
+    width: var(--tablet);
+  }
+}
+
+@media screen and (min-width: var(--desktop)) {
+  .mainContainer {
+    width: var(--desktop);
+  }
+}
+.link {
+  text-decoration: none;
+  color: #000000;
+}
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  margin: -10px;
+}
+.list__item {
+  width: 295px;
+  background: #ffffff;
+  margin: 10px;
+}
+.text__conteiner {
+  padding-top: 20px;
+  padding-bottom: 22px;
+  padding-left: 29px;
+  padding-right: 29px;
+}
+.name {
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 12px;
+}
+.position {
+  margin-top: 6px;
+
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 12px;
+  color: #555555;
+}
+.text {
+  margin-top: 10px;
+
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 16px;
+  /* or 133% */
+
+  letter-spacing: 0.02em;
+
+  color: #000000;
+}
+.title {
+  width: 320px;
+  padding-bottom: 22px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 40px;
+
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 22px;
+  line-height: 30px;
+  /* or 136% */
+
+  text-align: center;
+  letter-spacing: 0.02em;
+
+  color: #000000;
+  border-bottom: 1px solid rgba(0, 18, 46, 0.15);
+}
+.quoteContainer {
+  margin-left: auto;
+  margin-right: auto;
+}
+@media screen and (max-width: 767px) {
+}
+
+@media screen and (min-width: 768px) {
+  /* .quoteContainer {
+    margin-left: auto;
+    margin-right: auto;
+  } */
+}
+@media screen and (min-width: 1280px) {
+}
