@@ -5,6 +5,7 @@ import Footer from './components/Footer/Footer';
 import Header from './components/Header/Header';
 import HomePage from './components/MainPage/MainPage';
 import SpinnerLoader from './components/SpinnerLoader';
+import MaterialsView from './components/MaterialsView/MaterialsView';
 
 // import PrivateRoute from './routes/PrivateRoute';
 // import PublicRoute from './routes/PublicRoute';
@@ -31,7 +32,7 @@ function App() {
             <Route
               exact
               path="/materials"
-              // component={MaterialsView}
+              component={MaterialsView}
               redirectTo="/register"
               restricted
             />
