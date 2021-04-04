@@ -13,9 +13,8 @@ import MaterialsView from './components/MaterialsView/MaterialsView';
 function App() {
   return (
     <>
-      <Header isLoggedIn={true} />
-
       <BrowserRouter>
+        <Header isLoggedIn={true} userName="Vladymyr" />
         <Switch>
           <Suspense fallback={<SpinnerLoader />}>
             <Route
@@ -42,9 +41,8 @@ function App() {
             />
           </Suspense>
         </Switch>
+        <Footer />
       </BrowserRouter>
-
-      <Footer />
     </>
   );
 }
