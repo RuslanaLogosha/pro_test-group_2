@@ -1,0 +1,47 @@
+.container {
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 20px;
+  padding-right: 20px;
+
+  color: var(--black);
+  background-color: var(--primeryBgColor);
+  font-family: var(--mainFont);
+}
+
+@media screen and (min-width: 320px) {
+  .container {
+    width: 320px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .container {
+    width: 768px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .container {
+    width: 1280px;
+  }
+}
+
+/* НЕ РАБОТАЕТ??? */
+/* @media screen and (min-width: var(--mobile)) {
+  .container {
+    width: var(--mobile);
+  }
+}
+
+@media screen and (min-width: var(--tablet)) {
+  .container {
+    width: var(--tablet);
+  }
+}
+
+@media screen and (min-width: var(--desktop)) {
+  .container {
+    width: var(--desktop);
+  }
+} */

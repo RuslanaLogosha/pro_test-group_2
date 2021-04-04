@@ -16,18 +16,18 @@
   --extra-bold: 800;
 
   /* text colors */
-  --white: #FFFFFF;
+  --white: #ffffff;
   --black: #000000;
   --secondaryTextColor: #555555;
-  --accentColor: #FF6B09;
+  --accentColor: #ff6b09;
   --footerTextColor: rgba(255, 255, 255, 0.4);
-  --headerBorderColor: #E2E3E5;
-  --vectorColor: #00122F;
-  --inputBorderColor: #CED2D1;
-  --labelTextColor: #BBBBBB;
+  --headerBorderColor: #e2e3e5;
+  --vectorColor: #00122f;
+  --inputBorderColor: #ced2d1;
+  --labelTextColor: #bbbbbb;
 
-  --primeryBgColor: #E5E5E5;
-  --footerBgColor: #02172A;
-  --diagramWrongBgColor: #D7D7D7;
-  --btnGoogleBgColor: #FAFAFA;
+  --primeryBgColor: #f5f6fb;
+  --footerBgColor: #02172a;
+  --diagramWrongBgColor: #d7d7d7;
+  --btnGoogleBgColor: #fafafa;
 }

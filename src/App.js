@@ -5,6 +5,7 @@ import Footer from './components/Footer/Footer';
 import Header from './components/Header/Header';
 import HomePage from './components/MainPage/MainPage';
 import SpinnerLoader from './components/SpinnerLoader';
+import RegisterView from './views/RegisterView';
 
 // import PrivateRoute from './routes/PrivateRoute';
 // import PublicRoute from './routes/PublicRoute';
@@ -17,10 +18,7 @@ function App() {
       <BrowserRouter>
         <Switch>
           <Suspense fallback={<SpinnerLoader />}>
-            <Route
-              path="/register"
-              // component={ RegisterView }
-            />
+            <Route path="/register" component={RegisterView} />
             <Route
               exact
               path="/"
