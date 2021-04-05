@@ -6,6 +6,9 @@ import Header from './components/Header/Header';
 import HomePage from './components/MainPage/MainPage';
 import SpinnerLoader from './components/SpinnerLoader';
 import RegisterView from './views/RegisterView';
+import MaterialsView from './components/MaterialsView/MaterialsView';
+import ContactsView from './components/Contacts/ContactsView';
+
 
 // import PrivateRoute from './routes/PrivateRoute';
 // import PublicRoute from './routes/PublicRoute';
@@ -13,9 +16,8 @@ import RegisterView from './views/RegisterView';
 function App() {
   return (
     <>
-      <Header isLoggedIn={true} />
-
       <BrowserRouter>
+        <Header isLoggedIn={true} userName="Vladymyr" />
         <Switch>
           <Suspense fallback={<SpinnerLoader />}>
             <Route path="/register" component={RegisterView} />
@@ -29,19 +31,15 @@ function App() {
             <Route
               exact
               path="/materials"
-              // component={MaterialsView}
+              component={MaterialsView}
               redirectTo="/register"
               restricted
             />
-            <Route
-              path="/contacts"
-              // component={ ContactsView }
-            />
+            <Route path="/contacts" component={ContactsView} />
           </Suspense>
         </Switch>
+        <Footer />
       </BrowserRouter>
-
-      <Footer />
     </>
   );
 }

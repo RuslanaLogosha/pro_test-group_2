@@ -22,7 +22,7 @@
 }
 
 
-.listItem a {
+.link {
     text-decoration: none;
     font-family: Montserrat;
     font-style: normal;
@@ -32,10 +32,9 @@
     color: #000000;
 }
 
-.listItem a.active {
+.activeLink {
     border-bottom: 1px solid #FF6B09;
 }
-
 
 @media (max-width: 767px) {
     .nav {
@@ -49,8 +48,6 @@
     }
 
 }
-
-
 
 @media (min-width: 1280px) {
     .listItem a {
