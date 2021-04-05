@@ -9,6 +9,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: var(--primeryBgColor);
 }
 
 code {
@@ -19,3 +20,4 @@ code {
 .activeLink {
   border-bottom: 1px solid #FF6B09;
 }
+

@@ -1,0 +1,34 @@
+.wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.description {
+  width: 420px;
+  margin-right: 105px;
+}
+
+.title {
+  padding: 0;
+  margin: 0 0 19px;
+  font-weight: var(--extra-bold);
+  font-size: 34px;
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+}
+
+.text {
+  padding: 0;
+  margin: 0;
+  font-weight: var(--medium);
+  font-size: 18px;
+  line-height: 2;
+  letter-spacing: 0.02em;
+  color: var(--secondaryTextColor);
+}
+
+.textAccent {
+  font-weight: var(--extra-bold);
+  color: var(--black);
+}
