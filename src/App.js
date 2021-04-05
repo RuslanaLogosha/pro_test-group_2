@@ -6,6 +6,7 @@ import Header from './components/Header/Header';
 import HomePage from './components/MainPage/MainPage';
 import SpinnerLoader from './components/SpinnerLoader';
 import MaterialsView from './components/MaterialsView/MaterialsView';
+import ContactsView from './components/Contacts/ContactsView';
 
 // import PrivateRoute from './routes/PrivateRoute';
 // import PublicRoute from './routes/PublicRoute';
@@ -35,10 +36,7 @@ function App() {
               redirectTo="/register"
               restricted
             />
-            <Route
-              path="/contacts"
-              // component={ ContactsView }
-            />
+            <Route path="/contacts" component={ContactsView} />
           </Suspense>
         </Switch>
         <Footer />
