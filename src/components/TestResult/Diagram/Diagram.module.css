@@ -1,0 +1,108 @@
+.diagramBlock {
+  position: relative;
+}
+
+.valuesBlock {
+  position: absolute;
+  right: -60px;
+  top: 15%;
+  font-size: 10px;
+  line-height: 12px;
+  font-weight: var(--medium);
+}
+
+.correctBlock,
+.incorrectBlock {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.correctBlock {
+  margin-bottom: 14px;
+}
+.correctInnerBlock,
+.incorrectInnerBlock {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-bottom: 3px;
+}
+
+.line {
+  content: '';
+  display: block;
+  margin: 10px auto 12px;
+  position: absolute;
+  left: -48px;
+  top: -3px;
+  width: 43px;
+  height: 1px;
+  background-color: #000000;
+}
+.line2 {
+  content: '';
+  display: block;
+  position: absolute;
+  left: -66px;
+  top: 7px;
+  width: 18px;
+  height: 1px;
+  background-color: #000000;
+  transform-origin: right;
+  transform: rotateZ(-30deg);
+}
+.line2::after {
+  content: '';
+  display: block;
+  position: absolute;
+  left: -5px;
+  top: -3px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: #fff;
+}
+
+.correctColor,
+.incorrectColor {
+  margin-right: 6px;
+}
+.correctColor {
+  width: 14px;
+  height: 14px;
+  background-color: #ff6b09;
+}
+.incorrectColor {
+  width: 14px;
+  height: 14px;
+  background-color: #d7d7d7;
+}
+
+@media screen and (min-width: 768px) {
+  .valuesBlock {
+    top: 30%;
+    right: -160px;
+    font-size: 16px;
+  }
+  .correctBlock {
+    margin-bottom: 37px;
+  }
+
+  .correctBlock,
+  .incorrectBlock {
+    flex-direction: row;
+    align-items: center;
+  }
+  .correctInnerBlock,
+  .incorrectInnerBlock {
+    margin-right: 5px;
+  }
+  .correctColor {
+    width: 25px;
+    height: 25px;
+  }
+  .incorrectColor {
+    width: 25px;
+    height: 25px;
+  }
+}
