@@ -1,4 +1,5 @@
-import React, { Suspense, useState } from 'react';
+import React, { Suspense, useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import Footer from './components/Footer/Footer';
@@ -8,19 +9,33 @@ import SpinnerLoader from './components/SpinnerLoader';
 import RegisterView from './views/RegisterView';
 import MaterialsView from './components/MaterialsView/MaterialsView';
 import ContactsView from './components/Contacts/ContactsView';
+import { authOperations, authSelectors } from 'redux/auth';
+
 
 // import PrivateRoute from './routes/PrivateRoute';
 // import PublicRoute from './routes/PublicRoute';
 
 function App() {
-  // в будущем тут будет тянуться инфа с редакса
+  
+    // в будущем тут будет тянуться инфа с редакса
   const [isLoggedIn, setLoggedIn] = useState(true);
 
   const handleSignOutBtnClick = () => {
     setLoggedIn(false);
   };
+  
+  const dispatch = useDispatch();
+  const isFetchingCurrentUser = useSelector(
+    authSelectors.getIsFetchingCurrentUser,
+  );
 
-  return (
+  useEffect(() => {
+    dispatch(authOperations.fetchCurrentUser());
+  }, [dispatch]);
+
+  return isFetchingCurrentUser ? (
+    <h1>Show React Skeleton</h1>
+  ) : (
     <>
       <BrowserRouter>
         <Header
@@ -30,7 +45,7 @@ function App() {
         />
         <Switch>
           <Suspense fallback={<SpinnerLoader />}>
-            <Route path="/register" component={RegisterView} />
+            <Route path="/register" restricted component={RegisterView} />
             <Route
               exact
               path="/"
