@@ -25,7 +25,7 @@ function App() {
       <BrowserRouter>
         <Header
           isLoggedIn={isLoggedIn}
-          userName="Vladymyr"
+          userEmail="vladymyr@gmail.com"
           handleSignOutBtnClick={handleSignOutBtnClick}
         />
         <Switch>

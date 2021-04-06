@@ -24,7 +24,7 @@
     margin-right: 7px;
 }
 
-.userName {
+.userEmail {
     display: flex;
     align-items: center;
 
@@ -40,20 +40,20 @@
 }
 
 @media (max-width: 767px) {
-    .userName {
+    .userEmail {
         display: none;
     }
 }
 
 
 @media (min-width: 768px) {
-    .userName {
+    .userEmail {
         display: flex;
     }
 }
 
 @media (min-width: 1280px) {
-    .userName {
+    .userEmail {
         display: flex;
         font-size: 14px;
 
