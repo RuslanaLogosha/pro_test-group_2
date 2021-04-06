@@ -1,6 +1,7 @@
 import React from 'react';
-import cat from '../../images/result-page-cat.svg';
+import PropTypes from 'prop-types';
 import Diagram from './Diagram';
+import cat from '../../images/result-page-cat.svg';
 import s from './TestResult.module.css';
 
 export default function TestResult(results) {
@@ -12,11 +13,8 @@ export default function TestResult(results) {
   } = results;
 
   return (
-    <div>
+    <>
       <div className={s.resultBlock}>
-        <h1 className={s.mainTitle}>Results</h1>
-        <h2 className={s.mainSubtitle}>[ Testing Theory_]</h2>
-
         <div className={s.diagram}>
           <Diagram values={{ correctAnswers, totalQuestions }} />
         </div>
@@ -33,10 +31,21 @@ export default function TestResult(results) {
 
       <div className={s.aboutResult}>
         <img src={cat} alt="cat" className={s.image} />
-        <h2 className={s.aboutResultTitle}>{aboutResultTitle}</h2>
-        <h3 className={s.aboutResultSubtitle}>{aboutResultSubtitle}</h3>
-        <button className={s.btnRetry}>Try again</button>
+        <h3 className={s.aboutResultTitle}>{aboutResultTitle}</h3>
+        <h4 className={s.aboutResultSubtitle}>{aboutResultSubtitle}</h4>
+
       </div>
-    </div>
+    </>
   );
 }
+
+TestResult.propTypes = {
+  results: PropTypes.objectOf(
+    PropTypes.exact({
+      correctAnswers: PropTypes.number.isRequired,
+      totalQuestions: PropTypes.number.isRequired,
+      aboutResultTitle: PropTypes.string.isRequired,
+      aboutResultSubtitle: PropTypes.string.isRequired,
+    }),
+  ).isRequired,
+};
