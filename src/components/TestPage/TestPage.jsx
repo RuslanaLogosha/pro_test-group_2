@@ -1,14 +1,51 @@
-import React from 'react';
+import React, { useState, useEffect, useReducer } from 'react';
 import { Link } from 'react-router-dom';
 import s from './TestPage.module.css';
 import arrow from '../../images/arrow-main-page.svg';
 import arrowBlack from '../../images/arrow-black.svg';
+import api from '../../services/api';
+import actions from '../../redux/testScore/test-actions';
+import { useDispatch } from 'react-redux';
 
-function TestPage({ testName }) {
-  //   handleOptionChange = e => {
-  //     e.preventDefault();
-  //     console.log('clicked');
-  //   };
+function TestPage() {
+  const [test, setTests] = useState([]);
+  const [index, setIndex] = useState(0);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    async function renderTests() {
+      api
+        .fetchTechQuestions()
+        .then(response => {
+          setTests(response.data);
+          console.log(response.data);
+        })
+        .catch(error => {
+          console.log(error);
+        });
+    }
+
+    renderTests();
+  }, []);
+
+  const handleNextPage = () => {
+    if (index === 11) {
+      return;
+    }
+    setIndex(index + 1);
+  };
+
+  const handlePrevPage = () => {
+    if (index === 0) {
+      return;
+    }
+    setIndex(index - 1);
+  };
+
+  const setAnswer = (e, id) => {
+    dispatch(actions.setAnswer({ questionId: id, result: e.target.value }));
+  };
+
   return (
     <section className={s.mainContainer}>
       <div className={s.wrapper}>
@@ -23,88 +60,37 @@ function TestPage({ testName }) {
           <p className={s.questionNumber}>
             Question <span className={s.questionNumberActive}>1</span> / 12
           </p>
-          <p className={s.question}>What is regression testing?</p>
-
+          <p className={s.question}>
+            {test.length > 0 && test[index].question}
+          </p>
           <div className={s.optionsWrapper}>
-            <div className={s.optionBox}>
-              <input
-                type="radio"
-                name="test"
-                value="answer"
-                className={s.optionInput}
-                id="id-1"
-              />
-              <label htmlFor="id-1" className={s.optionLabel}>
-                This is testing of the main functionality of the application
-              </label>
-            </div>
-            <div className={s.optionBox}>
-              <input
-                type="radio"
-                name="test"
-                value="answer"
-                className={s.optionInput}
-                id="id-2"
-              />
-              <label htmlFor="id-2" className={s.optionLabel}>
-                Testing a single function
-              </label>
-            </div>
-            <div className={s.optionBox}>
-              <input
-                type="radio"
-                name="test"
-                value="answer"
-                className={s.optionInput}
-                id="id-3"
-              />
-              <label htmlFor="id-3" className={s.optionLabel}>
-                Testing a single function
-              </label>
-            </div>
-            <div className={s.optionBox}>
-              <input
-                type="radio"
-                name="test"
-                value="answer"
-                className={s.optionInput}
-                id="id-4"
-              />
-              <label htmlFor="id-4" className={s.optionLabel}>
-                Tests on already tested areas of the application
-              </label>
-            </div>
-            <div className={s.optionBox}>
-              <input
-                type="radio"
-                name="test"
-                value="answer"
-                className={s.optionInput}
-                id="id-5"
-              />
-              <label htmlFor="id-5" className={s.optionLabel}>
-                One of the types of testing aimed at checking the conformity of
-                the functional requirements of the software to its real
-                characteristics
-              </label>
-            </div>
-            <div className={s.optionBox}>
-              <input
-                type="radio"
-                name="test"
-                value="answer"
-                className={s.optionInput}
-                id="id-6"
-              />
-              <label htmlFor="id-6" className={s.optionLabel}>
-                I don’t know
-              </label>
-            </div>
+            {test.length > 0 &&
+              test[index].answers.map(answer => {
+                return (
+                  <div className={s.optionBox}>
+                    <label className={s.optionLabel}>
+                      <input
+                        type="radio"
+                        name="test"
+                        value={answer}
+                        className={s.optionInput}
+                        // onChange={handleCheck}
+                        onChange={e => setAnswer(e, test[index].questionId)}
+                      />
+                      <span>{answer}</span>
+                    </label>
+                  </div>
+                );
+              })}
           </div>
         </form>
       </div>
       <div className={s.buttonWrapper}>
-        <button className={s.buttonPrevious}>
+        <button
+          className={s.buttonPrevious}
+          type="submit"
+          onClick={handlePrevPage}
+        >
           <img
             src={arrow}
             alt="arrow"
@@ -112,9 +98,9 @@ function TestPage({ testName }) {
             height="16"
             className={s.arrowPrevious}
           />
-          <span className={s.buttonPreviousName}> Previous question</span>
+          <span className={s.buttonPreviousName}>Previous question</span>
         </button>
-        <button className={s.buttonNext}>
+        <button className={s.buttonNext} type="submit" onClick={handleNextPage}>
           <span className={s.buttonNextName}> Next question</span>
           <img src={arrowBlack} alt="arrow" width="24" height="16" />
         </button>
