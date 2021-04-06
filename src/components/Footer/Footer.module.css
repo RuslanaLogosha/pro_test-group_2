@@ -1,5 +1,5 @@
 .footer {
-    font-family: Montserrat;
+    font-family: var(--mainFont);
     font-style: normal;
     font-weight: normal;
     font-size: 10px;
@@ -9,8 +9,8 @@
     justify-content: center;
     letter-spacing: 0.03em;
 
-    color: rgba(255, 255, 255, 0.4);
-    background-color: #02172A;
+    color: var(--footerTextColor);
+    background-color: var(--footerBgColor);
 }
 
 .footerBox {
@@ -29,11 +29,11 @@
 .separator {
     width: 0;
     margin: 0 7px;
-    border: 1px solid rgba(255, 255, 255, 0.4);
+    border: 1px solid var(--footerTextColor);
 }
 
 .link {
-    color: rgba(255, 255, 255, 0.4);
+    color: var(--footerTextColor);
     margin-left: 5px;
 }
 

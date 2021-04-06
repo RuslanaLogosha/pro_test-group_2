@@ -10,6 +10,7 @@
     flex-direction: column;
   }
 }
+
 @media screen and (max-width: 767px) {
   .buttonContainer {
     padding-bottom: 33px;
@@ -43,7 +44,7 @@
 }
 
 .buttonTech:hover,
-:focus {
+.buttonTheory:focus {
   background-color: #1f2c3f;
 }
 
@@ -60,7 +61,7 @@
 }
 
 .buttonTheory:hover,
-:focus {
+.buttonTheory:focus {
   background-color: #e96105;
 }
 

@@ -1,4 +1,4 @@
-import React, { Suspense } from 'react';
+import React, { Suspense, useState } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import Footer from './components/Footer/Footer';
@@ -9,15 +9,25 @@ import RegisterView from './views/RegisterView';
 import MaterialsView from './components/MaterialsView/MaterialsView';
 import ContactsView from './components/Contacts/ContactsView';
 
-
 // import PrivateRoute from './routes/PrivateRoute';
 // import PublicRoute from './routes/PublicRoute';
 
 function App() {
+  // в будущем тут будет тянуться инфа с редакса
+  const [isLoggedIn, setLoggedIn] = useState(true);
+
+  const handleSignOutBtnClick = () => {
+    setLoggedIn(false);
+  };
+
   return (
     <>
       <BrowserRouter>
-        <Header isLoggedIn={true} userName="Vladymyr" />
+        <Header
+          isLoggedIn={isLoggedIn}
+          userEmail="vladymyr@gmail.com"
+          handleSignOutBtnClick={handleSignOutBtnClick}
+        />
         <Switch>
           <Suspense fallback={<SpinnerLoader />}>
             <Route path="/register" component={RegisterView} />
