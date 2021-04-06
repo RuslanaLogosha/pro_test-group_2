@@ -1,0 +1,67 @@
+.content {
+  padding-top: 30px;
+  padding-bottom: 40px;
+  text-align: center;
+  font-family: var(--mainFont);
+  color: var(--black);
+}
+.mainTitle {
+  margin: 0;
+  font-size: 12px;
+  font-weight: var(--bold);
+  line-height: 30px;
+}
+.mainSubtitle {
+  margin: 0;
+  color: var(--black);
+  font-size: 10px;
+  font-weight: var(--medium);
+  line-height: 12px;
+  text-transform: uppercase;
+}
+.mainSubtitle::after {
+  content: '';
+  display: block;
+  margin: 20px auto 24px;
+  width: 130px;
+  height: 1px;
+  background-color: rgba(0, 18, 47, 0.15);
+}
+.btnRetry {
+  padding: 17px 28px;
+  width: 190px;
+  font-size: 14px;
+  line-height: 17px;
+  font-weight: var(--medium);
+  background-color: var(--accentColor);
+  color: var(--white);
+  border: none;
+  transition: all 0.25s linear;
+}
+.btnRetry:hover {
+  background-color: rgb(201, 88, 13);
+  border-radius: 5px;
+}
+
+@media screen and (min-width: 768px) {
+  .content {
+    padding-top: 41px;
+    padding-bottom: 107px;
+  }
+  .mainTitle {
+    font-size: 22px;
+  }
+  .mainSubtitle {
+    font-size: 14px;
+    line-height: 17px;
+  }
+  .mainSubtitle::after {
+    width: 322px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .content {
+    padding-bottom: 60px;
+  }
+}
