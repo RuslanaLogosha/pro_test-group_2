@@ -4,11 +4,10 @@
   padding-top: 96px;
   padding-left: 20px;
   padding-right: 20px;
-  padding-bottom: 260px;
   max-width: 1280px;
   background-color: #f5f6fb;
-  background-image: url(../../images/pic1.jpg);
   font-family: var(--mainFont);
+  background-size: cover;
 }
 @media screen and (min-width: var(--mobile)) {
   .mainContainer {
@@ -63,6 +62,9 @@
 }
 
 @media screen and (max-width: 767px) {
+  .mainContainer {
+    background-image: url(../../images/pic3.jpg);
+  }
   .title {
     width: 150px;
     padding-bottom: 10px;
@@ -73,10 +75,12 @@
   .quoteContainer {
     margin-right: auto;
     margin-left: 20px;
+    padding-bottom: 110px;
   }
   .list {
     margin-top: 10px;
     margin-bottom: 20px;
+
     width: 207px;
     height: 52px;
     left: 20px;
@@ -96,10 +100,27 @@
 @media screen and (min-width: 768px) {
   .quoteContainer {
     margin-left: 115px;
+    padding-bottom: 470px;
+  }
+  .mainContainer {
+    background-image: url(../../images/pic2.jpg);
+  }
+  .title {
+    width: 320px;
+  }
+  .list {
+    margin-left: 60px;
   }
 }
 @media screen and (min-width: 1280px) {
   .quoteContainer {
     margin-left: 190px;
+    padding-bottom: 260px;
+  }
+  .mainContainer {
+    background-image: url(../../images/pic1.jpg);
+  }
+  .list {
+    margin-left: 60px;
   }
 }

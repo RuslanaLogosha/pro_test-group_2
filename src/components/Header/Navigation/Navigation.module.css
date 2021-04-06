@@ -13,7 +13,7 @@
     font-weight: 500;
     font-size: 12px;
     line-height: 1.33;
-    color: #000000;
+    color: var(--black);
 }
 
 .navListForNotLoggedUser {
@@ -24,16 +24,16 @@
 
 .link {
     text-decoration: none;
-    font-family: Montserrat;
+    font-family: var(--mainFont);
     font-style: normal;
-    font-weight: 500;
+    font-weight: var(--medium);
     font-size: 12px;
     line-height: 1.33;
-    color: #000000;
+    color: var(--black);
 }
 
 .activeLink {
-    border-bottom: 1px solid #FF6B09;
+    border-bottom: 1px solid var(--accentColor);
 }
 
 @media (max-width: 767px) {

@@ -8,7 +8,7 @@
 
 .burgerBox {
     height: 100%;
-    border-left: 1px solid #E2E3E5;
+    border-left: 1px solid var(--headerBorderColor);
     display: flex;
     justify-content: center;
     align-items: center;

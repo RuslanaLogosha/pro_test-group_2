@@ -7,7 +7,7 @@ import Navigation from './Navigation/Navigation';
 import SignOut from './SignOut/SignOut';
 import UserInfo from './UserInfo/UserInfo';
 
-function Header({ isLoggedIn, userName }) {
+function Header({ isLoggedIn, userEmail, handleSignOutBtnClick }) {
   const [isModalOpen, setModal] = useState(false);
 
   const handleModal = () => {
@@ -18,16 +18,12 @@ function Header({ isLoggedIn, userName }) {
     setModal(false);
   };
 
-  const handleSignOutBtnClick = () => {
-    console.log('Sign Out!');
-  };
-
   return (
     <header className={s.header}>
       <Logo />
       <div className={s.container}>
         <Navigation isLoggedIn={isLoggedIn} />
-        {isLoggedIn && <UserInfo userName={userName} />}
+        {isLoggedIn && <UserInfo userEmail={userEmail} />}
         <Burger isModalOpen={isModalOpen} onClick={handleModal} />
         {isLoggedIn && <SignOut onClick={handleSignOutBtnClick} />}
       </div>
