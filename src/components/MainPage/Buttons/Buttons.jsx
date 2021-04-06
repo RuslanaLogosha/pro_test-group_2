@@ -1,4 +1,6 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+
 import s from './Buttons.module.css';
 import arrow from '../../../images/arrow-main-page.svg';
 
@@ -8,7 +10,7 @@ function Buttons() {
       <li className={(s.buttonTech, s.button)}>
         <div className={s.buttonTech}>
           {/*здесь будет Link*/}
-          <a href="/" className={s.buttonDescription}>
+          <Link to="/test" className={s.buttonDescription}>
             QA technical <br />
             training
             <img
@@ -18,13 +20,13 @@ function Buttons() {
               height="16"
               className={s.arrow}
             />
-          </a>
+          </Link>
         </div>
       </li>
       <li className={s.button}>
         <div className={s.buttonTheory}>
           {/*здесь будет Link*/}
-          <a href="/" className={s.buttonDescription}>
+          <Link to="/test" className={s.buttonDescription}>
             Testing <br />
             theory
             <img
@@ -34,7 +36,7 @@ function Buttons() {
               height="16"
               className={s.arrow}
             />
-          </a>
+          </Link>
         </div>
       </li>
     </ul>
