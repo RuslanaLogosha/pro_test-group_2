@@ -110,6 +110,12 @@
   background-color: var(--accentColor);
   color: var(--white);
   border: none;
+  transition: all 0.25s linear;
+}
+
+.btnRetry:hover {
+  background-color: rgb(201, 88, 13);
+  border-radius: 5px;
 }
 
 @media screen and (min-width: 768px) {
