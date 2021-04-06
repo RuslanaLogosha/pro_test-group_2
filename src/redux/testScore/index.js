@@ -1,1 +1,1 @@
-export { default as testScoreReducer } from './testScore-reducer';
+export { default as testScoreReducer } from './test-reducers';
