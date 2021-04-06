@@ -18,6 +18,11 @@ function Header({ isLoggedIn, userEmail, handleSignOutBtnClick }) {
     setModal(false);
   };
 
+  const handleLogOut = () => {
+    handleSignOutBtnClick();
+    setModal(false);
+  };
+
   return (
     <header className={s.header}>
       <Logo />
@@ -25,11 +30,11 @@ function Header({ isLoggedIn, userEmail, handleSignOutBtnClick }) {
         <Navigation isLoggedIn={isLoggedIn} />
         {isLoggedIn && <UserInfo userEmail={userEmail} />}
         <Burger isModalOpen={isModalOpen} onClick={handleModal} />
-        {isLoggedIn && <SignOut onClick={handleSignOutBtnClick} />}
+        {isLoggedIn && <SignOut onClick={handleLogOut} />}
       </div>
       {isModalOpen && (
         <Modal
-          onClick={handleSignOutBtnClick}
+          onClick={handleLogOut}
           isLoggedIn={isLoggedIn}
           closeModal={closeModal}
         />
