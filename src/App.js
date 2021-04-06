@@ -5,6 +5,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Footer from './components/Footer/Footer';
 import Header from './components/Header/Header';
 import HomePage from './components/MainPage/MainPage';
+import TestPage from './components/TestPage/TestPage';
 import SpinnerLoader from './components/SpinnerLoader';
 import RegisterView from './views/RegisterView';
 import MaterialsView from './components/MaterialsView/MaterialsView';
@@ -51,6 +52,13 @@ function App() {
               path="/"
               component={HomePage}
               redirectTo="/register"
+              restricted
+            />
+            <Route
+              exact
+              path="/test"
+              component={TestPage}
+              // redirectTo="/register"
               restricted
             />
             <Route
