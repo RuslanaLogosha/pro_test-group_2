@@ -4,8 +4,8 @@
     justify-content: space-between;
 
     height: 70px;
-    border: 1px solid #E2E3E5;
-    background: #F5F6FB;
+    border: 1px solid var(--headerBorderColor);
+    background: var(--primeryBgColor);
 }
 
 .container {

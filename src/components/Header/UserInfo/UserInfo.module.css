@@ -11,12 +11,12 @@
     width: 30px;
     height: 30px;
 
-    border: 0px solid white;
+    border: 0px solid var(--white);
     border-radius: 50%;
-    background-color: #fff;
+    background-color: var(--white);
     box-shadow: 0px 1px 1px rgba(18, 29, 46, 0.1);
 
-    font-family: Montserrat;
+    font-family: var(--mainFont);
     font-style: normal;
     font-weight: 600;
     font-size: 12px;
@@ -28,7 +28,7 @@
     display: flex;
     align-items: center;
 
-    font-family: Montserrat;
+    font-family: var(--mainFont);
     font-style: normal;
     font-weight: 500;
     font-size: 12px;
@@ -36,7 +36,7 @@
 
     letter-spacing: 0.02em;
 
-    color: #000000;
+    color: var(--black);
 }
 
 @media (max-width: 767px) {

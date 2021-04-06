@@ -7,7 +7,7 @@ import Navigation from './Navigation/Navigation';
 import SignOut from './SignOut/SignOut';
 import UserInfo from './UserInfo/UserInfo';
 
-function Header({ isLoggedIn, userName }) {
+function Header({ isLoggedIn, userName, handleSignOutBtnClick }) {
   const [isModalOpen, setModal] = useState(false);
 
   const handleModal = () => {
@@ -16,10 +16,6 @@ function Header({ isLoggedIn, userName }) {
 
   const closeModal = () => {
     setModal(false);
-  };
-
-  const handleSignOutBtnClick = () => {
-    console.log('Sign Out!');
   };
 
   return (
