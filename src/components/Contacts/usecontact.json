@@ -1,0 +1,58 @@
+[
+  {
+    "id": "1",
+    "image": "/photo/no_avatar.jpg",
+    "name": "Ruslana",
+    "position": "Team Lead",
+    "text": "Lorem Ipsum has been the standard \"fish\" for Latin texts since the early 16th century."
+  },
+  {
+    "id": "2",
+    "image": "/photo/no_avatar.jpg",
+    "name": "Olga",
+    "position": "Scrum Master",
+    "text": "Lorem Ipsum has been the standard \"fish\" for Latin texts since the early 16th century."
+  },
+  {
+    "id": "3",
+    "image": "/photo/aleksey.jpg",
+    "name": "Aleksey",
+    "position": "Developer",
+    "text": "Lorem Ipsum has been the standard \"fish\" for Latin texts since the early 16th century."
+  },
+  {
+    "id": "4",
+    "image": "/photo/aleksandr.jpg",
+    "name": "Aleksandr",
+    "position": "Developer",
+    "text": "Lorem Ipsum has been the standard \"fish\" for Latin texts since the early 16th century."
+  },
+  {
+    "id": "5",
+    "image": "/photo/andrii.jpg",
+    "name": "Andrii",
+    "position": "Developer",
+    "text": "Lorem Ipsum has been the standard \"fish\" for Latin texts since the early 16th century."
+  },
+  {
+    "id": "6",
+    "image": "/photo/ihor.jpg",
+    "name": "Ihor",
+    "position": "Developer",
+    "text": "Lorem Ipsum has been the standard \"fish\" for Latin texts since the early 16th century."
+  },
+  {
+    "id": "7",
+    "image": "/photo/no_avatar.jpg",
+    "name": "Katya",
+    "position": "Developer",
+    "text": "Lorem Ipsum has been the standard \"fish\" for Latin texts since the early 16th century."
+  },
+  {
+    "id": "8",
+    "image": "/photo/vladymyr.jpg",
+    "name": "Vladymyr",
+    "position": "Developer",
+    "text": "Lorem Ipsum has been the standard \"fish\" for Latin texts since the early 16th century."
+  }
+]

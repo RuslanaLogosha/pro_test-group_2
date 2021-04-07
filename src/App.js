@@ -1,4 +1,4 @@
-import React, { Suspense, useEffect, useState } from 'react';
+import React, { Suspense, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
@@ -12,22 +12,20 @@ import MaterialsView from './components/MaterialsView/MaterialsView';
 import ContactsView from './components/Contacts/ContactsView';
 import { authOperations, authSelectors } from 'redux/auth';
 
-
 // import PrivateRoute from './routes/PrivateRoute';
 // import PublicRoute from './routes/PublicRoute';
 
 function App() {
-  
-    // в будущем тут будет тянуться инфа с редакса
-  const [isLoggedIn, setLoggedIn] = useState(true);
+  const dispatch = useDispatch();
+  const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
+  const email = useSelector(authSelectors.getEmail);
 
   const handleSignOutBtnClick = () => {
-    setLoggedIn(false);
+    dispatch(authOperations.logOut());
   };
-  
-  const dispatch = useDispatch();
+
   const isFetchingCurrentUser = useSelector(
-    authSelectors.getIsFetchingCurrentUser,
+    authSelectors.getIsFetchingCurrentUser
   );
 
   useEffect(() => {
@@ -41,7 +39,7 @@ function App() {
       <BrowserRouter>
         <Header
           isLoggedIn={isLoggedIn}
-          userEmail="vladymyr@gmail.com"
+          userEmail={email}
           handleSignOutBtnClick={handleSignOutBtnClick}
         />
         <Switch>

@@ -19,6 +19,12 @@ const authPersistConfig = {
   whitelist: ['token'],
 };
 
+const testScorePersistConfig = {
+  key: 'testScore',
+  storage,
+  whitelist: ['userAnswersOnTest'],
+};
+
 const middleware = [
   ...getDefaultMiddleware({
     serializableCheck: {
@@ -28,10 +34,14 @@ const middleware = [
 ];
 
 const authPersistedReducer = persistReducer(authPersistConfig, authReducer);
+const testScorePersistedReducer = persistReducer(
+  testScorePersistConfig,
+  testScoreReducer,
+);
 
 export const store = configureStore({
   reducer: {
-    testScore: testScoreReducer,
+    testScore: testScorePersistedReducer,
     auth: authPersistedReducer,
   },
   middleware,

@@ -15,28 +15,25 @@ const RegisterLoginForm = ({onSubmit}) => {
       default:
         return;
     }
-  }
-  
+  };
+
   const handleSubmit = e => {
     e.preventDefault();
     const btnName = e.target.name;
     onSubmit(email, password, btnName);
     reset();
-  }
+  };
 
   const reset = () => {
     setEmail('');
     setPassword('');
   };
-  
-  return (
-    <form
-      onSubmit={handleSubmit}
-      className={s.wrap}
-      autoComplete="off"
-    >
 
-    <p className={s.loginText}>You can use your Google Account to authorize:</p>
+  return (
+    <form onSubmit={handleSubmit} className={s.wrap} autoComplete="off">
+      <p className={s.loginText2}>
+        You can use your Google Account to authorize:
+      </p>
 
     <button
       type="submit"
@@ -49,25 +46,28 @@ const RegisterLoginForm = ({onSubmit}) => {
       <span className={s.googleBtnText}>Google</span>
     </button>
 
-    <p className={s.loginText}>Or login to our app using e-mail and password:</p>
+      <p className={s.loginText}>
+        Or login to our app using e-mail and password:
+      </p>
 
-    <input
-      type="email"
-      name="email"
-      value={email}
-      onChange={handleChange}
-      placeholder="E-mail"
-      className={s.inputEmail}
-    />
-      
-    <input
-      type="password"
-      name="password"
-      value={password}
-      onChange={handleChange}
-      placeholder="Password"
+
+      <input
+        type="email"
+        name="email"
+        value={email}
+        onChange={handleChange}
+        placeholder="E-mail"
+        className={s.inputEmail}
+      />
+
+      <input
+        type="password"
+        name="password"
+        value={password}
+        onChange={handleChange}
+        placeholder="Password"
         className={s.inputPassword}
-    />
+      />
 
     <div className={s.buttonsWrap}>
       <button
@@ -85,11 +85,10 @@ const RegisterLoginForm = ({onSubmit}) => {
         className={s.btnRegister}
       >
           Sign up
-      </button>
-    </div>
-  </form>
-  )
-}
+        </button>
+      </div>
+    </form>
+  );
+};
 
 export default RegisterLoginForm;
-
