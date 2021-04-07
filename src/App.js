@@ -61,7 +61,7 @@ function App() {
                   exact
                   path="/test"
                   component={TestPage}
-                  // redirectTo="/register"
+                  redirectTo="/register"
                   restricted
                 />
                 <Route

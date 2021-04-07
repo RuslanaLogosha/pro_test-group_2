@@ -9,8 +9,13 @@ function Buttons() {
     <ul className={s.buttonContainer}>
       <li className={(s.buttonTech, s.button)}>
         <div className={s.buttonTech}>
-          {/*здесь будет Link*/}
-          <Link to="/test" className={s.buttonDescription}>
+          <Link
+            to={{
+              pathname: '/test',
+              state: { quizName: 'QA technical training' },
+            }}
+            className={s.buttonDescription}
+          >
             QA technical <br />
             training
             <img
@@ -25,8 +30,10 @@ function Buttons() {
       </li>
       <li className={s.button}>
         <div className={s.buttonTheory}>
-          {/*здесь будет Link*/}
-          <Link to="/test" className={s.buttonDescription}>
+          <Link
+            to={{ pathname: '/test', state: { quizName: 'Theory Testing' } }}
+            className={s.buttonDescription}
+          >
             Testing <br />
             theory
             <img
