@@ -1,14 +1,10 @@
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
-
 import s from './RegisterLoginForm.module.css';
 import { ReactComponent as GoogleIcon } from 'images/google-icon.svg';
-import { authOperations } from 'redux/auth';
 
-const RegisterLoginForm = () => {
+const RegisterLoginForm = ({onSubmit}) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const dispatch = useDispatch();
 
   const handleChange = ({ target: { name, value } }) => {
     switch (name) {
@@ -23,21 +19,10 @@ const RegisterLoginForm = () => {
   
   const handleSubmit = e => {
     e.preventDefault();
+    const btnName = e.target.name;
+    onSubmit(email, password, btnName);
     reset();
   }
-
-  const handleSignIn = () => {
-    dispatch(authOperations.logIn({ email, password }));
-  }
-
-  const handleSignUp = () => {
-    dispatch(authOperations.register({ email, password }));
-  }
-
-  // !!! ЗДЕСЬ БУДЕТ GOOGLE !!!
-  // const handleGoogleAuth = () => {
-  //   dispatch(authOperations.googleAuth());
-  // }
 
   const reset = () => {
     setEmail('');
@@ -55,7 +40,9 @@ const RegisterLoginForm = () => {
 
     <button
       type="submit"
-      // onClick={handleGoogleAuth}
+      name="google"
+      // !!! ЗДЕСЬ БУДЕТ GOOGLE !!!
+      // onClick={handleSubmit}
       className={s.googleBtn}
     >
       <GoogleIcon width="18" height="18" className={s.googleIcon} />
@@ -83,10 +70,20 @@ const RegisterLoginForm = () => {
     />
 
     <div className={s.buttonsWrap}>
-      <button type="submit" onClick={handleSignIn} className={s.btnLogin}>
+      <button
+        type="submit"
+        name="signIn"
+        onClick={handleSubmit}
+        className={s.btnLogin}
+      >
         Sign in
       </button>
-      <button type="submit" onClick={handleSignUp} className={s.btnRegister}>
+      <button
+        type="submit"
+        name="signUp"
+        onClick={handleSubmit}
+        className={s.btnRegister}
+      >
           Sign up
       </button>
     </div>
