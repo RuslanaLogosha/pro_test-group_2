@@ -19,20 +19,20 @@ const RegisterLoginForm = () => {
       default:
         return;
     }
-  }
-  
+  };
+
   const handleSubmit = e => {
     e.preventDefault();
     reset();
-  }
+  };
 
   const handleSignIn = () => {
     dispatch(authOperations.logIn({ email, password }));
-  }
+  };
 
   const handleSignUp = () => {
     dispatch(authOperations.register({ email, password }));
-  }
+  };
 
   // !!! ЗДЕСЬ БУДЕТ GOOGLE !!!
   // const handleGoogleAuth = () => {
@@ -43,56 +43,54 @@ const RegisterLoginForm = () => {
     setEmail('');
     setPassword('');
   };
-  
+
   return (
-    <form
-      onSubmit={handleSubmit}
-      className={s.wrap}
-      autoComplete="off"
-    >
+    <form onSubmit={handleSubmit} className={s.wrap} autoComplete="off">
+      <p className={s.loginText2}>
+        You can use your Google Account to authorize:
+      </p>
 
-    <p className={s.loginText}>You can use your Google Account to authorize:</p>
+      <button
+        type="submit"
+        // onClick={handleGoogleAuth}
+        className={s.googleBtn}
+      >
+        <GoogleIcon width="18" height="18" className={s.googleIcon} />
+        <span className={s.googleBtnText}>Google</span>
+      </button>
 
-    <button
-      type="submit"
-      // onClick={handleGoogleAuth}
-      className={s.googleBtn}
-    >
-      <GoogleIcon width="18" height="18" className={s.googleIcon} />
-      <span className={s.googleBtnText}>Google</span>
-    </button>
+      <p className={s.loginText}>
+        Or login to our app using e-mail and password:
+      </p>
 
-    <p className={s.loginText}>Or login to our app using e-mail and password:</p>
+      <input
+        type="email"
+        name="email"
+        value={email}
+        onChange={handleChange}
+        placeholder="E-mail"
+        className={s.inputEmail}
+      />
 
-    <input
-      type="email"
-      name="email"
-      value={email}
-      onChange={handleChange}
-      placeholder="E-mail"
-      className={s.inputEmail}
-    />
-      
-    <input
-      type="password"
-      name="password"
-      value={password}
-      onChange={handleChange}
-      placeholder="Password"
+      <input
+        type="password"
+        name="password"
+        value={password}
+        onChange={handleChange}
+        placeholder="Password"
         className={s.inputPassword}
-    />
+      />
 
-    <div className={s.buttonsWrap}>
-      <button type="submit" onClick={handleSignIn} className={s.btnLogin}>
-        Sign in
-      </button>
-      <button type="submit" onClick={handleSignUp} className={s.btnRegister}>
+      <div className={s.buttonsWrap}>
+        <button type="submit" onClick={handleSignIn} className={s.btnLogin}>
+          Sign in
+        </button>
+        <button type="submit" onClick={handleSignUp} className={s.btnRegister}>
           Sign up
-      </button>
-    </div>
-  </form>
-  )
-}
+        </button>
+      </div>
+    </form>
+  );
+};
 
 export default RegisterLoginForm;
-

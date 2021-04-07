@@ -14,6 +14,12 @@
   font-weight: var(--medium);
   font-size: 14px;
   line-height: 1.21;
+  letter-spacing: 0.02em;
+}
+
+.loginText2 {
+  composes: loginText;
+  letter-spacing: 0;
 }
 
 .googleBtn {
@@ -90,4 +96,46 @@
   color: var(--black);
   background-color: var(--white);
   border: 1px solid var(--inputBorderColor);
+}
+
+@media (max-width: 767px) {
+  .wrap {
+    width: 280px;
+    height: 442px;
+    padding: 30px 20px;
+    margin-top: 30px;
+    margin-bottom: 50px;
+  }
+
+  .loginText {
+    font-size: 10px;
+    margin-bottom: 20px;
+    line-height: 1.2;
+  }
+
+  .input {
+    width: 240px;
+  }
+
+  .googleBtn {
+    margin-bottom: 30px;
+  }
+
+  .inputEmail {
+
+    margin-bottom: 20px;
+  }
+
+  .inputPassword {
+
+    margin-bottom: 20px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1279px) {
+  .wrap {
+
+    margin-top: 30px;
+    margin-bottom: 70px;
+  }
 }

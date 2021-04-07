@@ -34,8 +34,7 @@ function Footer() {
         />
         <span>
           by
-          {/* тут будет линк в будущем */}
-          <Link to="/materials" className={s.link}>
+          <Link to="/contacts" className={s.link}>
             GoIT Students
           </Link>
         </span>
