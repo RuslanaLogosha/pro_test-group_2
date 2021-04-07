@@ -10,21 +10,21 @@ import { useDispatch } from 'react-redux';
 function TestPage(props) {
   const [test, setTests] = useState([]);
   const [index, setIndex] = useState(0);
+  const [selected, setSelected] = useState(null);
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    async function renderTests() {
-      api
-        .fetchTechQuestions()
-        .then(response => {
-          setTests(response.data);
-          console.log(response.data);
-        })
-        .catch(error => {
-          console.log(error);
-        });
-    }
+useEffect(() => {
+    let cleanupFunction = false;
+
+    const renderTests = async () => {
+      const { data } = await api.fetchTechQuestions();
+
+      if (!cleanupFunction) setTests(data);
+    };
+
     renderTests();
+
+    return () => (cleanupFunction = true);
   }, []);
 
   const handleNextPage = () => {
@@ -32,6 +32,7 @@ function TestPage(props) {
       return;
     }
     setIndex(index + 1);
+    setSelected(null);
   };
 
   const handlePrevPage = () => {
@@ -39,6 +40,7 @@ function TestPage(props) {
       return;
     }
     setIndex(index - 1);
+    setSelected(null);
   };
 
   const setAnswer = (e, id) => {
@@ -72,12 +74,23 @@ function TestPage(props) {
                       <input
                         type="radio"
                         name="test"
-                        value={answer}
-                        className={s.optionInput}
+                        className={s.originalCheckbox}
                         // onChange={handleCheck}
+                        onClick={() => {
+                          setSelected(answer);
+                        }}
                         onChange={e => setAnswer(e, test[index].questionId)}
                       />
-                      <span>{answer}</span>
+
+                      <span className={s.optionAnswer}>
+                        <span className={s.checkbox}></span>
+                        <span
+                          className={
+                            selected === answer ? s.checkboxAccent : null
+                          }
+                        ></span>
+                        {answer}
+                      </span>
                     </label>
                   </div>
                 );

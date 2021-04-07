@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import { toast } from 'react-toastify';
 
 axios.defaults.baseURL = 'https://backend-for-pro-test.herokuapp.com';
 
@@ -21,8 +22,8 @@ const register = createAsyncThunk(
       const {
         data: { data },
       } = await axios.post('/users/auth/register', user);
-      // нет токена при регистрации
-      //   token.set(data.token);
+      token.set(data.token);
+      toast.success('✔️ Congratulations, you have successfully registered');
       return data;
     } catch (error) {
       return rejectWithValue(error);

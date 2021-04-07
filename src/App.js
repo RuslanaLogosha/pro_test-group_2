@@ -1,6 +1,8 @@
 import React, { Suspense, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import Footer from './components/Footer/Footer';
 import Header from './components/Header/Header';
@@ -32,45 +34,50 @@ function App() {
     dispatch(authOperations.fetchCurrentUser());
   }, [dispatch]);
 
-  return isFetchingCurrentUser ? (
-    <h1>Show React Skeleton</h1>
-  ) : (
+  return (
     <>
-      <BrowserRouter>
-        <Header
-          isLoggedIn={isLoggedIn}
-          userEmail={email}
-          handleSignOutBtnClick={handleSignOutBtnClick}
-        />
-        <Switch>
-          <Suspense fallback={<SpinnerLoader />}>
-            <Route path="/register" restricted component={RegisterView} />
-            <Route
-              exact
-              path="/"
-              component={HomePage}
-              redirectTo="/register"
-              restricted
+      <ToastContainer autoClose={3000} />
+      {isFetchingCurrentUser ? (
+        <h1>Show React Skeleton</h1>
+      ) : (
+        <>
+          <BrowserRouter>
+            <Header
+              isLoggedIn={isLoggedIn}
+              userEmail={email}
+              handleSignOutBtnClick={handleSignOutBtnClick}
             />
-            <Route
-              exact
-              path="/test"
-              component={TestPage}
-              redirectTo="/"
-              restricted
-            />
-            <Route
-              exact
-              path="/materials"
-              component={MaterialsView}
-              redirectTo="/register"
-              restricted
-            />
-            <Route path="/contacts" component={ContactsView} />
-          </Suspense>
-        </Switch>
-        <Footer />
-      </BrowserRouter>
+            <Switch>
+              <Suspense fallback={<SpinnerLoader />}>
+                <Route path="/register" restricted component={RegisterView} />
+                <Route
+                  exact
+                  path="/"
+                  component={HomePage}
+                  redirectTo="/register"
+                  restricted
+                />
+                <Route
+                  exact
+                  path="/test"
+                  component={TestPage}
+                  redirectTo="/register"
+                  restricted
+                />
+                <Route
+                  exact
+                  path="/materials"
+                  component={MaterialsView}
+                  redirectTo="/register"
+                  restricted
+                />
+                <Route path="/contacts" component={ContactsView} />
+              </Suspense>
+            </Switch>
+            <Footer />
+          </BrowserRouter>
+        </>
+      )}
     </>
   );
 }

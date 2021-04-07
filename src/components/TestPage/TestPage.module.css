@@ -181,6 +181,46 @@
   margin-bottom: 35px;
 } */
 
+.originalCheckbox {
+  position: absolute;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  width: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+}
+.optionAnswer {
+  position: relative;
+
+  padding-left: 38px;
+}
+
+.checkbox {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: 18px;
+  height: 18px;
+
+  border: 1px solid var(--black);
+  border-radius: 50%;
+}
+
+.checkboxAccent {
+  position: absolute;
+  top: 4px;
+  left: 4px;
+
+  width: 10px;
+  height: 10px;
+
+  background-color: var(--accentColor);
+  border-radius: 50%;
+}
+
 .optionLabel {
   display: block;
   font-weight: 500;

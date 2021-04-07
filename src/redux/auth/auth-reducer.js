@@ -14,8 +14,7 @@ const authSlice = createSlice({
   extraReducers: {
     [authOperations.register.fulfilled](state, action) {
       state.user = action.payload.user;
-      // нет токена при регистрации
-      // state.token = action.payload.token;
+      state.token = action.payload.token;
       state.isLoggedIn = true;
     },
     [authOperations.logIn.fulfilled](state, action) {
@@ -38,7 +37,6 @@ const authSlice = createSlice({
       state.isFetchingCurrentUser = true;
     },
     [authOperations.fetchCurrentUser.fulfilled](state, action) {
-      console.log(action);
       state.user = action.payload;
       state.isLoggedIn = true;
       state.isFetchingCurrentUser = false;
