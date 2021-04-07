@@ -81,21 +81,22 @@
   line-height: 1.25;
   letter-spacing: 0.02em;
   text-transform: uppercase;
+
+  color: var(--black);
+  background-color: var(--white);
+  border: 1px solid var(--inputBorderColor);
 }
 
-.btnLogin {
-  composes: btn;
-  margin-right: 20px;
+.btn:hover,
+.btn:focus {
   color: var(--white);
   background-color: var(--accentColor);
   border: 1px solid transparent;
 }
 
-.btnRegister {
+.btnLogin {
   composes: btn;
-  color: var(--black);
-  background-color: var(--white);
-  border: 1px solid var(--inputBorderColor);
+  margin-right: 20px;
 }
 
 @media (max-width: 767px) {
@@ -122,19 +123,16 @@
   }
 
   .inputEmail {
-
     margin-bottom: 20px;
   }
 
   .inputPassword {
-
     margin-bottom: 20px;
   }
 }
 
 @media (min-width: 768px) and (max-width: 1279px) {
   .wrap {
-
     margin-top: 30px;
     margin-bottom: 70px;
   }

@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { toast } from 'react-toastify';
 import s from './RegisterLoginForm.module.css';
 import { ReactComponent as GoogleIcon } from 'images/google-icon.svg';
 
@@ -19,6 +20,11 @@ const RegisterLoginForm = ({onSubmit}) => {
 
   const handleSubmit = e => {
     e.preventDefault();
+
+    if (email.trim() === '' || password.trim() === '') {
+      return toast.error('❌ Please, enter fields');
+    }
+
     const btnName = e.target.name;
     onSubmit(email, password, btnName);
     reset();
@@ -82,7 +88,7 @@ const RegisterLoginForm = ({onSubmit}) => {
         type="submit"
         name="signUp"
         onClick={handleSubmit}
-        className={s.btnRegister}
+        className={s.btn}
       >
           Sign up
         </button>
