@@ -13,19 +13,17 @@ function TestPage() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    async function renderTests() {
-      api
-        .fetchTechQuestions()
-        .then(response => {
-          setTests(response.data);
-          console.log(response.data);
-        })
-        .catch(error => {
-          console.log(error);
-        });
-    }
+    let cleanupFunction = false;
+
+    const renderTests = async () => {
+      const { data } = await api.fetchTechQuestions();
+
+      if (!cleanupFunction) setTests(data);
+    };
 
     renderTests();
+
+    return () => (cleanupFunction = true);
   }, []);
 
   const handleNextPage = () => {
