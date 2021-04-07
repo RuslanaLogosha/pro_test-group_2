@@ -20,12 +20,12 @@ const RegisterLoginForm = ({onSubmit}) => {
 
   const handleSubmit = e => {
     e.preventDefault();
+    const btnName = e.target.name;
 
     if (email.trim() === '' || password.trim() === '') {
       return toast.error('❌ Please, enter fields');
     }
 
-    const btnName = e.target.name;
     onSubmit(email, password, btnName);
     reset();
   };

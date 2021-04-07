@@ -13,6 +13,7 @@ import RegisterView from './views/RegisterView';
 import MaterialsView from './components/MaterialsView/MaterialsView';
 import ContactsView from './components/Contacts/ContactsView';
 import { authOperations, authSelectors } from 'redux/auth';
+import Skeleton from 'components/Skeleton';
 
 // import PrivateRoute from './routes/PrivateRoute';
 // import PublicRoute from './routes/PublicRoute';
@@ -38,7 +39,7 @@ function App() {
     <>
       <ToastContainer autoClose={3000} />
       {isFetchingCurrentUser ? (
-        <h1>Show React Skeleton</h1>
+        <Skeleton />
       ) : (
         <>
           <BrowserRouter>
