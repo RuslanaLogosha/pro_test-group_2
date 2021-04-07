@@ -21,4 +21,14 @@ const userAnswersOnTest = createReducer([], {
   },
 });
 
-export default combineReducers({ userAnswersOnTest });
+const answersListForTest = createReducer([], {
+  [actions.getAnswersSuccess]: (_state, { payload }) => {
+    return [...payload.data];
+  },
+});
+
+const testScoreReducer = combineReducers({
+  userAnswersOnTest,
+  answersListForTest,
+});
+export default testScoreReducer;

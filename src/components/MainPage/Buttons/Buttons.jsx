@@ -1,10 +1,19 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { testScoreOperations } from '../../../redux/testScore';
 
 import s from './Buttons.module.css';
 import arrow from '../../../images/arrow-main-page.svg';
 
 function Buttons() {
+  const dispatch = useDispatch();
+
+  const getAnswers = useCallback(
+    url => dispatch(testScoreOperations.getAnswers(url)),
+    [dispatch],
+  );
+
   return (
     <ul className={s.buttonContainer}>
       <li className={(s.buttonTech, s.button)}>
@@ -15,6 +24,7 @@ function Buttons() {
               state: { quizName: 'QA technical training' },
             }}
             className={s.buttonDescription}
+            onClick={() => getAnswers('techquiz/questions')}
           >
             QA technical <br />
             training
@@ -33,6 +43,7 @@ function Buttons() {
           <Link
             to={{ pathname: '/test', state: { quizName: 'Theory Testing' } }}
             className={s.buttonDescription}
+            onClick={() => getAnswers('theoryquiz/questions')}
           >
             Testing <br />
             theory
