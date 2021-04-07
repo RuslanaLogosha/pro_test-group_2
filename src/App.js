@@ -25,7 +25,7 @@ function App() {
   };
 
   const isFetchingCurrentUser = useSelector(
-    authSelectors.getIsFetchingCurrentUser
+    authSelectors.getIsFetchingCurrentUser,
   );
 
   useEffect(() => {
@@ -56,7 +56,7 @@ function App() {
               exact
               path="/test"
               component={TestPage}
-              // redirectTo="/register"
+              redirectTo="/"
               restricted
             />
             <Route

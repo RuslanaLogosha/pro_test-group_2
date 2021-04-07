@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useReducer } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import s from './TestPage.module.css';
 import arrow from '../../images/arrow-main-page.svg';
@@ -7,7 +7,7 @@ import api from '../../services/api';
 import actions from '../../redux/testScore/test-actions';
 import { useDispatch } from 'react-redux';
 
-function TestPage() {
+function TestPage(props) {
   const [test, setTests] = useState([]);
   const [index, setIndex] = useState(0);
   const dispatch = useDispatch();
@@ -24,7 +24,6 @@ function TestPage() {
           console.log(error);
         });
     }
-
     renderTests();
   }, []);
 
@@ -49,7 +48,7 @@ function TestPage() {
   return (
     <section className={s.mainContainer}>
       <div className={s.wrapper}>
-        <p className={s.testTitle}>[Testing theory_]</p>
+        <p className={s.testTitle}>[ {props.location.state.quizName}_ ]</p>
         <Link to="/" className={s.testFinish}>
           Finish test
         </Link>
@@ -58,7 +57,8 @@ function TestPage() {
       <div className={s.questionForm}>
         <form>
           <p className={s.questionNumber}>
-            Question <span className={s.questionNumberActive}>1</span> / 12
+            Question <span className={s.questionNumberActive}>{index + 1}</span>{' '}
+            / 12
           </p>
           <p className={s.question}>
             {test.length > 0 && test[index].question}
@@ -67,7 +67,7 @@ function TestPage() {
             {test.length > 0 &&
               test[index].answers.map(answer => {
                 return (
-                  <div className={s.optionBox}>
+                  <div className={s.optionBox} key={answer}>
                     <label className={s.optionLabel}>
                       <input
                         type="radio"
