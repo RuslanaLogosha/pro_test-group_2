@@ -32,3 +32,51 @@
   font-weight: var(--extra-bold);
   color: var(--black);
 }
+
+.extraSpace {
+  display: none;
+}
+
+
+@media (max-width: 767px) {
+  .text {
+    font-size: 12px;
+  }
+
+  .description {
+    width: 280px;
+    margin: 0;
+  }
+
+  .wrap {
+    flex-wrap: wrap;
+    margin-top: 39px;
+  }
+
+  .breaker {
+    display: none;
+  }
+
+  .extraSpace {
+    display: inline;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1279px) {
+  .wrap {
+    display: grid;
+    margin-top: 80px;
+  }
+
+  .text {
+    font-size: 15.8px;
+    line-height: 2.25;
+    letter-spacing: 0.02em;
+  }
+
+  .description {
+    width: 535px;
+    margin: 0;
+
+  }
+}
