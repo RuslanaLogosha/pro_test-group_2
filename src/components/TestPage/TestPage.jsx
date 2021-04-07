@@ -10,6 +10,7 @@ import { useDispatch } from 'react-redux';
 function TestPage() {
   const [test, setTests] = useState([]);
   const [index, setIndex] = useState(0);
+  const [selected, setSelected] = useState(null);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -31,6 +32,7 @@ function TestPage() {
       return;
     }
     setIndex(index + 1);
+    setSelected(null);
   };
 
   const handlePrevPage = () => {
@@ -38,6 +40,7 @@ function TestPage() {
       return;
     }
     setIndex(index - 1);
+    setSelected(null);
   };
 
   const setAnswer = (e, id) => {
@@ -70,12 +73,23 @@ function TestPage() {
                       <input
                         type="radio"
                         name="test"
-                        value={answer}
-                        className={s.optionInput}
+                        className={s.originalCheckbox}
                         // onChange={handleCheck}
+                        onClick={() => {
+                          setSelected(answer);
+                        }}
                         onChange={e => setAnswer(e, test[index].questionId)}
                       />
-                      <span>{answer}</span>
+
+                      <span className={s.optionAnswer}>
+                        <span className={s.checkbox}></span>
+                        <span
+                          className={
+                            selected === answer ? s.checkboxAccent : null
+                          }
+                        ></span>
+                        {answer}
+                      </span>
                     </label>
                   </div>
                 );
