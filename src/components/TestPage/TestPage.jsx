@@ -1,31 +1,17 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import s from './TestPage.module.css';
 import arrow from '../../images/arrow-main-page.svg';
 import arrowBlack from '../../images/arrow-black.svg';
-import api from '../../services/api';
 import actions from '../../redux/testScore/test-actions';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 function TestPage(props) {
-  const [test, setTests] = useState([]);
   const [index, setIndex] = useState(0);
   const [selected, setSelected] = useState(null);
   const dispatch = useDispatch();
 
-useEffect(() => {
-    let cleanupFunction = false;
-
-    const renderTests = async () => {
-      const { data } = await api.fetchTechQuestions();
-
-      if (!cleanupFunction) setTests(data);
-    };
-
-    renderTests();
-
-    return () => (cleanupFunction = true);
-  }, []);
+  const test = useSelector(state => state.testScore.answersListForTest);
 
   const handleNextPage = () => {
     if (index === 11) {
