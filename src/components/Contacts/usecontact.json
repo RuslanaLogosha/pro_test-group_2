@@ -1,14 +1,14 @@
 [
   {
     "id": "1",
-    "image": "/photo/no_avatar.jpg",
+    "image": "/photo/ruslana.jpg",
     "name": "Ruslana",
     "position": "Team Lead",
     "text": "Lorem Ipsum has been the standard \"fish\" for Latin texts since the early 16th century."
   },
   {
     "id": "2",
-    "image": "/photo/no_avatar.jpg",
+    "image": "/photo/olya.jpg",
     "name": "Olga",
     "position": "Scrum Master",
     "text": "Lorem Ipsum has been the standard \"fish\" for Latin texts since the early 16th century."
@@ -43,7 +43,7 @@
   },
   {
     "id": "7",
-    "image": "/photo/no_avatar.jpg",
+    "image": "/photo/katya.jpg",
     "name": "Katya",
     "position": "Developer",
     "text": "Lorem Ipsum has been the standard \"fish\" for Latin texts since the early 16th century."
