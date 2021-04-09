@@ -1,34 +1,30 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import s from './TestPage.module.css';
-import actions from '../../redux/testScore/test-actions';
 import { useDispatch, useSelector } from 'react-redux';
+import actions from '../../redux/testScore/test-actions';
+import s from './TestPage.module.css';
 
 function TestPage(props) {
   const [index, setIndex] = useState(0);
-  const [selected, setSelected] = useState(null);
+  const test = useSelector(state => state.testScore.answersListForTest);
+  const selected = useSelector(state => state.testScore.userAnswersOnTest);
   const dispatch = useDispatch();
 
-  const test = useSelector(state => state.testScore.answersListForTest);
-
   const handleNextPage = () => {
-    if (index === 11) {
-      return;
-    }
-    setIndex(index + 1);
-    setSelected(null);
+    if (index !== 11) setIndex(index + 1);
   };
 
   const handlePrevPage = () => {
-    if (index === 0) {
-      return;
-    }
-    setIndex(index - 1);
-    setSelected(null);
+    if (index !== 0) setIndex(index - 1);
   };
 
-  const setAnswer = (e, id) => {
-    dispatch(actions.setAnswer({ questionId: id, result: e.target.value }));
+  const isChecked = (id, answer) => {
+    const question = selected?.find(el => el.questionId === id);
+    return question?.result === answer;
+  };
+
+  const setAnswer = (result, questionId) => {
+    dispatch(actions.setAnswer({ questionId, result }));
   };
 
   return (
@@ -59,18 +55,18 @@ function TestPage(props) {
                         type="radio"
                         name="test"
                         className={s.originalCheckbox}
-                        // onChange={handleCheck}
-                        onClick={() => {
-                          setSelected(answer);
-                        }}
-                        onChange={e => setAnswer(e, test[index].questionId)}
+                        onChange={() =>
+                          setAnswer(answer, test[index].questionId)
+                        }
                       />
 
                       <span className={s.optionAnswer}>
                         <span className={s.checkbox}></span>
                         <span
                           className={
-                            selected === answer ? s.checkboxAccent : null
+                            isChecked(test[index].questionId, answer)
+                              ? s.checkboxAccent
+                              : null
                           }
                         ></span>
                         {answer}
