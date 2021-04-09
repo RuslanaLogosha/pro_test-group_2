@@ -21,3 +21,6 @@ code {
   border-bottom: 1px solid #FF6B09;
 }
 
+.content {
+  min-height: calc(100vh - 110px);
+}
