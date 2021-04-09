@@ -304,6 +304,7 @@
   color: var(--black);
   fill: var(--black);
   transition: all 150ms ease-in;
+  outline: none;
 }
 
 .buttonPrevious:hover,
@@ -336,7 +337,6 @@
 }
 
 @media screen and (max-width: 767px) {
-
   .buttonPrevious,
   .buttonNext {
     width: 55px;
@@ -363,15 +363,12 @@
   fill: inherit;
 }
 
-
 .buttonNext {
   display: flex;
   justify-content: space-between;
   padding-right: 15px;
   padding-left: 20px;
 }
-
-
 
 @media screen and (max-width: 767px) {
   .buttonNextName {
