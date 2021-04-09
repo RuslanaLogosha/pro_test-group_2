@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import s from './TestPage.module.css';
-import arrow from '../../images/arrow-main-page.svg';
-import arrowBlack from '../../images/arrow-black.svg';
 import actions from '../../redux/testScore/test-actions';
 import { useDispatch, useSelector } from 'react-redux';
 
