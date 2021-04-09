@@ -21,7 +21,10 @@ function Buttons() {
           <Link
             to={{
               pathname: '/test',
-              state: { quizName: 'QA technical training' },
+              state: {
+                quizName: 'QA technical training',
+                url: 'techquiz/results',
+              },
             }}
             className={s.buttonDescription}
             onClick={() => getAnswers('techquiz/questions')}
@@ -41,7 +44,13 @@ function Buttons() {
       <li className={s.button}>
         <div className={s.buttonTheory}>
           <Link
-            to={{ pathname: '/test', state: { quizName: 'Theory Testing' } }}
+            to={{
+              pathname: '/test',
+              state: {
+                quizName: 'Theory Testing',
+                url: 'theoryquiz/results',
+              },
+            }}
             className={s.buttonDescription}
             onClick={() => getAnswers('theoryquiz/questions')}
           >

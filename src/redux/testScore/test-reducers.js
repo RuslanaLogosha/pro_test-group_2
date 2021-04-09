@@ -19,16 +19,30 @@ const userAnswersOnTest = createReducer([], {
     });
     return [...refreshedState];
   },
+  [actions.getAnswersSuccess]: (_state, { _payload }) => {
+    return [];
+  },
 });
 
-const answersListForTest = createReducer([], {
+const questionsListForTest = createReducer([], {
   [actions.getAnswersSuccess]: (_state, { payload }) => {
     return [...payload.data];
   },
 });
 
+const saveResultsOfTest = createReducer(
+  {},
+  {
+    [actions.sendAnswersSuccess]: (_state, { payload }) => {
+      console.log('reducer console log', payload.data);
+      return { ...payload.data };
+    },
+  },
+);
+
 const testScoreReducer = combineReducers({
   userAnswersOnTest,
-  answersListForTest,
+  questionsListForTest,
+  saveResultsOfTest,
 });
 export default testScoreReducer;

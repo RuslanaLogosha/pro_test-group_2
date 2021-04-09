@@ -8,12 +8,12 @@ import { nanoid } from 'nanoid';
 
 function TestPage(props) {
   const [index, setIndex] = useState(0);
-  const test = useSelector(state => state.testScore.answersListForTest);
+  const test = useSelector(state => state.testScore.questionsListForTest);
   const selected = useSelector(state => state.testScore.userAnswersOnTest);
   const dispatch = useDispatch();
 
   const sendAnswers = useCallback(
-    answers => dispatch(testScoreOperations.sendAnswers(answers)),
+    (answers, url) => dispatch(testScoreOperations.sendAnswers(answers, url)),
     [dispatch],
   );
 
@@ -115,7 +115,7 @@ function TestPage(props) {
           type="submit"
           onClick={
             index === 11
-              ? () => sendAnswers(selected)
+              ? () => sendAnswers(selected, props.location.state.url)
               : () => handleNextPage(test[index].questionId)
           }
         >
