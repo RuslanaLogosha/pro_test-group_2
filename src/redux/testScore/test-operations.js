@@ -15,18 +15,16 @@ const getAnswers = url => async dispatch => {
   }
 };
 
-const sendAnswers = answers => async dispatch => {
-  console.log(answers);
+const sendAnswers = (answers, url) => async dispatch => {
   try {
     dispatch(testScoreActions.sendAnswersRequest());
 
     const { data } = await axios.post(
-      'https://backend-for-pro-test.herokuapp.com/theoryquiz/results',
+      `https://backend-for-pro-test.herokuapp.com/${url}`,
       answers,
     );
 
-    console.log(data);
-    // dispatch(testScoreActions.sendAnswersSuccess(data));
+    dispatch(testScoreActions.sendAnswersSuccess(data));
   } catch (error) {
     dispatch(testScoreActions.sendAnswersError(error));
   }
