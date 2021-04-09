@@ -15,7 +15,25 @@ const getAnswers = url => async dispatch => {
   }
 };
 
+const sendAnswers = answers => async dispatch => {
+  console.log(answers);
+  try {
+    dispatch(testScoreActions.sendAnswersRequest());
+
+    const { data } = await axios.post(
+      'https://backend-for-pro-test.herokuapp.com/theoryquiz/results',
+      answers,
+    );
+
+    console.log(data);
+    // dispatch(testScoreActions.sendAnswersSuccess(data));
+  } catch (error) {
+    dispatch(testScoreActions.sendAnswersError(error));
+  }
+};
+
 const testScoreOperations = {
   getAnswers,
+  sendAnswers,
 };
 export default testScoreOperations;

@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import { testScoreOperations } from '../../redux/testScore';
 import actions from '../../redux/testScore/test-actions';
 import s from './TestPage.module.css';
 
@@ -10,7 +11,17 @@ function TestPage(props) {
   const selected = useSelector(state => state.testScore.userAnswersOnTest);
   const dispatch = useDispatch();
 
+  const sendAnswers = useCallback(
+    answers => dispatch(testScoreOperations.sendAnswers(answers)),
+    [dispatch],
+  );
+
   const handleNextPage = () => {
+    // if (!selected?.find(el => el.questionId === id)) {
+    //   console.log('Select the answer please');
+    //   return;
+    // }
+
     if (index !== 11) setIndex(index + 1);
   };
 
@@ -98,9 +109,9 @@ function TestPage(props) {
           <span className={s.buttonPreviousName}>Previous question</span>
         </button>
         <button
-          className={index === 11 ? s.disabledNextBtn : s.buttonNext}
+          className={s.buttonNext}
           type="submit"
-          onClick={handleNextPage}
+          onClick={index === 11 ? () => sendAnswers(selected) : handleNextPage}
         >
           <span className={s.buttonNextName}> Next question</span>
           <svg
