@@ -28,7 +28,7 @@ function App() {
   };
 
   const isFetchingCurrentUser = useSelector(
-    authSelectors.getIsFetchingCurrentUser,
+    authSelectors.getIsFetchingCurrentUser
   );
 
   useEffect(() => {
@@ -48,33 +48,35 @@ function App() {
               userEmail={email}
               handleSignOutBtnClick={handleSignOutBtnClick}
             />
-            <Switch>
-              <Suspense fallback={<SpinnerLoader />}>
-                <Route path="/register" restricted component={RegisterView} />
-                <Route
-                  exact
-                  path="/"
-                  component={HomePage}
-                  redirectTo="/register"
-                  restricted
-                />
-                <Route
-                  exact
-                  path="/test"
-                  component={TestPage}
-                  redirectTo="/register"
-                  restricted
-                />
-                <Route
-                  exact
-                  path="/materials"
-                  component={MaterialsView}
-                  redirectTo="/register"
-                  restricted
-                />
-                <Route path="/contacts" component={ContactsView} />
-              </Suspense>
-            </Switch>
+            <div className="content">
+              <Switch>
+                <Suspense fallback={<SpinnerLoader />}>
+                  <Route path="/register" restricted component={RegisterView} />
+                  <Route
+                    exact
+                    path="/"
+                    component={HomePage}
+                    redirectTo="/register"
+                    restricted
+                  />
+                  <Route
+                    exact
+                    path="/test"
+                    component={TestPage}
+                    redirectTo="/register"
+                    restricted
+                  />
+                  <Route
+                    exact
+                    path="/materials"
+                    component={MaterialsView}
+                    redirectTo="/register"
+                    restricted
+                  />
+                  <Route path="/contacts" component={ContactsView} />
+                </Suspense>
+              </Switch>
+            </div>
             <Footer />
           </BrowserRouter>
         </>
