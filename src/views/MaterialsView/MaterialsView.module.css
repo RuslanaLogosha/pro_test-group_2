@@ -8,9 +8,8 @@
   max-width: 1280px;
   background-color: #f5f6fb;
   font-family: var(--mainFont);
-  background-size: cover;
+
   /* background-position: right bottom; Положение фона */
-  /* background-repeat: no-repeat;  */
 }
 .link {
   text-decoration: none;
@@ -50,6 +49,10 @@
 @media screen and (max-width: 767px) {
   .mainContainer {
     background-image: url(../../images/pic3.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position-x: 60%;
+    background-position-y: 10%;
   }
   .title {
     width: 150px;
@@ -89,7 +92,9 @@
     padding-bottom: 470px;
   }
   .mainContainer {
-    background-image: url(../../images/pic2.jpg);
+    background: url(../../images/pic4.jpg) center no-repeat;
+    background-position-x: 60%;
+    background-position-y: 10%;
   }
   .title {
     width: 320px;
