@@ -1,6 +1,7 @@
 .mainContainer {
   margin-left: auto;
   margin-right: auto;
+  min-height: calc(100vh - 110px);
   padding-top: 96px;
   padding-left: 20px;
   padding-right: 20px;
@@ -8,23 +9,8 @@
   background-color: #f5f6fb;
   font-family: var(--mainFont);
   background-size: cover;
-}
-@media screen and (min-width: var(--mobile)) {
-  .mainContainer {
-    width: var(--mobile);
-  }
-}
-
-@media screen and (min-width: var(--tablet)) {
-  .mainContainer {
-    width: var(--tablet);
-  }
-}
-
-@media screen and (min-width: var(--desktop)) {
-  .mainContainer {
-    width: var(--desktop);
-  }
+  /* background-position: right bottom; Положение фона */
+  /* background-repeat: no-repeat;  */
 }
 .link {
   text-decoration: none;
@@ -118,7 +104,9 @@
     padding-bottom: 260px;
   }
   .mainContainer {
-    background-image: url(../../images/pic1.jpg);
+    background: url(../../images/pic4.jpg) center no-repeat;
+    background-position-x: 60%;
+    background-position-y: 10%;
   }
   .list {
     margin-left: 60px;

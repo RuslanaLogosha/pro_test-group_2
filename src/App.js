@@ -10,7 +10,7 @@ import HomePage from './components/MainPage/MainPage';
 import TestPage from './components/TestPage/TestPage';
 import SpinnerLoader from './components/SpinnerLoader';
 import RegisterView from './views/RegisterView';
-import MaterialsView from './components/MaterialsView/MaterialsView';
+import MaterialsView from './views/MaterialsView/MaterialsView';
 import ContactsView from './components/Contacts/ContactsView';
 import { authOperations, authSelectors } from 'redux/auth';
 import Skeleton from 'components/Skeleton';
@@ -28,7 +28,7 @@ function App() {
   };
 
   const isFetchingCurrentUser = useSelector(
-    authSelectors.getIsFetchingCurrentUser
+    authSelectors.getIsFetchingCurrentUser,
   );
 
   useEffect(() => {
