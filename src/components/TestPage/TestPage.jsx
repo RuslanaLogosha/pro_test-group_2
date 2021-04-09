@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { testScoreOperations } from '../../redux/testScore';
@@ -7,7 +7,7 @@ import s from './TestPage.module.css';
 import { nanoid } from 'nanoid';
 
 function TestPage(props) {
-  const [index, setIndex] = useState(0);
+  const index = useSelector(state => state.testScore.testPageIndex);
   const test = useSelector(state => state.testScore.questionsListForTest);
   const selected = useSelector(state => state.testScore.userAnswersOnTest);
   const dispatch = useDispatch();
@@ -19,16 +19,16 @@ function TestPage(props) {
 
   const handleNextPage = id => {
     if (!selected?.find(el => el.questionId === id)) {
-      // need toastr here
+      // !need toastr here
       console.log('Select the answer please');
       return;
     }
 
-    if (index !== 11) setIndex(index + 1);
+    if (index !== 11) dispatch(actions.setPlusTestPageIndex(1));
   };
 
   const handlePrevPage = () => {
-    if (index !== 0) setIndex(index - 1);
+    if (index !== 0) dispatch(actions.setMinusTestPageIndex(1));
   };
 
   const isChecked = (id, answer) => {

@@ -28,9 +28,27 @@ const questionsListForTest = createReducer([], {
   [actions.getAnswersSuccess]: (_state, { payload }) => {
     return [...payload.data];
   },
+  [actions.sendAnswersSuccess]: (_state, { _payload }) => {
+    return [];
+  },
 });
 
-const saveResultsOfTest = createReducer(
+const testPageIndex = createReducer(0, {
+  [actions.setPlusTestPageIndex]: (state, { payload }) => {
+    return state + payload;
+  },
+  [actions.setMinusTestPageIndex]: (state, { payload }) => {
+    return state - payload;
+  },
+  [actions.getAnswersSuccess]: (_state, { _payload }) => {
+    return 0;
+  },
+  [actions.sendAnswersSuccess]: (_state, { _payload }) => {
+    return 0;
+  },
+});
+
+const resultsOfTest = createReducer(
   {},
   {
     [actions.sendAnswersSuccess]: (_state, { payload }) => {
@@ -43,6 +61,7 @@ const saveResultsOfTest = createReducer(
 const testScoreReducer = combineReducers({
   userAnswersOnTest,
   questionsListForTest,
-  saveResultsOfTest,
+  testPageIndex,
+  resultsOfTest,
 });
 export default testScoreReducer;

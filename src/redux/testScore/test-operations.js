@@ -16,9 +16,9 @@ const getAnswers = url => async dispatch => {
 };
 
 const sendAnswers = (answers, url) => async dispatch => {
-  try {
-    dispatch(testScoreActions.sendAnswersRequest());
+  dispatch(testScoreActions.sendAnswersRequest());
 
+  try {
     const { data } = await axios.post(
       `https://backend-for-pro-test.herokuapp.com/${url}`,
       answers,
