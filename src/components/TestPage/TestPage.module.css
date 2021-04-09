@@ -7,6 +7,7 @@
   background-color: #f5f6fb;
   font-family: var(--mainFont);
 }
+
 @media screen and (min-width: 320px) {
   .mainContainer {
     width: var(--mobile);
@@ -79,6 +80,13 @@
   font-size: 14px;
   line-height: 1.2;
   letter-spacing: 0.02em;
+  transition: all 150ms ease;
+}
+
+.testFinish:hover,
+.testFinish:focus {
+  color: var(--black);
+  background-color: var(--white);
 }
 
 @media screen and (max-width: 767px) {
@@ -194,6 +202,7 @@
   padding: 0;
   border: 0;
 }
+
 .optionAnswer {
   position: relative;
   display: block;
@@ -291,9 +300,43 @@
   font-weight: 500;
   font-size: 12px;
   line-height: 1.25;
+  background-color: var(--white);
+  color: var(--black);
+  fill: var(--black);
+  transition: all 150ms ease-in;
+}
+
+.buttonPrevious:hover,
+.buttonNext:hover,
+.buttonPrevious:focus,
+.buttonNext:focus {
+  background-color: var(--accentColor);
+  color: var(--white);
+  fill: var(--white);
+}
+
+.disabledPrevBtn {
+  composes: buttonPrevious;
+  pointer-events: none;
+  background-color: var(--secondaryTextColor);
+  color: var(--white);
+  fill: var(--white);
+}
+
+.disabledNextBtn {
+  composes: buttonNext;
+  pointer-events: none;
+  background-color: var(--labelTextColor);
+}
+
+.disabledPrevBtn:focus,
+.disabledNextBtn:focus {
+  background-color: var(--labelTextColor);
+  color: var(--black);
 }
 
 @media screen and (max-width: 767px) {
+
   .buttonPrevious,
   .buttonNext {
     width: 55px;
@@ -302,12 +345,8 @@
 
 .buttonPrevious {
   padding-left: 15px;
-  background-color: var(--accentColor);
 }
 
-.buttonPreviousName {
-  color: var(--white);
-}
 @media screen and (max-width: 767px) {
   .buttonPreviousName {
     display: none;
@@ -317,19 +356,22 @@
 .arrowPrevious {
   margin-right: 11px;
   transform: rotate(180deg);
+  fill: inherit;
 }
+
+.arrowBlack {
+  fill: inherit;
+}
+
 
 .buttonNext {
   display: flex;
   justify-content: space-between;
   padding-right: 15px;
   padding-left: 20px;
-  background-color: var(--white);
 }
 
-.buttonNextName {
-  color: var(--black);
-}
+
 
 @media screen and (max-width: 767px) {
   .buttonNextName {
