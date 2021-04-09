@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { testScoreOperations } from '../../redux/testScore';
 import actions from '../../redux/testScore/test-actions';
 import s from './TestPage.module.css';
+import { nanoid } from 'nanoid';
 
 function TestPage(props) {
   const [index, setIndex] = useState(0);
@@ -16,11 +17,12 @@ function TestPage(props) {
     [dispatch],
   );
 
-  const handleNextPage = () => {
-    // if (!selected?.find(el => el.questionId === id)) {
-    //   console.log('Select the answer please');
-    //   return;
-    // }
+  const handleNextPage = id => {
+    if (!selected?.find(el => el.questionId === id)) {
+      // need toastr here
+      console.log('Select the answer please');
+      return;
+    }
 
     if (index !== 11) setIndex(index + 1);
   };
@@ -60,7 +62,7 @@ function TestPage(props) {
             {test.length > 0 &&
               test[index].answers.map(answer => {
                 return (
-                  <div className={s.optionBox} key={answer}>
+                  <div className={s.optionBox} key={nanoid()}>
                     <label className={s.optionLabel}>
                       <input
                         type="radio"
@@ -111,7 +113,11 @@ function TestPage(props) {
         <button
           className={s.buttonNext}
           type="submit"
-          onClick={index === 11 ? () => sendAnswers(selected) : handleNextPage}
+          onClick={
+            index === 11
+              ? () => sendAnswers(selected)
+              : () => handleNextPage(test[index].questionId)
+          }
         >
           <span className={s.buttonNextName}> Next question</span>
           <svg
