@@ -8,8 +8,8 @@ import s from './Buttons.module.css';
 function Buttons() {
   const dispatch = useDispatch();
 
-  const getAnswers = useCallback(
-    url => dispatch(testScoreOperations.getAnswers(url)),
+  const getQuestions = useCallback(
+    url => dispatch(testScoreOperations.getQuestions(url)),
     [dispatch],
   );
 
@@ -26,7 +26,7 @@ function Buttons() {
               },
             }}
             className={s.buttonDescription}
-            onClick={() => getAnswers('techquiz/questions')}
+            onClick={() => getQuestions('techquiz/questions')}
           >
             QA technical <br />
             training
@@ -51,7 +51,7 @@ function Buttons() {
               },
             }}
             className={s.buttonDescription}
-            onClick={() => getAnswers('theoryquiz/questions')}
+            onClick={() => getQuestions('theoryquiz/questions')}
           >
             Testing <br />
             theory

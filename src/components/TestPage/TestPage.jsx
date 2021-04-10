@@ -1,9 +1,11 @@
-import React, { useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { nanoid } from 'nanoid';
 import { testScoreOperations } from '../../redux/testScore';
-import actions from '../../redux/testScore/test-actions';
+import {
+  testPageIndexSlice,
+  userAnswersOnTestSlice,
+} from '../../redux/testScore/test-reducers.js';
 import s from './TestPage.module.css';
 
 function TestPage(props) {
@@ -12,19 +14,18 @@ function TestPage(props) {
   const selected = useSelector(state => state.testScore.userAnswersOnTest);
   const dispatch = useDispatch();
 
-  const sendAnswers = useCallback(
-    (answers, url) => dispatch(testScoreOperations.sendAnswers(answers, url)),
-    [dispatch],
-  );
+  const sendAnswers = (selected, url) => {
+    dispatch(testScoreOperations.sendAnswers({ selected, url }));
+  };
 
   const handleNextPage = () => {
     if (index === testList.length - 1) return;
-    dispatch(actions.setPlusTestPageIndex(1));
+    dispatch(testPageIndexSlice.actions.setPlusTestPageIndex(1));
   };
 
   const handlePrevPage = () => {
     if (index === 0) return;
-    dispatch(actions.setMinusTestPageIndex(1));
+    dispatch(testPageIndexSlice.actions.setMinusTestPageIndex(1));
   };
 
   const isChecked = answer => {
@@ -41,7 +42,7 @@ function TestPage(props) {
   };
 
   const setAnswer = (result, questionId) => {
-    dispatch(actions.setAnswer({ questionId, result }));
+    dispatch(userAnswersOnTestSlice.actions.setAnswer({ questionId, result }));
   };
 
   return (
