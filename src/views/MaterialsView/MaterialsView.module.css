@@ -8,8 +8,6 @@
   max-width: 1280px;
   background-color: #f5f6fb;
   font-family: var(--mainFont);
-
-  /* background-position: right bottom; Положение фона */
 }
 .link {
   text-decoration: none;
@@ -48,7 +46,7 @@
 
 @media screen and (max-width: 767px) {
   .mainContainer {
-    background-image: url(../../images/pic3.jpg);
+    background-image: url(../../images/background-mob.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     background-position-x: 60%;
@@ -92,7 +90,7 @@
     padding-bottom: 470px;
   }
   .mainContainer {
-    background: url(../../images/pic4.jpg) center no-repeat;
+    background: url(../../images/background.jpg) center no-repeat;
     background-position-x: 60%;
     background-position-y: 10%;
   }
@@ -108,11 +106,7 @@
     margin-left: 190px;
     padding-bottom: 260px;
   }
-  .mainContainer {
-    background: url(../../images/pic4.jpg) center no-repeat;
-    background-position-x: 60%;
-    background-position-y: 10%;
-  }
+
   .list {
     margin-left: 60px;
   }

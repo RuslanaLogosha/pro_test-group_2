@@ -11,13 +11,15 @@ function ContactsView() {
       <main className={s.mainContacts}>
         <h2 className={s.title}>Our team</h2>
         <ul className={s.list}>
-          {card.map(({ id, name, position, text, image }) => (
+          {card.map(({ id, name, position, text, image, linkedin, github }) => (
             <Contactcard
               key={id}
               name={name}
               position={position}
               text={text}
               image={image}
+              linkedin={linkedin}
+              github={github}
             />
           ))}
         </ul>

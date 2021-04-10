@@ -4,6 +4,8 @@
     "image": "/photo/ruslana.jpg",
     "name": "Ruslana",
     "position": "Team Lead",
+    "linkedin": "https://www.linkedin.com/in/ruslana-logosha-674b9241/",
+    "github": "https://github.com/RuslanaLogosha",
     "text": "Lorem Ipsum has been the standard \"fish\" for Latin texts since the early 16th century."
   },
   {
@@ -11,6 +13,8 @@
     "image": "/photo/olya.jpg",
     "name": "Olga",
     "position": "Scrum Master",
+    "linkedin": "https://www.linkedin.com/in/olga-levshukova-62831343/",
+    "github": "https://github.com/levshukova",
     "text": "Lorem Ipsum has been the standard \"fish\" for Latin texts since the early 16th century."
   },
   {
@@ -18,6 +22,8 @@
     "image": "/photo/aleksey.jpg",
     "name": "Aleksey",
     "position": "Developer",
+    "linkedin": "https://www.linkedin.com/",
+    "github": "https://github.com/Aleksey2892",
     "text": "Lorem Ipsum has been the standard \"fish\" for Latin texts since the early 16th century."
   },
   {
@@ -25,6 +31,8 @@
     "image": "/photo/aleksandr.jpg",
     "name": "Aleksandr",
     "position": "Developer",
+    "linkedin": "https://www.linkedin.com/in/aleksandr-mukomelov-b9799155/",
+    "github": "https://github.com/AleksMkm",
     "text": "Lorem Ipsum has been the standard \"fish\" for Latin texts since the early 16th century."
   },
   {
@@ -32,6 +40,8 @@
     "image": "/photo/andrii.jpg",
     "name": "Andrii",
     "position": "Developer",
+    "linkedin": "https://www.linkedin.com/",
+    "github": "https://github.com/theneonwhale",
     "text": "Lorem Ipsum has been the standard \"fish\" for Latin texts since the early 16th century."
   },
   {
@@ -39,6 +49,8 @@
     "image": "/photo/ihor.jpg",
     "name": "Ihor",
     "position": "Developer",
+    "linkedin": "linkedin.com/in/ihor-tarai",
+    "github": "https://github.com/taraiihor",
     "text": "Lorem Ipsum has been the standard \"fish\" for Latin texts since the early 16th century."
   },
   {
@@ -46,6 +58,8 @@
     "image": "/photo/katya.jpg",
     "name": "Katya",
     "position": "Developer",
+    "linkedin": "https://www.linkedin.com/",
+    "github": "https://github.com/Kateryna-Urbanovych",
     "text": "Lorem Ipsum has been the standard \"fish\" for Latin texts since the early 16th century."
   },
   {
@@ -53,6 +67,8 @@
     "image": "/photo/vladymyr.jpg",
     "name": "Vladymyr",
     "position": "Developer",
+    "linkedin": "https://www.linkedin.com/in/vladimir-ivanchenko/",
+    "github": "https://github.com/created-with-love",
     "text": "Lorem Ipsum has been the standard \"fish\" for Latin texts since the early 16th century."
   }
 ]
