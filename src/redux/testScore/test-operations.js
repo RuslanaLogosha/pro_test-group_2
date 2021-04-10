@@ -21,6 +21,7 @@ const sendAnswers = createAsyncThunk(
     try {
       // baseURL assigned in auth-operations
       const { data } = await axios.post(`/${url}`, selected);
+
       return data;
     } catch (error) {
       return rejectWithValue(error);

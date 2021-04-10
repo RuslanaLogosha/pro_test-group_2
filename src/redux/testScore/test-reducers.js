@@ -22,10 +22,10 @@ export const userAnswersOnTestSlice = createSlice({
       });
       return [...refreshedState];
     },
-    extraReducers: {
-      [testScoreOperations.getQuestions.fulfilled](_state, { _payload }) {
-        return [];
-      },
+  },
+  extraReducers: {
+    [testScoreOperations.getQuestions.fulfilled](_state, { payload }) {
+      return [];
     },
   },
 });
@@ -36,6 +36,9 @@ export const questionsListForTestSlice = createSlice({
   extraReducers: {
     [testScoreOperations.getQuestions.fulfilled](_state, { payload }) {
       return [...payload.data];
+    },
+    [testScoreOperations.getQuestions.pending](_state, { _payload }) {
+      return [];
     },
   },
 });
@@ -66,10 +69,13 @@ export const resultsOfTestSlice = createSlice({
   initialState: {},
   extraReducers: {
     [testScoreOperations.sendAnswers.fulfilled](_state, { payload }) {
-      return payload.data;
+      return { ...payload.data };
     },
   },
 });
+
+// example for use action
+// testPageIndexSlice.actions.setPlusTestPageIndex(1)
 
 // !this need for combine reducers
 const userAnswersOnTest = userAnswersOnTestSlice.reducer;

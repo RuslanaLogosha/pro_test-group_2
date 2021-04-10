@@ -1,4 +1,3 @@
-import React, { useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { testScoreOperations } from '../../../redux/testScore';
@@ -8,10 +7,7 @@ import s from './Buttons.module.css';
 function Buttons() {
   const dispatch = useDispatch();
 
-  const getQuestions = useCallback(
-    url => dispatch(testScoreOperations.getQuestions(url)),
-    [dispatch],
-  );
+  const getQuestions = url => dispatch(testScoreOperations.getQuestions(url));
 
   return (
     <ul className={s.buttonContainer}>

@@ -36,9 +36,13 @@ function TestPage(props) {
   };
 
   const nextButtonDisabler = () => {
-    return !selected?.find(el => el.questionId === testList[index].questionId)
-      ? s.disabledNextBtn
-      : s.buttonNext;
+    if (testList.length > 0) {
+      return !selected?.find(el => el.questionId === testList[index].questionId)
+        ? s.disabledNextBtn
+        : s.buttonNext;
+    } else {
+      return s.buttonNext;
+    }
   };
 
   const setAnswer = (result, questionId) => {
