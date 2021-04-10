@@ -28,9 +28,6 @@ const questionsListForTest = createReducer([], {
   [actions.getAnswersSuccess]: (_state, { payload }) => {
     return [...payload.data];
   },
-  [actions.sendAnswersSuccess]: (_state, { _payload }) => {
-    return [];
-  },
 });
 
 const testPageIndex = createReducer(0, {

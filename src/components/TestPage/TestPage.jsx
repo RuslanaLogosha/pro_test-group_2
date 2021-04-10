@@ -18,11 +18,13 @@ function TestPage(props) {
   );
 
   const handleNextPage = () => {
-    if (index !== testList.length) dispatch(actions.setPlusTestPageIndex(1));
+    if (index === testList.length - 1) return;
+    dispatch(actions.setPlusTestPageIndex(1));
   };
 
   const handlePrevPage = () => {
-    if (index !== 0) dispatch(actions.setMinusTestPageIndex(1));
+    if (index === 0) return;
+    dispatch(actions.setMinusTestPageIndex(1));
   };
 
   const isChecked = answer => {
@@ -114,7 +116,7 @@ function TestPage(props) {
           className={nextButtonDisabler()}
           type="submit"
           onClick={
-            index === testList.length
+            index === testList.length - 1
               ? () => sendAnswers(selected, props.location.state.url)
               : () => handleNextPage()
           }
