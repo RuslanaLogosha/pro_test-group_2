@@ -2,7 +2,7 @@ import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
 const getQuestions = createAsyncThunk(
-  'getQuestions',
+  'test/getQuestions',
   async (url, { rejectWithValue }) => {
     const config = { url };
     try {
@@ -16,7 +16,7 @@ const getQuestions = createAsyncThunk(
 );
 
 const sendAnswers = createAsyncThunk(
-  'sendAnswers',
+  'test/sendAnswers',
   async ({ selected, url }, { rejectWithValue }) => {
     try {
       // baseURL assigned in auth-operations
