@@ -2,9 +2,8 @@ import React, { useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { testScoreOperations } from '../../../redux/testScore';
-
-import s from './Buttons.module.css';
 import arrow from '../../../images/arrow-main-page.svg';
+import s from './Buttons.module.css';
 
 function Buttons() {
   const dispatch = useDispatch();

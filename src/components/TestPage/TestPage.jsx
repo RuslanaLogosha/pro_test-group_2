@@ -1,14 +1,14 @@
-import React, { useState, useCallback } from 'react';
+import React, { useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import { nanoid } from 'nanoid';
 import { testScoreOperations } from '../../redux/testScore';
 import actions from '../../redux/testScore/test-actions';
 import s from './TestPage.module.css';
-import { nanoid } from 'nanoid';
 
 function TestPage(props) {
-  const [index, setIndex] = useState(0);
-  const test = useSelector(state => state.testScore.questionsListForTest);
+  const index = useSelector(state => state.testScore.testPageIndex);
+  const testList = useSelector(state => state.testScore.questionsListForTest);
   const selected = useSelector(state => state.testScore.userAnswersOnTest);
   const dispatch = useDispatch();
 
@@ -17,23 +17,27 @@ function TestPage(props) {
     [dispatch],
   );
 
-  const handleNextPage = id => {
-    if (!selected?.find(el => el.questionId === id)) {
-      // need toastr here
-      console.log('Select the answer please');
-      return;
-    }
-
-    if (index !== 11) setIndex(index + 1);
+  const handleNextPage = () => {
+    if (index === testList.length - 1) return;
+    dispatch(actions.setPlusTestPageIndex(1));
   };
 
   const handlePrevPage = () => {
-    if (index !== 0) setIndex(index - 1);
+    if (index === 0) return;
+    dispatch(actions.setMinusTestPageIndex(1));
   };
 
-  const isChecked = (id, answer) => {
-    const question = selected?.find(el => el.questionId === id);
+  const isChecked = answer => {
+    const question = selected?.find(el => {
+      return el.questionId === testList[index].questionId;
+    });
     return question?.result === answer;
+  };
+
+  const nextButtonDisabler = () => {
+    return !selected?.find(el => el.questionId === testList[index].questionId)
+      ? s.disabledNextBtn
+      : s.buttonNext;
   };
 
   const setAnswer = (result, questionId) => {
@@ -56,11 +60,11 @@ function TestPage(props) {
             / 12
           </p>
           <p className={s.question}>
-            {test.length > 0 && test[index].question}
+            {testList.length > 0 && testList[index].question}
           </p>
           <div className={s.optionsWrapper}>
-            {test.length > 0 &&
-              test[index].answers.map(answer => {
+            {testList.length > 0 &&
+              testList[index].answers.map(answer => {
                 return (
                   <div className={s.optionBox} key={nanoid()}>
                     <label className={s.optionLabel}>
@@ -69,7 +73,7 @@ function TestPage(props) {
                         name="test"
                         className={s.originalCheckbox}
                         onChange={() =>
-                          setAnswer(answer, test[index].questionId)
+                          setAnswer(answer, testList[index].questionId)
                         }
                       />
 
@@ -77,9 +81,7 @@ function TestPage(props) {
                         <span className={s.checkbox}></span>
                         <span
                           className={
-                            isChecked(test[index].questionId, answer)
-                              ? s.checkboxAccent
-                              : null
+                            isChecked(answer) ? s.checkboxAccent : null
                           }
                         ></span>
                         {answer}
@@ -111,12 +113,12 @@ function TestPage(props) {
           <span className={s.buttonPreviousName}>Previous question</span>
         </button>
         <button
-          className={s.buttonNext}
+          className={nextButtonDisabler()}
           type="submit"
           onClick={
-            index === 11
+            index === testList.length - 1
               ? () => sendAnswers(selected, props.location.state.url)
-              : () => handleNextPage(test[index].questionId)
+              : () => handleNextPage()
           }
         >
           <span className={s.buttonNextName}> Next question</span>
