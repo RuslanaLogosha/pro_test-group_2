@@ -1,59 +1,87 @@
 import { combineReducers } from 'redux';
-import { createReducer } from '@reduxjs/toolkit';
-import actions from './test-actions';
+import { createSlice } from '@reduxjs/toolkit';
+import testScoreOperations from './test-operations';
 
-const userAnswersOnTest = createReducer([], {
-  [actions.setAnswer]: (state, { payload }) => {
-    const isAlreadyAnswered = state.find(
-      el => el.questionId === payload.questionId,
-    );
-    if (!isAlreadyAnswered) {
-      return [...state, payload];
-    }
-
-    const refreshedState = state.map(el => {
-      if (isAlreadyAnswered.questionId === el.questionId) {
-        return { questionId: payload.questionId, result: payload.result };
+export const userAnswersOnTestSlice = createSlice({
+  name: 'test',
+  initialState: [],
+  reducers: {
+    setAnswer: (state, { payload }) => {
+      const isAlreadyAnswered = state.find(
+        el => el.questionId === payload.questionId,
+      );
+      if (!isAlreadyAnswered) {
+        return [...state, payload];
       }
-      return el;
-    });
-    return [...refreshedState];
+
+      const refreshedState = state.map(el => {
+        if (isAlreadyAnswered.questionId === el.questionId) {
+          return { questionId: payload.questionId, result: payload.result };
+        }
+        return el;
+      });
+      return [...refreshedState];
+    },
   },
-  [actions.getAnswersSuccess]: (_state, { _payload }) => {
-    return [];
+  extraReducers: {
+    [testScoreOperations.getQuestions.fulfilled](_state, { payload }) {
+      return [];
+    },
   },
 });
 
-const questionsListForTest = createReducer([], {
-  [actions.getAnswersSuccess]: (_state, { payload }) => {
-    return [...payload.data];
+export const questionsListForTestSlice = createSlice({
+  name: 'test',
+  initialState: [],
+  extraReducers: {
+    [testScoreOperations.getQuestions.fulfilled](_state, { payload }) {
+      return [...payload.data];
+    },
+    [testScoreOperations.getQuestions.pending](_state, { _payload }) {
+      return [];
+    },
   },
 });
 
-const testPageIndex = createReducer(0, {
-  [actions.setPlusTestPageIndex]: (state, { payload }) => {
-    return state + payload;
+export const testPageIndexSlice = createSlice({
+  name: 'test',
+  initialState: 0,
+  reducers: {
+    setPlusTestPageIndex: (state, { payload }) => {
+      return state + payload;
+    },
+    setMinusTestPageIndex: (state, { payload }) => {
+      return state - payload;
+    },
   },
-  [actions.setMinusTestPageIndex]: (state, { payload }) => {
-    return state - payload;
-  },
-  [actions.getAnswersSuccess]: (_state, { _payload }) => {
-    return 0;
-  },
-  [actions.sendAnswersSuccess]: (_state, { _payload }) => {
-    return 0;
+  extraReducers: {
+    [testScoreOperations.getQuestions.fulfilled](_state, { _payload }) {
+      return 0;
+    },
+    [testScoreOperations.sendAnswers.fulfilled](_state, { _payload }) {
+      return 0;
+    },
   },
 });
 
-const resultsOfTest = createReducer(
-  {},
-  {
-    [actions.sendAnswersSuccess]: (_state, { payload }) => {
-      console.log('reducer console log', payload.data);
+export const resultsOfTestSlice = createSlice({
+  name: 'test',
+  initialState: {},
+  extraReducers: {
+    [testScoreOperations.sendAnswers.fulfilled](_state, { payload }) {
       return { ...payload.data };
     },
   },
-);
+});
+
+// example for use action
+// testPageIndexSlice.actions.setPlusTestPageIndex(1)
+
+// !this need for combine reducers
+const userAnswersOnTest = userAnswersOnTestSlice.reducer;
+const questionsListForTest = questionsListForTestSlice.reducer;
+const testPageIndex = testPageIndexSlice.reducer;
+const resultsOfTest = resultsOfTestSlice.reducer;
 
 const testScoreReducer = combineReducers({
   userAnswersOnTest,
@@ -61,4 +89,5 @@ const testScoreReducer = combineReducers({
   testPageIndex,
   resultsOfTest,
 });
+
 export default testScoreReducer;

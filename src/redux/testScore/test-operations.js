@@ -1,37 +1,36 @@
 import axios from 'axios';
+import { createAsyncThunk } from '@reduxjs/toolkit';
 
-import { testScoreActions } from './';
+const getQuestions = createAsyncThunk(
+  'test/getQuestions',
+  async (url, { rejectWithValue }) => {
+    const config = { url };
+    try {
+      // baseURL assigned in auth-operations
+      const { data } = await axios(config);
+      return data;
+    } catch (error) {
+      return rejectWithValue(error);
+    }
+  },
+);
 
-const getAnswers = url => async dispatch => {
-  dispatch(testScoreActions.getAnswersRequest());
-  const config = { url };
+const sendAnswers = createAsyncThunk(
+  'test/sendAnswers',
+  async ({ selected, url }, { rejectWithValue }) => {
+    try {
+      // baseURL assigned in auth-operations
+      const { data } = await axios.post(`/${url}`, selected);
 
-  try {
-    const { data } = await axios(config);
-
-    dispatch(testScoreActions.getAnswersSuccess(data));
-  } catch (error) {
-    dispatch(testScoreActions.getAnswersError(error));
-  }
-};
-
-const sendAnswers = (answers, url) => async dispatch => {
-  dispatch(testScoreActions.sendAnswersRequest());
-
-  try {
-    const { data } = await axios.post(
-      `https://backend-for-pro-test.herokuapp.com/${url}`,
-      answers,
-    );
-
-    dispatch(testScoreActions.sendAnswersSuccess(data));
-  } catch (error) {
-    dispatch(testScoreActions.sendAnswersError(error));
-  }
-};
+      return data;
+    } catch (error) {
+      return rejectWithValue(error);
+    }
+  },
+);
 
 const testScoreOperations = {
-  getAnswers,
+  getQuestions,
   sendAnswers,
 };
 export default testScoreOperations;
