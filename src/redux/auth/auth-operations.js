@@ -19,9 +19,11 @@ const register = createAsyncThunk(
   'users/auth/register',
   async (user, { rejectWithValue }) => {
     try {
-      const {
-        data: { data },
-      } = await axios.post('/users/auth/register', user);
+      // const {
+      //   data: { data },
+      // } = await axios.post('/users/auth/register', user);
+      const response = await axios.post('/users/auth/register', user);
+      const data = response.data.data;
       token.set(data.token);
       toast.success('✔️ Congratulations, you have successfully registered');
       return data;
@@ -37,9 +39,11 @@ const logIn = createAsyncThunk(
   'users/auth/logIn',
   async (user, { rejectWithValue }) => {
     try {
-      const {
-        data: { data },
-      } = await axios.post('/users/auth/login', user);
+      // const {
+      //   data: { data },
+      // } = await axios.post('/users/auth/login', user);
+      const response = await axios.post('/users/auth/login', user);
+      const data = response.data.data;
       token.set(data.token);
       return data;
     } catch (error) {
@@ -83,7 +87,7 @@ const logOut = createAsyncThunk(
 // GET @ /users/current
 
 const fetchCurrentUser = createAsyncThunk(
-  'auth/refresh',
+  'users/current',
   async (_, thunkAPI) => {
     const state = thunkAPI.getState();
     const persistedToken = state.auth.token;
@@ -94,9 +98,42 @@ const fetchCurrentUser = createAsyncThunk(
 
     token.set(persistedToken);
     try {
-      const {
-        data: { data },
-      } = await axios.get('/users/current');
+      // const {
+      //   data: { data },
+      // } = await axios.get('/users/current');
+      const response = await axios.get('/users/current');
+
+      const dataUser = response.data.data;
+      return dataUser;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.response.data.message);
+    }
+  },
+);
+
+// POST @ /users/auth/refresh
+
+const refreshToken = createAsyncThunk(
+  'users/auth/refresh',
+  async (_, thunkAPI) => {
+    const state = thunkAPI.getState();
+    const sessionId = state.auth.sessionId;
+    const refreshToken = state.auth.refreshToken;
+
+    try {
+      // const {
+      //   data: { data },
+      // } = await axios.get('/users/current');
+
+      const response = await axios.post(
+        '/users/auth/refresh',
+        { sessionId },
+        {
+          headers: { Authorization: `Bearer ${refreshToken}` },
+        },
+      );
+
+      const data = response.data;
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
@@ -110,5 +147,6 @@ const authOperations = {
   // googleAuth,
   logOut,
   fetchCurrentUser,
+  refreshToken,
 };
 export default authOperations;
