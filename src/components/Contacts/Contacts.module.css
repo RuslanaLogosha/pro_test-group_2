@@ -74,7 +74,13 @@
   color: #000000;
   border-bottom: 1px solid rgba(0, 18, 46, 0.15);
 }
-
+.list__social {
+  margin: 10px 0;
+  display: flex;
+}
+.item__social {
+  margin-right: 20px;
+}
 @media screen and (max-width: 767px) {
   .title {
     width: 130px;
