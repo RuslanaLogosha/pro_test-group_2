@@ -16,7 +16,7 @@ export const userAnswersOnTestSlice = createSlice({
 
       const refreshedState = state.map(el => {
         if (isAlreadyAnswered.questionId === el.questionId) {
-          return { questionId: payload.questionId, result: payload.result };
+          return { questionId: payload.questionId, answer: payload.answer };
         }
         return el;
       });
@@ -74,6 +74,21 @@ export const resultsOfTestSlice = createSlice({
   },
 });
 
+export const currentTestInfoSlice = createSlice({
+  name: 'test',
+  initialState: { quizName: '', url: '' },
+  reducers: {
+    setInfo: (state, { payload }) => {
+      return { ...payload };
+    },
+  },
+  extraReducers: {
+    [testScoreOperations.sendAnswers.fulfilled](_state, { _payload }) {
+      return { quizName: '', url: '' };
+    },
+  },
+});
+
 // example for use action
 // testPageIndexSlice.actions.setPlusTestPageIndex(1)
 
@@ -82,12 +97,14 @@ const userAnswersOnTest = userAnswersOnTestSlice.reducer;
 const questionsListForTest = questionsListForTestSlice.reducer;
 const testPageIndex = testPageIndexSlice.reducer;
 const resultsOfTest = resultsOfTestSlice.reducer;
+const currentTestInfo = currentTestInfoSlice.reducer;
 
 const testScoreReducer = combineReducers({
   userAnswersOnTest,
   questionsListForTest,
   testPageIndex,
   resultsOfTest,
+  currentTestInfo,
 });
 
 export default testScoreReducer;
