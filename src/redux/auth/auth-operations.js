@@ -28,7 +28,7 @@ const register = createAsyncThunk(
       toast.success('✔️ Congratulations, you have successfully registered');
       return data;
     } catch (error) {
-      return rejectWithValue(error);
+      return rejectWithValue(error.response.data.message);
     }
   },
 );
@@ -47,7 +47,7 @@ const logIn = createAsyncThunk(
       token.set(data.token);
       return data;
     } catch (error) {
-      return rejectWithValue(error);
+      return rejectWithValue(error.response.data.message);
     }
   },
 );
@@ -65,7 +65,7 @@ const logIn = createAsyncThunk(
 //       token.set(data.token);
 //       return data;
 //     } catch (error) {
-//       return rejectWithValue(error);
+//       return rejectWithValue(error.response.data.message);
 //     }
 //   },
 // );
@@ -79,7 +79,7 @@ const logOut = createAsyncThunk(
       await axios.post('/users/auth/logout');
       token.unset();
     } catch (error) {
-      return rejectWithValue(error);
+      return rejectWithValue(error.response.data.message);
     }
   },
 );
@@ -133,10 +133,11 @@ const refreshToken = createAsyncThunk(
         },
       );
 
+      // const data = response.data.data;
       const data = response.data;
       return data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error);
+      return thunkAPI.rejectWithValue(error.response.data.message);
     }
   },
 );

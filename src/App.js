@@ -25,7 +25,7 @@ function App() {
   const isFetchingCurrentUser = useSelector(
     authSelectors.getIsFetchingCurrentUser,
   );
-  const isErrorUnauthorized = useSelector(authSelectors.getIsErrorUnauthorized);
+  const ErrorUnauthorized = useSelector(authSelectors.getErrorUnauthorized);
   // console.log(isErrorUnauthorized);
 
   const handleSignOutBtnClick = () => {
@@ -33,13 +33,13 @@ function App() {
   };
 
   useEffect(() => {
-    if (isErrorUnauthorized === 'Not authorized') {
+    if (ErrorUnauthorized === 'Not authorized') {
       dispatch(authOperations.refreshToken());
     }
-    if (!isErrorUnauthorized) {
+    if (!ErrorUnauthorized) {
       dispatch(authOperations.fetchCurrentUser());
     }
-  }, [dispatch, isErrorUnauthorized]);
+  }, [dispatch, ErrorUnauthorized]);
 
   return (
     <>

@@ -8,7 +8,13 @@ const initialState = {
   sessionId: null,
   isLoggedIn: false,
   isFetchingCurrentUser: false,
-  isErrorUnauthorized: null,
+  ErrorUnauthorized: null,
+
+  ErrorRegister: null,
+  ErrorLogin: null,
+  // ErrorGoogle: null,
+  ErrorLogout: null,
+  ErrorRefresh: null,
 };
 
 const authSlice = createSlice({
@@ -21,15 +27,26 @@ const authSlice = createSlice({
       state.refreshToken = action.payload.refreshToken;
       state.sessionId = action.payload.sessionId;
       state.isLoggedIn = true;
+      state.ErrorRegister = null;
     },
+    [authOperations.register.rejected](state, action) {
+      state.ErrorRegister = action.payload;
+    },
+
     [authOperations.logIn.fulfilled](state, action) {
       state.user = action.payload.user;
       // state.token = action.payload.token;
+      // фейковый токен !!!
       state.token = 'token';
       state.refreshToken = action.payload.refreshToken;
       state.sessionId = action.payload.sessionId;
       state.isLoggedIn = true;
+      state.ErrorLogin = null;
     },
+    [authOperations.logIn.rejected](state, action) {
+      state.ErrorLogin = action.payload;
+    },
+
     // !!! ЗДЕСЬ БУДЕТ GOOGLE !!!
     // [authOperations.googleAuth.fulfilled](state, action) {
     //   state.user = action.payload.user;
@@ -42,26 +59,34 @@ const authSlice = createSlice({
       state.refreshToken = null;
       state.sessionId = null;
       state.isLoggedIn = false;
+      state.ErrorLogout = null;
     },
+    [authOperations.logOut.rejected](state, action) {
+      state.ErrorLogout = action.payload;
+    },
+
     [authOperations.fetchCurrentUser.pending](state) {
       state.isFetchingCurrentUser = true;
     },
     [authOperations.fetchCurrentUser.fulfilled](state, action) {
-      // console.log('action fulfilled', action);
       state.user = action.payload;
       state.isLoggedIn = true;
       state.isFetchingCurrentUser = false;
     },
     [authOperations.fetchCurrentUser.rejected](state, action) {
       state.isFetchingCurrentUser = false;
-      state.isErrorUnauthorized = action.payload;
-      // console.log('action rejected', action);
+      state.ErrorUnauthorized = action.payload;
     },
+
     [authOperations.refreshToken.fulfilled](state, action) {
       state.token = action.payload.token;
       state.refreshToken = action.payload.refreshToken;
       state.sessionId = action.payload.sessionId;
-      state.isErrorUnauthorized = null;
+      state.ErrorRefresh = null;
+      state.ErrorUnauthorized = null;
+    },
+    [authOperations.refreshToken.rejected](state, action) {
+      state.ErrorRefresh = action.payload;
     },
   },
 });
