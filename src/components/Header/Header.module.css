@@ -4,7 +4,7 @@
     justify-content: space-between;
 
     height: 70px;
-    border: 1px solid var(--headerBorderColor);
+    border-bottom: 1px solid var(--headerBorderColor);
     background: var(--primeryBgColor);
 }
 
