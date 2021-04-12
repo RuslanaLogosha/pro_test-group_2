@@ -1,7 +1,6 @@
-import React from 'react';
-import s from './MaterialsView.module.css';
+import s from './UsefulInfoView.module.css';
 
-function MaterialsView() {
+function UsefulInfoView() {
   return (
     <main className={s.mainContainer}>
       <div className={s.quoteContainer}>
@@ -46,4 +45,4 @@ function MaterialsView() {
     </main>
   );
 }
-export default MaterialsView;
+export default UsefulInfoView;

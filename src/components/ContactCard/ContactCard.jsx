@@ -1,6 +1,6 @@
-import s from './Contacts.module.css';
-import linkedinLogo from '../../images/linkedin.svg';
-import gitHubLogo from '../../images/github-logo.svg';
+import s from './ContactCard.module.css';
+import LinkedinLogo from '../Svg/LinkedinLogo';
+import GithubLogo from 'components/Svg/GithubLogo';
 
 function ContactCard({ image, name, position, text, linkedin, github }) {
   return (
@@ -12,16 +12,15 @@ function ContactCard({ image, name, position, text, linkedin, github }) {
         <ul className={s.list__social}>
           <li className={s.item__social}>
             <a href={github} target="blank">
-              <img src={gitHubLogo} alt="logo github" width="25" />
+              <GithubLogo />
             </a>
           </li>
           <li className={s.item__social}>
             <a href={linkedin} target="blank">
-              <img src={linkedinLogo} alt="logo linkedin" width="25" />
+              <LinkedinLogo />
             </a>
           </li>
         </ul>
-        {/* <p className={s.text}>{text}</p> */}
       </div>
     </li>
   );
