@@ -19,11 +19,10 @@ const register = createAsyncThunk(
   'users/auth/register',
   async (user, { rejectWithValue }) => {
     try {
-      // const {
-      //   data: { data },
-      // } = await axios.post('/users/auth/register', user);
-      const response = await axios.post('/users/auth/register', user);
-      const data = response.data.data;
+      const {
+        data: { data },
+      } = await axios.post('/users/auth/register', user);
+
       token.set(data.token);
       toast.success('✔️ Congratulations, you have successfully registered');
       return data;
@@ -39,11 +38,10 @@ const logIn = createAsyncThunk(
   'users/auth/logIn',
   async (user, { rejectWithValue }) => {
     try {
-      // const {
-      //   data: { data },
-      // } = await axios.post('/users/auth/login', user);
-      const response = await axios.post('/users/auth/login', user);
-      const data = response.data.data;
+      const {
+        data: { data },
+      } = await axios.post('/users/auth/login', user);
+
       token.set(data.token);
       return data;
     } catch (error) {
@@ -52,23 +50,18 @@ const logIn = createAsyncThunk(
   },
 );
 
-// !!! ЗДЕСЬ БУДЕТ GOOGLE !!!
-// GET @ /users/auth/login
+// GET @ /users/auth/google
 
-// const googleAuth = createAsyncThunk(
-//   'users/auth/google',
-//   async (user, { rejectWithValue }) => {
-//     try {
-//       const {
-//         data: { data },
-//       } = await axios.get('/users/auth/google', user);
-//       token.set(data.token);
-//       return data;
-//     } catch (error) {
-//       return rejectWithValue(error.response.data.message);
-//     }
-//   },
-// );
+const googleAuth = createAsyncThunk(
+  'users/auth/google',
+  async (_, { rejectWithValue }) => {
+    try {
+      await axios.get('/users/auth/google');
+    } catch (error) {
+      return rejectWithValue(error.response.data.message);
+    }
+  },
+);
 
 // POST @ /users/auth/logout
 
@@ -98,13 +91,11 @@ const fetchCurrentUser = createAsyncThunk(
 
     token.set(persistedToken);
     try {
-      // const {
-      //   data: { data },
-      // } = await axios.get('/users/current');
-      const response = await axios.get('/users/current');
+      const {
+        data: { data },
+      } = await axios.get('/users/current');
 
-      const dataUser = response.data.data;
-      return dataUser;
+      return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.response.data.message);
     }
@@ -121,11 +112,9 @@ const refreshToken = createAsyncThunk(
     const refreshToken = state.auth.refreshToken;
 
     try {
-      // const {
-      //   data: { data },
-      // } = await axios.get('/users/current');
-
-      const response = await axios.post(
+      const {
+        data: { data },
+      } = await axios.post(
         '/users/auth/refresh',
         { sessionId },
         {
@@ -133,8 +122,6 @@ const refreshToken = createAsyncThunk(
         },
       );
 
-      // const data = response.data.data;
-      const data = response.data;
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.response.data.message);
@@ -145,7 +132,7 @@ const refreshToken = createAsyncThunk(
 const authOperations = {
   register,
   logIn,
-  // googleAuth,
+  googleAuth,
   logOut,
   fetchCurrentUser,
   refreshToken,

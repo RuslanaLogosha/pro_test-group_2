@@ -13,9 +13,8 @@ const RegisterView = () => {
                 return dispatch(authOperations.logIn({ email, password }));
             case 'signUp':
                 return dispatch(authOperations.register({ email, password }));
-            // !!! ЗДЕСЬ БУДЕТ GOOGLE !!!
-            // case 'google':
-            //     return dispatch(authOperations.googleAuth());
+            case 'google':
+                return dispatch(authOperations.googleAuth());
             default:
                 return;
     }

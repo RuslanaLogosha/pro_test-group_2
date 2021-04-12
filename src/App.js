@@ -26,7 +26,6 @@ function App() {
     authSelectors.getIsFetchingCurrentUser,
   );
   const ErrorUnauthorized = useSelector(authSelectors.getErrorUnauthorized);
-  // console.log(isErrorUnauthorized);
 
   const handleSignOutBtnClick = () => {
     dispatch(authOperations.logOut());

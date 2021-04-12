@@ -12,7 +12,7 @@ const initialState = {
 
   ErrorRegister: null,
   ErrorLogin: null,
-  // ErrorGoogle: null,
+  ErrorGoogle: null,
   ErrorLogout: null,
   ErrorRefresh: null,
 };
@@ -35,9 +35,7 @@ const authSlice = createSlice({
 
     [authOperations.logIn.fulfilled](state, action) {
       state.user = action.payload.user;
-      // state.token = action.payload.token;
-      // фейковый токен !!!
-      state.token = 'token';
+      state.token = action.payload.token;
       state.refreshToken = action.payload.refreshToken;
       state.sessionId = action.payload.sessionId;
       state.isLoggedIn = true;
@@ -47,12 +45,13 @@ const authSlice = createSlice({
       state.ErrorLogin = action.payload;
     },
 
-    // !!! ЗДЕСЬ БУДЕТ GOOGLE !!!
-    // [authOperations.googleAuth.fulfilled](state, action) {
-    //   state.user = action.payload.user;
-    //   state.token = action.payload.token;
-    //   state.isLoggedIn = true;
-    // },
+    [authOperations.googleAuth.fulfilled](state) {
+      state.ErrorGoogle = null;
+    },
+    [authOperations.googleAuth.rejected](state, action) {
+      state.ErrorGoogle = action.payload;
+    },
+
     [authOperations.logOut.fulfilled](state) {
       state.user = { email: null };
       state.token = null;

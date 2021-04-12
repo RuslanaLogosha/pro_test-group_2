@@ -20,9 +20,10 @@ const RegisterLoginForm = ({onSubmit}) => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    const btnName = e.target.name;
+    const btnName = e.currentTarget.name;
+    const isbtnGoogle = btnName === "google";
 
-    if (email.trim() === '' || password.trim() === '') {
+    if (!isbtnGoogle && (email.trim() === '' || password.trim() === '')) {
       return toast.error('❌ Please, enter fields');
     }
 
@@ -44,8 +45,7 @@ const RegisterLoginForm = ({onSubmit}) => {
     <button
       type="submit"
       name="google"
-      // !!! ЗДЕСЬ БУДЕТ GOOGLE !!!
-      // onClick={handleSubmit}
+      onClick={handleSubmit}
       className={s.googleBtn}
     >
       <GoogleIcon width="18" height="18" className={s.googleIcon} />
