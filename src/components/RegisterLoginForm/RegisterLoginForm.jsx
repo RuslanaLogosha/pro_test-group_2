@@ -1,11 +1,15 @@
 import { useState } from 'react';
+// import { useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 import s from './RegisterLoginForm.module.css';
 import { ReactComponent as GoogleIcon } from 'images/google-icon.svg';
+// import { authSelectors } from 'redux/auth';
 
 const RegisterLoginForm = ({onSubmit}) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  // const ErrorRegister = useSelector(authSelectors.getErrorRegister);
+
 
   const handleChange = ({ target: { name, value } }) => {
     switch (name) {
@@ -24,10 +28,11 @@ const RegisterLoginForm = ({onSubmit}) => {
     const isbtnGoogle = btnName === "google";
 
     if (!isbtnGoogle && (email.trim() === '' || password.trim() === '')) {
-      return toast.error('❌ Please, enter fields');
+      return toast.warning('❗❗ Please, enter fields');
     }
 
     onSubmit(email, password, btnName);
+    
     reset();
   };
 

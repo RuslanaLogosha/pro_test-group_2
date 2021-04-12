@@ -27,6 +27,28 @@ const register = createAsyncThunk(
       toast.success('✔️ Congratulations, you have successfully registered');
       return data;
     } catch (error) {
+      if (error.response.data.message === 'Email is used') {
+        toast.error('❌ Sorry, this email is already in use');
+        return rejectWithValue(error.response.data.message);
+      }
+
+      if (
+        error.response.data.message === 'Failed: email must be a valid email'
+      ) {
+        toast.warning('❗❗ You must enter a valid email');
+        return rejectWithValue(error.response.data.message);
+      }
+
+      if (
+        error.response.data.message ===
+        'Failed: password length must be at least 6 characters long'
+      ) {
+        toast.warning(
+          '❗❗ Password length must be at least 6 characters long',
+        );
+        return rejectWithValue(error.response.data.message);
+      }
+
       return rejectWithValue(error.response.data.message);
     }
   },
@@ -45,6 +67,31 @@ const logIn = createAsyncThunk(
       token.set(data.token);
       return data;
     } catch (error) {
+      if (
+        error.response.data.message ===
+        `Cannot read property 'validPassword' of null`
+      ) {
+        toast.error('❌ This user is not registered');
+        return rejectWithValue(error.response.data.message);
+      }
+
+      if (
+        error.response.data.message === 'Failed: email must be a valid email'
+      ) {
+        toast.warning('❗❗ You must enter a valid email');
+        return rejectWithValue(error.response.data.message);
+      }
+
+      if (
+        error.response.data.message ===
+        'Failed: password length must be at least 6 characters long'
+      ) {
+        toast.warning(
+          '❗❗ Password length must be at least 6 characters long',
+        );
+        return rejectWithValue(error.response.data.message);
+      }
+
       return rejectWithValue(error.response.data.message);
     }
   },

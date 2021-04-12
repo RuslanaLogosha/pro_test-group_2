@@ -13,7 +13,7 @@ function TestView() {
     <Container>
       <div className={s.wrapper}>
         <p className={s.testTitle}>[ {testName}_ ]</p>
-        <Link to="/" className={s.testFinish}>
+        <Link to="/" className={s.testFinish} title={'Return to home page'}>
           Finish test
         </Link>
       </div>
