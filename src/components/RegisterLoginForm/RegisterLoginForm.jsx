@@ -45,8 +45,7 @@ const RegisterLoginForm = ({onSubmit}) => {
     <button
       type="submit"
       name="google"
-      // !!! ЗДЕСЬ БУДЕТ GOOGLE !!!
-      // onClick={handleSubmit}
+      onClick={handleSubmit}
       className={s.googleBtn}
     >
       <GoogleIcon width="18" height="18" className={s.googleIcon} />

@@ -4,8 +4,17 @@ import authOperations from './auth-operations';
 const initialState = {
   user: { email: null },
   token: null,
+  refreshToken: null,
+  sessionId: null,
   isLoggedIn: false,
   isFetchingCurrentUser: false,
+  ErrorUnauthorized: null,
+
+  ErrorRegister: null,
+  ErrorLogin: null,
+  ErrorGoogle: null,
+  ErrorLogout: null,
+  ErrorRefresh: null,
 };
 
 const authSlice = createSlice({
@@ -15,24 +24,46 @@ const authSlice = createSlice({
     [authOperations.register.fulfilled](state, action) {
       state.user = action.payload.user;
       state.token = action.payload.token;
+      state.refreshToken = action.payload.refreshToken;
+      state.sessionId = action.payload.sessionId;
       state.isLoggedIn = true;
+      state.ErrorRegister = null;
     },
+    [authOperations.register.rejected](state, action) {
+      state.ErrorRegister = action.payload;
+    },
+
     [authOperations.logIn.fulfilled](state, action) {
       state.user = action.payload.user;
       state.token = action.payload.token;
+      state.refreshToken = action.payload.refreshToken;
+      state.sessionId = action.payload.sessionId;
       state.isLoggedIn = true;
+      state.ErrorLogin = null;
     },
-    // !!! ЗДЕСЬ БУДЕТ GOOGLE !!!
-    // [authOperations.googleAuth.fulfilled](state, action) {
-    //   state.user = action.payload.user;
-    //   state.token = action.payload.token;
-    //   state.isLoggedIn = true;
-    // },
+    [authOperations.logIn.rejected](state, action) {
+      state.ErrorLogin = action.payload;
+    },
+
+    [authOperations.googleAuth.fulfilled](state) {
+      state.ErrorGoogle = null;
+    },
+    [authOperations.googleAuth.rejected](state, action) {
+      state.ErrorGoogle = action.payload;
+    },
+
     [authOperations.logOut.fulfilled](state) {
       state.user = { email: null };
       state.token = null;
+      state.refreshToken = null;
+      state.sessionId = null;
       state.isLoggedIn = false;
+      state.ErrorLogout = null;
     },
+    [authOperations.logOut.rejected](state, action) {
+      state.ErrorLogout = action.payload;
+    },
+
     [authOperations.fetchCurrentUser.pending](state) {
       state.isFetchingCurrentUser = true;
     },
@@ -41,8 +72,20 @@ const authSlice = createSlice({
       state.isLoggedIn = true;
       state.isFetchingCurrentUser = false;
     },
-    [authOperations.fetchCurrentUser.rejected](state) {
+    [authOperations.fetchCurrentUser.rejected](state, action) {
       state.isFetchingCurrentUser = false;
+      state.ErrorUnauthorized = action.payload;
+    },
+
+    [authOperations.refreshToken.fulfilled](state, action) {
+      state.token = action.payload.token;
+      state.refreshToken = action.payload.refreshToken;
+      state.sessionId = action.payload.sessionId;
+      state.ErrorRefresh = null;
+      state.ErrorUnauthorized = null;
+    },
+    [authOperations.refreshToken.rejected](state, action) {
+      state.ErrorRefresh = action.payload;
     },
   },
 });

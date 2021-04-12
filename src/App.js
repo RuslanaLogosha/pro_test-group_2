@@ -22,18 +22,23 @@ function App() {
   const dispatch = useDispatch();
   const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
   const email = useSelector(authSelectors.getEmail);
+  const isFetchingCurrentUser = useSelector(
+    authSelectors.getIsFetchingCurrentUser,
+  );
+  const ErrorUnauthorized = useSelector(authSelectors.getErrorUnauthorized);
 
   const handleSignOutBtnClick = () => {
     dispatch(authOperations.logOut());
   };
 
-  const isFetchingCurrentUser = useSelector(
-    authSelectors.getIsFetchingCurrentUser,
-  );
-
   useEffect(() => {
-    dispatch(authOperations.fetchCurrentUser());
-  }, [dispatch]);
+    if (ErrorUnauthorized === 'Not authorized') {
+      dispatch(authOperations.refreshToken());
+    }
+    if (!ErrorUnauthorized) {
+      dispatch(authOperations.fetchCurrentUser());
+    }
+  }, [dispatch, ErrorUnauthorized]);
 
   return (
     <>
