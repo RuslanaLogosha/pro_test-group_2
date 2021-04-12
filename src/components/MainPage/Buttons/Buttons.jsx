@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { testScoreOperations } from '../../../redux/testScore';
+import { currentTestInfoSlice } from '../../../redux/testScore/test-reducers.js';
 import arrow from '../../../images/arrow-main-page.svg';
 import s from './Buttons.module.css';
 
@@ -22,7 +23,15 @@ function Buttons() {
               },
             }}
             className={s.buttonDescription}
-            onClick={() => getQuestions('techquiz/questions')}
+            onClick={() => {
+              getQuestions('techquiz/questions');
+              dispatch(
+                currentTestInfoSlice.actions.setInfo({
+                  quizName: 'QA technical training',
+                  url: 'techquiz/results',
+                }),
+              );
+            }}
           >
             QA technical <br />
             training
@@ -47,7 +56,15 @@ function Buttons() {
               },
             }}
             className={s.buttonDescription}
-            onClick={() => getQuestions('theoryquiz/questions')}
+            onClick={() => {
+              getQuestions('theoryquiz/questions');
+              dispatch(
+                currentTestInfoSlice.actions.setInfo({
+                  quizName: 'Theory Testing',
+                  url: 'theoryquiz/results',
+                }),
+              );
+            }}
           >
             Testing <br />
             theory

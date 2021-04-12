@@ -7,7 +7,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import Footer from './components/Footer/Footer';
 import Header from './components/Header/Header';
 import HomePage from './components/MainPage/MainPage';
-import TestPage from './components/TestPage/TestPage';
+import TestView from './views/TestView/TestView';
 import SpinnerLoader from './components/SpinnerLoader';
 import RegisterView from './views/RegisterView';
 import MaterialsView from './views/MaterialsView/MaterialsView';
@@ -62,7 +62,7 @@ function App() {
                   <Route
                     exact
                     path="/test"
-                    component={TestPage}
+                    component={TestView}
                     redirectTo="/register"
                     restricted
                   />

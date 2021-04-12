@@ -22,7 +22,12 @@ const authPersistConfig = {
 const testScorePersistConfig = {
   key: 'testScore',
   storage,
-  whitelist: ['userAnswersOnTest', 'questionsListForTest', 'testPageIndex'],
+  whitelist: [
+    'userAnswersOnTest',
+    'questionsListForTest',
+    'testPageIndex',
+    'currentTestInfo',
+  ],
 };
 
 const middleware = [

@@ -6,12 +6,19 @@ import {
   testPageIndexSlice,
   userAnswersOnTestSlice,
 } from '../../redux/testScore/test-reducers.js';
+import {
+  getTestPageIndex,
+  getQuestionListForTest,
+  getUserAnswersOnTest,
+  getTestInfo,
+} from '../../redux/testScore/test-selectors';
 import s from './TestPage.module.css';
 
-function TestPage(props) {
-  const index = useSelector(state => state.testScore.testPageIndex);
-  const testList = useSelector(state => state.testScore.questionsListForTest);
-  const selected = useSelector(state => state.testScore.userAnswersOnTest);
+function TestPage() {
+  const index = useSelector(getTestPageIndex);
+  const testList = useSelector(getQuestionListForTest);
+  const selected = useSelector(getUserAnswersOnTest);
+  const url = useSelector(getTestInfo).url;
   const dispatch = useDispatch();
 
   const sendAnswers = (selected, url) => {
@@ -32,7 +39,7 @@ function TestPage(props) {
     const question = selected?.find(el => {
       return el.questionId === testList[index].questionId;
     });
-    return question?.result === answer;
+    return question?.answer === answer;
   };
 
   const nextButtonDisabler = () => {
@@ -45,19 +52,12 @@ function TestPage(props) {
     }
   };
 
-  const setAnswer = (result, questionId) => {
-    dispatch(userAnswersOnTestSlice.actions.setAnswer({ questionId, result }));
+  const setAnswer = (answer, questionId) => {
+    dispatch(userAnswersOnTestSlice.actions.setAnswer({ questionId, answer }));
   };
 
   return (
     <section className={s.mainContainer}>
-      <div className={s.wrapper}>
-        <p className={s.testTitle}>[ {props.location.state.quizName}_ ]</p>
-        <Link to="/" className={s.testFinish}>
-          Finish test
-        </Link>
-      </div>
-
       <div className={s.questionForm}>
         <form>
           <p className={s.questionNumber}>
@@ -117,27 +117,35 @@ function TestPage(props) {
 
           <span className={s.buttonPreviousName}>Previous question</span>
         </button>
-        <button
-          className={nextButtonDisabler()}
-          type="submit"
-          onClick={
-            index === testList.length - 1
-              ? () => sendAnswers(selected, props.location.state.url)
-              : () => handleNextPage()
-          }
-        >
-          <span className={s.buttonNextName}> Next question</span>
-          <svg
-            className={s.arrowBlack}
-            fill="black"
-            width="24"
-            height="16"
-            viewBox="0 0 24 16"
-            xmlns="http://www.w3.org/2000/svg"
+        {index < testList.length - 1 && (
+          <button
+            className={nextButtonDisabler()}
+            type="submit"
+            onClick={() => handleNextPage()}
           >
-            <path d="M23.8535 7.6465L16.3535 0.146496C16.1582 -0.048832 15.8418 -0.048832 15.6465 0.146496C15.4512 0.341824 15.4512 0.65823 15.6465 0.853512L22.293 7.50001L0.500016 7.50001C0.223641 7.50001 0 7.72365 0 8.00003C0 8.2764 0.223641 8.50004 0.500016 8.50004L22.293 8.50004L15.6465 15.1465C15.4512 15.3418 15.4512 15.6582 15.6465 15.8535C15.7441 15.9512 15.8721 16 16 16C16.128 16 16.2559 15.9512 16.3536 15.8535L23.8536 8.35351C24.0488 8.15823 24.0488 7.84182 23.8535 7.6465Z" />
-          </svg>
-        </button>
+            <span className={s.buttonNextName}> Next question</span>
+            <svg
+              className={s.arrowBlack}
+              fill="black"
+              width="24"
+              height="16"
+              viewBox="0 0 24 16"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path d="M23.8535 7.6465L16.3535 0.146496C16.1582 -0.048832 15.8418 -0.048832 15.6465 0.146496C15.4512 0.341824 15.4512 0.65823 15.6465 0.853512L22.293 7.50001L0.500016 7.50001C0.223641 7.50001 0 7.72365 0 8.00003C0 8.2764 0.223641 8.50004 0.500016 8.50004L22.293 8.50004L15.6465 15.1465C15.4512 15.3418 15.4512 15.6582 15.6465 15.8535C15.7441 15.9512 15.8721 16 16 16C16.128 16 16.2559 15.9512 16.3536 15.8535L23.8536 8.35351C24.0488 8.15823 24.0488 7.84182 23.8535 7.6465Z" />
+            </svg>
+          </button>
+        )}
+        {index === testList.length - 1 && (
+          //будет указал правильный путь, когда будет создат раут /results
+          <Link
+            className={nextButtonDisabler()}
+            to="/"
+            onClick={() => sendAnswers(selected, url)}
+          >
+            Submit my answers
+          </Link>
+        )}
       </div>
     </section>
   );
