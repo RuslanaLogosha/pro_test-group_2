@@ -7,9 +7,9 @@ export const userAnswersOnTestSlice = createSlice({
   initialState: [],
   reducers: {
     setAnswer: (state, { payload }) => {
-      const isAlreadyAnswered = state.find(
-        el => el.questionId === payload.questionId,
-      );
+      const isAlreadyAnswered = state.find(el => {
+        return el.questionId === payload.questionId;
+      });
       if (!isAlreadyAnswered) {
         return [...state, payload];
       }
@@ -24,7 +24,7 @@ export const userAnswersOnTestSlice = createSlice({
     },
   },
   extraReducers: {
-    [testScoreOperations.getQuestions.fulfilled](_state, { payload }) {
+    [testScoreOperations.getQuestions.fulfilled](_state, { _payload }) {
       return [];
     },
   },

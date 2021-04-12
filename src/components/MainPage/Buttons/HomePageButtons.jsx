@@ -1,3 +1,4 @@
+import { useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { testScoreOperations } from '../../../redux/testScore';
@@ -8,7 +9,13 @@ import s from './HomePageButtons.module.css';
 function Buttons() {
   const dispatch = useDispatch();
 
-  const getQuestions = url => dispatch(testScoreOperations.getQuestions(url));
+  const handleBtnTestClick = useCallback(
+    (url, info) => {
+      dispatch(testScoreOperations.getQuestions(url));
+      dispatch(currentTestInfoSlice.actions.setInfo(info));
+    },
+    [dispatch],
+  );
 
   return (
     <ul className={s.buttonContainer}>
@@ -23,15 +30,10 @@ function Buttons() {
               },
             }}
             className={s.buttonDescription}
-            onClick={() => {
-              getQuestions('techquiz/questions');
-              dispatch(
-                currentTestInfoSlice.actions.setInfo({
-                  quizName: 'QA technical training',
-                  url: 'techquiz/results',
-                }),
-              );
-            }}
+            onClick={handleBtnTestClick('techquiz/questions', {
+              quizName: 'QA technical training',
+              url: 'techquiz/results',
+            })}
           >
             QA technical <br />
             training
@@ -56,15 +58,10 @@ function Buttons() {
               },
             }}
             className={s.buttonDescription}
-            onClick={() => {
-              getQuestions('theoryquiz/questions');
-              dispatch(
-                currentTestInfoSlice.actions.setInfo({
-                  quizName: 'Theory Testing',
-                  url: 'theoryquiz/results',
-                }),
-              );
-            }}
+            onClick={handleBtnTestClick('theoryquiz/questions', {
+              quizName: 'Theory Testing',
+              url: 'theoryquiz/results',
+            })}
           >
             Testing <br />
             theory

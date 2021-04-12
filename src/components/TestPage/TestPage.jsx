@@ -1,3 +1,4 @@
+import { useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { nanoid } from 'nanoid';
 import { userAnswersOnTestSlice } from '../../redux/testScore/test-reducers.js';
@@ -22,9 +23,14 @@ function TestPage() {
     return question?.answer === answer;
   };
 
-  const setAnswer = (answer, questionId) => {
-    dispatch(userAnswersOnTestSlice.actions.setAnswer({ questionId, answer }));
-  };
+  const setAnswer = useCallback(
+    (answer, questionId) => {
+      dispatch(
+        userAnswersOnTestSlice.actions.setAnswer({ questionId, answer }),
+      );
+    },
+    [dispatch],
+  );
 
   return (
     <section className={s.mainContainer}>
