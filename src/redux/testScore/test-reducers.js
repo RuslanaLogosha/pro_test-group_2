@@ -27,6 +27,9 @@ export const userAnswersOnTestSlice = createSlice({
     [testScoreOperations.getQuestions.fulfilled](_state, { _payload }) {
       return [];
     },
+    [testScoreOperations.sendAnswers.fulfilled](_state, { _payload }) {
+      return [];
+    },
   },
 });
 
@@ -38,6 +41,9 @@ export const questionsListForTestSlice = createSlice({
       return [...payload.data];
     },
     [testScoreOperations.getQuestions.pending](_state, { _payload }) {
+      return [];
+    },
+    [testScoreOperations.sendAnswers.fulfilled](_state, { _payload }) {
       return [];
     },
   },
@@ -66,10 +72,13 @@ export const testPageIndexSlice = createSlice({
 
 export const resultsOfTestSlice = createSlice({
   name: 'test',
-  initialState: {},
+  initialState: { correctAnswers: null, totalQuestions: null },
   extraReducers: {
     [testScoreOperations.sendAnswers.fulfilled](_state, { payload }) {
-      return { ...payload.data };
+      return {
+        correctAnswers: payload.data.correctAnswersCount,
+        totalQuestions: payload.data.totalAnswersCount,
+      };
     },
   },
 });
@@ -78,14 +87,14 @@ export const currentTestInfoSlice = createSlice({
   name: 'test',
   initialState: { quizName: '', url: '' },
   reducers: {
-    setInfo: (state, { payload }) => {
+    setInfo: (_state, { payload }) => {
       return { ...payload };
     },
   },
   extraReducers: {
-    [testScoreOperations.sendAnswers.fulfilled](_state, { _payload }) {
-      return { quizName: '', url: '' };
-    },
+    // [testScoreOperations.sendAnswers.fulfilled](_state, { _payload }) {
+    //   return { quizName: '', url: '' };
+    // },
   },
 });
 

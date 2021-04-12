@@ -12,6 +12,7 @@ import SpinnerLoader from './components/SpinnerLoader';
 import RegisterView from './views/RegisterView';
 import MaterialsView from './views/MaterialsView/MaterialsView';
 import ContactsView from './components/Contacts/ContactsView';
+import ResultsView from './views/ResultsView'
 import { authOperations, authSelectors } from 'redux/auth';
 import Skeleton from 'components/Skeleton';
 
@@ -68,6 +69,13 @@ function App() {
                     exact
                     path="/test"
                     component={TestView}
+                    redirectTo="/register"
+                    restricted
+                  />
+                  <Route
+                    exact
+                    path="/results"
+                    component={ResultsView}
                     redirectTo="/register"
                     restricted
                   />

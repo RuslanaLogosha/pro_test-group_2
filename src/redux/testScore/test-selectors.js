@@ -13,3 +13,7 @@ export const getUserAnswersOnTest = state => {
 export const getTestInfo = state => {
   return state.testScore.currentTestInfo;
 };
+
+export const getTestResults = state => {
+  return state.testScore.resultsOfTest;
+};

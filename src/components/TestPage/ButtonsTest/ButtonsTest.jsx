@@ -15,7 +15,7 @@ function ButtonsTest() {
   const index = useSelector(getTestPageIndex);
   const testList = useSelector(getQuestionListForTest);
   const selected = useSelector(getUserAnswersOnTest);
-  const url = useSelector(getTestInfo).url;
+  const { url } = useSelector(getTestInfo);
   const dispatch = useDispatch();
 
   const sendAnswers = useCallback(
@@ -85,10 +85,9 @@ function ButtonsTest() {
         </button>
       )}
       {index === testList.length - 1 && (
-        //будет указал правильный путь, когда будет создат раут /results
         <Link
           className={s.buttonSubmit}
-          to="/"
+          to="/results"
           onClick={() => sendAnswers(selected, url)}
         >
           Submit my answers

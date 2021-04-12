@@ -1,16 +1,19 @@
-import React from 'react';
+import { useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
+import { getTestResults } from '../../redux/testScore/test-selectors.js';
 import Diagram from './Diagram';
 import cat from '../../images/result-page-cat.svg';
 import s from './TestResult.module.css';
 
 export default function TestResult(results) {
   const {
-    correctAnswers = 30,
-    totalQuestions = 50,
-    aboutResultTitle = 'Not bad!',
-    aboutResultSubtitle = 'But you still need to learn some materials.',
+    aboutResultTitle = 'Oops',
+    aboutResultSubtitle = 'Something went wrong! Try to repeat.',
   } = results;
+
+  const { correctAnswers = 0, totalQuestions = 0 } = useSelector(
+    getTestResults,
+  );
 
   return (
     <>
@@ -33,19 +36,18 @@ export default function TestResult(results) {
         <img src={cat} alt="cat" className={s.image} />
         <h3 className={s.aboutResultTitle}>{aboutResultTitle}</h3>
         <h4 className={s.aboutResultSubtitle}>{aboutResultSubtitle}</h4>
-
       </div>
     </>
   );
 }
 
-TestResult.propTypes = {
-  results: PropTypes.objectOf(
-    PropTypes.exact({
-      correctAnswers: PropTypes.number.isRequired,
-      totalQuestions: PropTypes.number.isRequired,
-      aboutResultTitle: PropTypes.string.isRequired,
-      aboutResultSubtitle: PropTypes.string.isRequired,
-    }),
-  ).isRequired,
-};
+// TestResult.propTypes = {
+//   results: PropTypes.objectOf(
+//     PropTypes.exact({
+//       correctAnswers: PropTypes.number.isRequired,
+//       totalQuestions: PropTypes.number.isRequired,
+//       aboutResultTitle: PropTypes.string.isRequired,
+//       aboutResultSubtitle: PropTypes.string.isRequired,
+//     }),
+//   ).isRequired,
+// };

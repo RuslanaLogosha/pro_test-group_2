@@ -24,16 +24,19 @@ function Buttons() {
           <Link
             to={{
               pathname: '/test',
-              state: {
-                quizName: 'QA technical training',
-                url: 'techquiz/results',
-              },
+              // it is no longer needed
+              // state: {
+              //   quizName: 'QA technical training',
+              //   url: 'techquiz',
+              // },
             }}
             className={s.buttonDescription}
-            onClick={handleBtnTestClick('techquiz/questions', {
-              quizName: 'QA technical training',
-              url: 'techquiz/results',
-            })}
+            onClick={() =>
+              handleBtnTestClick('techquiz', {
+                quizName: 'QA technical training',
+                url: 'techquiz',
+              })
+            }
           >
             QA technical <br />
             training
@@ -52,16 +55,19 @@ function Buttons() {
           <Link
             to={{
               pathname: '/test',
-              state: {
-                quizName: 'Theory Testing',
-                url: 'theoryquiz/results',
-              },
+              // it is no longer needed
+              // state: {
+              //   quizName: 'Theory Testing',
+              //   url: 'theoryquiz',
+              // },
             }}
             className={s.buttonDescription}
-            onClick={handleBtnTestClick('theoryquiz/questions', {
-              quizName: 'Theory Testing',
-              url: 'theoryquiz/results',
-            })}
+            onClick={() =>
+              handleBtnTestClick('theoryquiz', {
+                quizName: 'Theory Testing',
+                url: 'theoryquiz',
+              })
+            }
           >
             Testing <br />
             theory
