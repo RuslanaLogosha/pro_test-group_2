@@ -1,10 +1,10 @@
-import React from 'react';
-import s from './MainPage.module.css';
-import Buttons from './Buttons/Buttons';
+import HomePageButtons from '../../components/MainPage/Buttons/HomePageButtons';
+import Container from '../../components/Container';
+import s from './HomeView.module.css';
 
-function MainPage() {
+function HomeView() {
   return (
-    <main className={s.mainContainer}>
+    <Container>
       <div className={s.quoteContainer}>
         <h2 className={s.quote}>
           “Regression testing. What is it? <br />
@@ -15,9 +15,10 @@ function MainPage() {
         <h3 className={s.name}>Linus Torvalds</h3>
       </div>
       <p className={s.description}>Linux kernel creator, hacker, 1969</p>
-      <Buttons />
-    </main>
+
+      <HomePageButtons />
+    </Container>
   );
 }
 
-export default MainPage;
+export default HomeView;

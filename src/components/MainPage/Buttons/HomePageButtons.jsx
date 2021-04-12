@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { testScoreOperations } from '../../../redux/testScore';
 import { currentTestInfoSlice } from '../../../redux/testScore/test-reducers.js';
 import arrow from '../../../images/arrow-main-page.svg';
-import s from './Buttons.module.css';
+import s from './HomePageButtons.module.css';
 
 function Buttons() {
   const dispatch = useDispatch();
