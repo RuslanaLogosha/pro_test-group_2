@@ -10,9 +10,9 @@ import HomeView from './views/HomeView/HomeView';
 import TestView from './views/TestView/TestView';
 import SpinnerLoader from './components/SpinnerLoader';
 import RegisterView from './views/RegisterView';
-import MaterialsView from './views/MaterialsView/MaterialsView';
-import ContactsView from './components/Contacts/ContactsView';
 import ResultsView from './views/ResultsView'
+import UsefulInfoView from './views/UsefulInfoView';
+import ContactsView from './views/ContactsView/';
 import { authOperations, authSelectors } from 'redux/auth';
 import Skeleton from 'components/Skeleton';
 
@@ -82,7 +82,7 @@ function App() {
                   <Route
                     exact
                     path="/materials"
-                    component={MaterialsView}
+                    component={UsefulInfoView}
                     redirectTo="/register"
                     restricted
                   />
