@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import authOperations from './auth-operations';
+import authActions from './auth-actions';
 
 const initialState = {
   user: { email: null },
@@ -21,6 +22,13 @@ const authSlice = createSlice({
   name: 'auth',
   initialState,
   extraReducers: {
+    [authActions.setGoogleUser](state, action) {
+      console.log(action.payload);
+      state.user.email = action.payload.email;
+      state.token = action.payload.token;
+      state.refreshToken = action.payload.refreshToken;
+      state.sessionId = action.payload.sessionId;
+    },
     [authOperations.register.fulfilled](state, action) {
       state.user = action.payload.user;
       state.token = action.payload.token;
