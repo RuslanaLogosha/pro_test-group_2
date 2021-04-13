@@ -28,8 +28,10 @@
   background-color: rgba(0, 18, 47, 0.15);
 }
 .btnRetry {
+  margin: 0 auto;
   padding: 17px 28px;
   width: 190px;
+  display: block;
   font-size: 14px;
   line-height: 17px;
   font-weight: var(--medium);
@@ -37,6 +39,7 @@
   color: var(--white);
   border: none;
   transition: all 0.25s linear;
+  text-decoration: none;
 }
 .btnRetry:hover {
   background-color: rgb(201, 88, 13);

@@ -1,3 +1,4 @@
+import { useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { testScoreOperations } from '../../../redux/testScore';
@@ -8,7 +9,13 @@ import s from './HomePageButtons.module.css';
 function Buttons() {
   const dispatch = useDispatch();
 
-  const getQuestions = url => dispatch(testScoreOperations.getQuestions(url));
+  const handleBtnTestClick = useCallback(
+    (url, info) => {
+      dispatch(testScoreOperations.getQuestions(url));
+      dispatch(currentTestInfoSlice.actions.setInfo(info));
+    },
+    [dispatch],
+  );
 
   return (
     <ul className={s.buttonContainer}>
@@ -17,21 +24,19 @@ function Buttons() {
           <Link
             to={{
               pathname: '/test',
-              state: {
-                quizName: 'QA technical training',
-                url: 'techquiz/results',
-              },
+              // it is no longer needed
+              // state: {
+              //   quizName: 'QA technical training',
+              //   url: 'techquiz',
+              // },
             }}
             className={s.buttonDescription}
-            onClick={() => {
-              getQuestions('techquiz/questions');
-              dispatch(
-                currentTestInfoSlice.actions.setInfo({
-                  quizName: 'QA technical training',
-                  url: 'techquiz/results',
-                }),
-              );
-            }}
+            onClick={() =>
+              handleBtnTestClick('techquiz', {
+                quizName: 'QA technical training',
+                url: 'techquiz',
+              })
+            }
           >
             QA technical <br />
             training
@@ -50,21 +55,19 @@ function Buttons() {
           <Link
             to={{
               pathname: '/test',
-              state: {
-                quizName: 'Theory Testing',
-                url: 'theoryquiz/results',
-              },
+              // it is no longer needed
+              // state: {
+              //   quizName: 'Theory Testing',
+              //   url: 'theoryquiz',
+              // },
             }}
             className={s.buttonDescription}
-            onClick={() => {
-              getQuestions('theoryquiz/questions');
-              dispatch(
-                currentTestInfoSlice.actions.setInfo({
-                  quizName: 'Theory Testing',
-                  url: 'theoryquiz/results',
-                }),
-              );
-            }}
+            onClick={() =>
+              handleBtnTestClick('theoryquiz', {
+                quizName: 'Theory Testing',
+                url: 'theoryquiz',
+              })
+            }
           >
             Testing <br />
             theory

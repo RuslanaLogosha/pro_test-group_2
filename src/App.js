@@ -10,6 +10,7 @@ import HomeView from './views/HomeView/HomeView';
 import TestView from './views/TestView/TestView';
 import SpinnerLoader from './components/SpinnerLoader';
 import RegisterView from './views/RegisterView';
+import ResultsView from './views/ResultsView'
 import UsefulInfoView from './views/UsefulInfoView';
 import ContactsView from './views/ContactsView/';
 import { authOperations, authSelectors } from 'redux/auth';
@@ -68,6 +69,13 @@ function App() {
                     exact
                     path="/test"
                     component={TestView}
+                    redirectTo="/register"
+                    restricted
+                  />
+                  <Route
+                    exact
+                    path="/results"
+                    component={ResultsView}
                     redirectTo="/register"
                     restricted
                   />

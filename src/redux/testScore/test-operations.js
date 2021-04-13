@@ -1,13 +1,12 @@
-import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import axios from 'axios';
 
 const getQuestions = createAsyncThunk(
   'test/getQuestions',
   async (url, { rejectWithValue }) => {
-    const config = { url };
     try {
       // baseURL assigned in auth-operations
-      const { data } = await axios(config);
+      const { data } = await axios(`/${url}/questions`);
       return data;
     } catch (error) {
       return rejectWithValue(error);
@@ -20,7 +19,7 @@ const sendAnswers = createAsyncThunk(
   async ({ selected, url }, { rejectWithValue }) => {
     try {
       // baseURL assigned in auth-operations
-      const { data } = await axios.post(`/${url}`, selected);
+      const { data } = await axios.post(`/${url}/results`, selected);
 
       return data;
     } catch (error) {

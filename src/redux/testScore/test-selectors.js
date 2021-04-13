@@ -1,8 +1,19 @@
-export const getTestPageIndex = state => state.testScore.testPageIndex;
+export const getTestPageIndex = state => {
+  return state.testScore.testPageIndex;
+};
 
-export const getQuestionListForTest = state =>
-  state.testScore.questionsListForTest;
+export const getQuestionListForTest = state => {
+  return state.testScore.questionsListForTest;
+};
 
-export const getUserAnswersOnTest = state => state.testScore.userAnswersOnTest;
+export const getUserAnswersOnTest = state => {
+  return state.testScore.userAnswersOnTest;
+};
 
-export const getTestInfo = state => state.testScore.currentTestInfo;
+export const getTestInfo = state => {
+  return state.testScore.currentTestInfo;
+};
+
+export const getTestResults = state => {
+  return state.testScore.resultsOfTest;
+};

@@ -1,3 +1,4 @@
+import { useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { testScoreOperations } from '../../../redux/testScore';
@@ -14,23 +15,25 @@ function ButtonsTest() {
   const index = useSelector(getTestPageIndex);
   const testList = useSelector(getQuestionListForTest);
   const selected = useSelector(getUserAnswersOnTest);
-
-  const url = useSelector(getTestInfo).url;
+  const { url } = useSelector(getTestInfo);
   const dispatch = useDispatch();
 
-  const sendAnswers = (selected, url) => {
-    dispatch(testScoreOperations.sendAnswers({ selected, url }));
-  };
+  const sendAnswers = useCallback(
+    (selected, url) => {
+      dispatch(testScoreOperations.sendAnswers({ selected, url }));
+    },
+    [dispatch],
+  );
 
-  const handleNextPage = () => {
+  const handleNextPage = useCallback(() => {
     if (index === testList.length - 1) return;
     dispatch(testPageIndexSlice.actions.setPlusTestPageIndex(1));
-  };
+  }, [dispatch, index, testList.length]);
 
-  const handlePrevPage = () => {
+  const handlePrevPage = useCallback(() => {
     if (index === 0) return;
     dispatch(testPageIndexSlice.actions.setMinusTestPageIndex(1));
-  };
+  }, [dispatch, index]);
 
   const nextButtonDisabler = () => {
     if (testList.length > 0) {
@@ -66,7 +69,7 @@ function ButtonsTest() {
         <button
           className={nextButtonDisabler()}
           type="submit"
-          onClick={() => handleNextPage()}
+          onClick={handleNextPage}
         >
           <span className={s.buttonNextName}> Next question</span>
           <svg
@@ -82,10 +85,9 @@ function ButtonsTest() {
         </button>
       )}
       {index === testList.length - 1 && (
-        //будет указал правильный путь, когда будет создат раут /results
         <Link
           className={s.buttonSubmit}
-          to="/"
+          to="/results"
           onClick={() => sendAnswers(selected, url)}
         >
           Submit my answers

@@ -6,12 +6,12 @@
 }
 
 .diagram {
-  display: block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   margin: 0 auto 20px;
   width: 156px;
   height: 156px;
-  border-radius: 50%;
-  background-color: rgb(119, 30, 30);
 }
 
 .questionBlock {

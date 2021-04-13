@@ -3,7 +3,7 @@ import { PieChart } from 'react-minimal-pie-chart';
 import s from './Diagram.module.css';
 
 export default function Diagram({ values }) {
-  const { correctAnswers, totalQuestions } = values;
+  const { correctAnswers = 0, totalQuestions = 0 } = values;
 
   const correct = Math.round((correctAnswers / totalQuestions) * 100);
   const incorrect = 100 - correct;
@@ -15,7 +15,8 @@ export default function Diagram({ values }) {
 
   return (
     <div className={s.diagramBlock}>
-      <PieChart data={data} />
+      {totalQuestions > 0 && <PieChart data={data} />}
+      {totalQuestions === 0 && <span>No data</span>}
 
       <div className={s.valuesBlock}>
         {correct > 0 && (
@@ -46,11 +47,11 @@ export default function Diagram({ values }) {
   );
 }
 
-Diagram.propTypes = {
-  values: PropTypes.objectOf(
-    PropTypes.exact({
-      correctAnswers: PropTypes.number.isRequired,
-      totalQuestions: PropTypes.number.isRequired,
-    }),
-  ).isRequired,
-};
+// Diagram.propTypes = {
+//   values: PropTypes.objectOf(
+//     PropTypes.exact({
+//       correctAnswers: PropTypes.number.isRequired,
+//       totalQuestions: PropTypes.number.isRequired,
+//     }),
+//   ).isRequired,
+// };
