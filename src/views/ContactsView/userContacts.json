@@ -49,7 +49,7 @@
     "image": "/photo/ihor.jpg",
     "name": "Ihor",
     "position": "Developer",
-    "linkedin": "linkedin.com/in/ihor-tarai",
+    "linkedin": "https://www.linkedin.com/in/ihor-tarai",
     "github": "https://github.com/taraiihor",
     "text": "Lorem Ipsum has been the standard \"fish\" for Latin texts since the early 16th century."
   },
@@ -58,7 +58,7 @@
     "image": "/photo/katya.jpg",
     "name": "Katya",
     "position": "Developer",
-    "linkedin": "www.linkedin.com/in/urbanovych-kateryna",
+    "linkedin": "https://www.linkedin.com/in/urbanovych-kateryna",
     "github": "https://github.com/Kateryna-Urbanovych",
     "text": "Lorem Ipsum has been the standard \"fish\" for Latin texts since the early 16th century."
   },
