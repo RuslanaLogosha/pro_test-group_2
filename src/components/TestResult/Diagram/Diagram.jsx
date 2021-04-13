@@ -1,4 +1,4 @@
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import { PieChart } from 'react-minimal-pie-chart';
 import s from './Diagram.module.css';
 
