@@ -1,0 +1,45 @@
+.list__item {
+  width: 295px;
+  background: #ffffff;
+  margin: 10px;
+}
+.text__conteiner {
+  padding-top: 20px;
+  padding-bottom: 22px;
+  padding-left: 29px;
+  padding-right: 29px;
+}
+.name {
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 12px;
+}
+.position {
+  margin-top: 6px;
+
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 12px;
+  color: #555555;
+}
+
+.list__social {
+  margin: 10px 0;
+  display: flex;
+}
+.item__social {
+  margin-right: 20px;
+}
+@media screen and (max-width: 767px) {
+  .list__item {
+    width: 280px;
+  }
+  .text__conteiner {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
