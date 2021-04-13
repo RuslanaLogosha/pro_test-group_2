@@ -51,7 +51,8 @@
   font-size: 14px;
   line-height: 1.21;
   letter-spacing: 0.02em;
-  color: var(--labelTextColor);
+  /* color: var(--labelTextColor); */
+  color: var(--black);
   border: 1px solid var(--inputBorderColor);
 }
 
