@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import { getTestResults } from '../../redux/testScore/test-selectors.js';
 import Diagram from './Diagram';
 import cat from '../../images/result-page-cat.svg';
