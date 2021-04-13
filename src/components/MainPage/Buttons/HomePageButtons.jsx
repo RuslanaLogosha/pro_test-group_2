@@ -24,11 +24,6 @@ function Buttons() {
           <Link
             to={{
               pathname: '/test',
-              // it is no longer needed
-              // state: {
-              //   quizName: 'QA technical training',
-              //   url: 'techquiz',
-              // },
             }}
             className={s.buttonDescription}
             onClick={() =>
@@ -55,11 +50,6 @@ function Buttons() {
           <Link
             to={{
               pathname: '/test',
-              // it is no longer needed
-              // state: {
-              //   quizName: 'Theory Testing',
-              //   url: 'theoryquiz',
-              // },
             }}
             className={s.buttonDescription}
             onClick={() =>

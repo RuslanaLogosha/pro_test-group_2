@@ -1,6 +1,17 @@
 .logosocial {
   fill: black;
 }
+
 .logosocial:hover {
   fill: #e96105;
+}
+
+.arrowPrevious {
+  margin-right: 11px;
+  transform: rotate(180deg);
+  fill: inherit;
+}
+
+.arrowNext {
+  fill: inherit;
 }
