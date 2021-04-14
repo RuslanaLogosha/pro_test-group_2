@@ -76,7 +76,11 @@
 }
 
 .disabledPrevBtn:focus,
-.disabledNextBtn:focus {
+.disabledNextBtn:focus,
+.disabledSubmitBtn:focus,
+.disabledPrevBtn:hover,
+.disabledNextBtn:hover,
+.disabledSubmitBtn:hover {
   background-color: var(--labelTextColor);
   color: var(--black);
 }
@@ -86,16 +90,6 @@
   .buttonNext {
     width: 55px;
   }
-}
-
-.arrowPrevious {
-  margin-right: 11px;
-  transform: rotate(180deg);
-  fill: inherit;
-}
-
-.arrowBlack {
-  fill: inherit;
 }
 
 @media screen and (max-width: 767px) {
@@ -127,4 +121,10 @@
     white-space: nowrap;
     overflow: hidden;
   }
+}
+
+.disabledSubmitBtn {
+  composes: buttonSubmit;
+  pointer-events: none;
+  background-color: var(--labelTextColor);
 }
