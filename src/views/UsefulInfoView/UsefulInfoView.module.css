@@ -62,7 +62,6 @@
   .quoteContainer {
     margin-right: auto;
     margin-left: 20px;
-    padding-bottom: 110px;
   }
   .list {
     margin-top: 10px;
@@ -87,7 +86,6 @@
 @media screen and (min-width: 768px) {
   .quoteContainer {
     margin-left: 115px;
-    padding-bottom: 470px;
   }
   .mainContainer {
     background: url(../../images/background.jpg) center no-repeat;
@@ -104,7 +102,6 @@
 @media screen and (min-width: 1280px) {
   .quoteContainer {
     margin-left: 190px;
-    padding-bottom: 260px;
   }
 
   .list {

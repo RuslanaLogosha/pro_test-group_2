@@ -23,7 +23,6 @@ const authSlice = createSlice({
   initialState,
   extraReducers: {
     [authActions.setGoogleUser](state, action) {
-      console.log(action.payload);
       state.user.email = action.payload.email;
       state.token = action.payload.token;
       state.refreshToken = action.payload.refreshToken;
