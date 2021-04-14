@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import { getTestResults } from '../../redux/testScore/test-selectors.js';
 import Diagram from './Diagram';
 import cat from '../../images/result-page-cat.svg';
@@ -34,13 +34,16 @@ export default function TestResult() {
   );
 }
 
-// TestResult.propTypes = {
-//   results: PropTypes.objectOf(
-//     PropTypes.exact({
-//       correctAnswers: PropTypes.number.isRequired,
-//       totalQuestions: PropTypes.number.isRequired,
-//       aboutResultTitle: PropTypes.string.isRequired,
-//       aboutResultSubtitle: PropTypes.string.isRequired,
-//     }),
-//   ).isRequired,
-// };
+Diagram.propTypes = {
+  results: PropTypes.objectOf(
+    PropTypes.exact({
+      testType: PropTypes.string.isRequired,
+      totalAnswersCount: PropTypes.string.isRequired,
+      correctAnswersCount: PropTypes.number.isRequired,
+      correctPercentage: PropTypes.number.isRequired,
+      incorrectPercentage: PropTypes.number.isRequired,
+      aboutResultTitle: PropTypes.string.isRequired,
+      aboutResultSubtitle: PropTypes.string.isRequired,
+    }),
+  ).isRequired,
+};
