@@ -17,8 +17,8 @@ import ContactsView from './views/ContactsView/';
 import { authOperations, authSelectors, authActions } from 'redux/auth';
 import Skeleton from 'components/Skeleton';
 
-// import PrivateRoute from './routes/PrivateRoute';
-// import PublicRoute from './routes/PublicRoute';
+import PrivateRoute from './routes/PrivateRoute';
+import PublicRoute from './routes/PublicRoute';
 
 function App() {
   const dispatch = useDispatch();
@@ -84,29 +84,33 @@ function App() {
           <div className="content">
             <Switch>
               <Suspense fallback={<SpinnerLoader />}>
-                <Route path="/register" restricted component={RegisterView} />
-                <Route
+                <PublicRoute
+                  path="/register"
+                  restricted
+                  component={RegisterView}
+                />
+                <PrivateRoute
                   exact
                   path="/"
                   component={HomeView}
                   redirectTo="/register"
                   restricted
                 />
-                <Route
+                <PrivateRoute
                   exact
                   path="/test"
                   component={TestView}
                   redirectTo="/register"
                   restricted
                 />
-                <Route
+                <PrivateRoute
                   exact
                   path="/results"
                   component={ResultsView}
                   redirectTo="/register"
                   restricted
                 />
-                <Route
+                <PrivateRoute
                   exact
                   path="/materials"
                   component={UsefulInfoView}
