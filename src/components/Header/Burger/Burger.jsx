@@ -11,7 +11,7 @@ function Burger({ isModalOpen, onClick }) {
           <img src={burger} alt="burger" width="20" height="20"></img>
         )}
         {isModalOpen && (
-          <img src={close} alt="close" width="20" height="20"></img>
+          <img src={close} alt="close" width="16" height="16"></img>
         )}
       </div>
     </div>

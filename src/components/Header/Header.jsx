@@ -1,4 +1,3 @@
-import Container from 'components/Container/Container';
 import React, { useState } from 'react';
 import Burger from './Burger/Burger';
 import s from './Header.module.css';
@@ -25,24 +24,26 @@ function Header({ isLoggedIn, userEmail, handleSignOutBtnClick }) {
   };
 
   return (
-    <Container>
-      <header className={s.header}>
-        <Logo />
-        <div className={s.container}>
-          <Navigation isLoggedIn={isLoggedIn} />
-          {isLoggedIn && <UserInfo userEmail={userEmail} />}
-          <Burger isModalOpen={isModalOpen} onClick={handleModal} />
-          {isLoggedIn && <SignOut onClick={handleLogOut} />}
-        </div>
-        {isModalOpen && (
-          <Modal
-            onClick={handleLogOut}
-            isLoggedIn={isLoggedIn}
-            closeModal={closeModal}
-          />
-        )}
-      </header>
-    </Container>
+    <div className={s.box}>
+      <div className={s.innerBox}>
+        <header className={s.header}>
+          <Logo />
+          <div className={s.container}>
+            <Navigation isLoggedIn={isLoggedIn} />
+            {isLoggedIn && <UserInfo userEmail={userEmail} />}
+            <Burger isModalOpen={isModalOpen} onClick={handleModal} />
+            {isLoggedIn && <SignOut onClick={handleLogOut} />}
+          </div>
+          {isModalOpen && (
+            <Modal
+              onClick={handleLogOut}
+              isLoggedIn={isLoggedIn}
+              closeModal={closeModal}
+            />
+          )}
+        </header>
+      </div>
+    </div>
   );
 }
 
