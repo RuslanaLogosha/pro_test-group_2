@@ -1,6 +1,6 @@
 import React, { Suspense, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Route, Switch, useLocation } from 'react-router-dom';
+import { Route, Switch, useLocation, Redirect } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import queryString from 'query-string';
 import 'react-toastify/dist/ReactToastify.css';
@@ -118,6 +118,8 @@ function App() {
                   restricted
                 />
                 <Route path="/contacts" component={ContactsView} />
+
+                {isLoggedIn ? <Redirect to="/" /> : <Redirect to="/register" />}
               </Suspense>
             </Switch>
           </div>
