@@ -65,6 +65,7 @@
 
 .correctColor,
 .incorrectColor {
+  margin-left: 4px;
   margin-right: 6px;
 }
 .correctColor {
@@ -80,12 +81,12 @@
 
 @media screen and (min-width: 768px) {
   .valuesBlock {
-    top: 30%;
-    right: -160px;
+    top: 37%;
+    right: -170px;
     font-size: 16px;
   }
   .correctBlock {
-    margin-bottom: 37px;
+    margin-bottom: 15px;
   }
 
   .correctBlock,
@@ -104,5 +105,21 @@
   .incorrectColor {
     width: 25px;
     height: 25px;
+  }
+}
+@media screen and (max-width: 767px) {
+  .valuesBlock {
+    top: 33%;
+    right: -70px;
+    font-size: 10px;
+    line-height: 12px;
+  }
+  .correctBlock,
+  .incorrectBlock {
+    display: block;
+    margin-bottom: 2px;
+  }
+  .correctText {
+    text-align: right;
   }
 }
