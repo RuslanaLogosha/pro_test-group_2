@@ -36,8 +36,6 @@ function App() {
   const location = useLocation();
   const parsedLocation = queryString.parse(location.search);
 
-  console.log(parsedLocation.email);
-
   useEffect(() => {
     const userFromGoogle = {
       email: parsedLocation.email,
