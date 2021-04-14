@@ -16,8 +16,8 @@ export default function Diagram({ values }) {
 
   return (
     <div className={s.diagramBlock}>
-      {values.totalQuestions > 0 && <PieChart data={data} />}
-      {values.totalQuestions === 0 && <span>No data</span>}
+      {values.totalAnswersCount > 0 && <PieChart data={data} />}
+      {values.totalAnswersCount === 0 && <span>No data</span>}
 
       <div className={s.valuesBlock}>
         {values.correctPercentage > 0 && (
