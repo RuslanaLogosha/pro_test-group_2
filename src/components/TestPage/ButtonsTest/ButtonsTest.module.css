@@ -7,20 +7,6 @@
   padding-bottom: 93px;
 }
 
-@media screen and (max-width: 767px) {
-  .buttonWrapper {
-    margin: 0;
-    padding-bottom: 20px;
-  }
-}
-
-@media screen and (max-width: 1279px) {
-  .buttonWrapper {
-    margin-left: 0;
-    margin-right: 0;
-  }
-}
-
 .buttonPrevious,
 .buttonNext {
   display: flex;
@@ -31,7 +17,7 @@
   width: 210px;
 
   border: none;
-  font-weight: 500;
+  font-weight: var(--medium);
   font-size: 12px;
   line-height: 1.25;
   background-color: var(--white);
@@ -76,38 +62,13 @@
 }
 
 .disabledPrevBtn:focus,
-.disabledNextBtn:focus {
+.disabledNextBtn:focus,
+.disabledSubmitBtn:focus,
+.disabledPrevBtn:hover,
+.disabledNextBtn:hover,
+.disabledSubmitBtn:hover {
   background-color: var(--labelTextColor);
   color: var(--black);
-}
-
-@media screen and (max-width: 767px) {
-  .buttonPrevious,
-  .buttonNext {
-    width: 55px;
-  }
-}
-
-.arrowPrevious {
-  margin-right: 11px;
-  transform: rotate(180deg);
-  fill: inherit;
-}
-
-.arrowBlack {
-  fill: inherit;
-}
-
-@media screen and (max-width: 767px) {
-  .buttonPreviousName {
-    display: none;
-  }
-}
-
-@media screen and (max-width: 767px) {
-  .buttonNextName {
-    display: none;
-  }
 }
 
 .buttonSubmit {
@@ -117,7 +78,28 @@
   text-align: center;
 }
 
+.disabledSubmitBtn {
+  composes: buttonSubmit;
+  pointer-events: none;
+  background-color: var(--labelTextColor);
+}
+
 @media screen and (max-width: 767px) {
+  .buttonWrapper {
+    margin: 0;
+    padding-bottom: 20px;
+  }
+
+  .buttonPrevious,
+  .buttonNext {
+    width: 55px;
+  }
+
+  .buttonPreviousName,
+  .buttonNextName {
+    display: none;
+  }
+
   .buttonSubmit {
     padding-left: 3px;
     padding-right: 3px;
@@ -126,5 +108,12 @@
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
+  }
+}
+
+@media screen and (max-width: 1279px) {
+  .buttonWrapper {
+    margin-left: 0;
+    margin-right: 0;
   }
 }

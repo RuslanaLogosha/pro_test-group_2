@@ -9,19 +9,6 @@
   box-shadow: 0px 4px 15px rgba(2, 23, 42, 0.1);
 }
 
-@media screen and (max-width: 767px) {
-  .questionForm {
-    padding: 40px 20px 65px 20px;
-    min-height: 400px;
-  }
-}
-
-@media screen and (min-width: 1279px) {
-  .questionForm {
-    padding: 50px 37px 58px 57px;
-  }
-}
-
 .questionNumber {
   font-size: 14px;
   line-height: 1.2;
@@ -30,34 +17,20 @@
   color: var(--secondaryTextColor);
 }
 
-@media screen and (max-width: 767px) {
-  .questionNumber {
-    font-size: 10px;
-    text-transform: uppercase;
-  }
-}
-
 .questionNumberActive {
   color: var(--accentColor);
-  font-weight: 500;
+  font-weight: var(--medium);
 }
 
 .question {
   margin-top: 5px;
   margin-bottom: 30px;
 
-  font-weight: 700;
+  font-weight: var(--bold);
   font-size: 22px;
   line-height: 1.36;
   text-align: center;
   letter-spacing: 0.02em;
-}
-
-@media screen and (max-width: 767px) {
-  .question {
-    font-size: 12px;
-    line-height: 1.5;
-  }
 }
 
 .question::after {
@@ -67,12 +40,6 @@
   width: 320px;
   height: 1px;
   background-color: rgba(0, 18, 46, 0.15);
-}
-
-@media screen and (max-width: 767px) {
-  .question::after {
-    width: 130px;
-  }
 }
 
 .optionsWrapper {
@@ -139,7 +106,7 @@
 .optionLabel {
   display: flex;
 
-  font-weight: 500;
+  font-weight: var(--medium);
   font-size: 16px;
   line-height: 1.25;
   letter-spacing: 0.02em;
@@ -147,7 +114,44 @@
 }
 
 @media screen and (max-width: 767px) {
+  .questionForm {
+    padding: 40px 20px 65px 20px;
+    min-height: 400px;
+  }
+
+  .questionNumber {
+    font-size: 10px;
+    text-transform: uppercase;
+  }
+
+  .question {
+    font-size: 12px;
+    line-height: 1.5;
+  }
+
+  .question::after {
+    width: 130px;
+  }
+
   .optionLabel {
     font-size: 10px;
+  }
+
+  .checkbox {
+    top: 0;
+  }
+
+  .checkboxAccent {
+    top: 4px;
+  }
+
+  .optionAnswer {
+    padding-top: 2px;
+  }
+}
+
+@media screen and (min-width: 1279px) {
+  .questionForm {
+    padding: 50px 37px 58px 57px;
   }
 }
