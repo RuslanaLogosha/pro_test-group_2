@@ -5,18 +5,6 @@
   padding-bottom: 114px;
 }
 
-@media screen and (max-width: 768px) {
-  .buttonContainer {
-    flex-direction: column;
-  }
-}
-
-@media screen and (max-width: 767px) {
-  .buttonContainer {
-    padding-bottom: 33px;
-  }
-}
-
 .button {
   text-align: center;
   align-items: center;
@@ -29,22 +17,8 @@
   height: 212px;
 }
 
-@media screen and (max-width: 768px) {
-  .buttonTech {
-    margin-right: 0;
-    margin-bottom: 30px;
-  }
-}
-
-@media screen and (max-width: 767px) {
-  .buttonTech {
-    margin-bottom: 20px;
-    width: 280px;
-  }
-}
-
 .buttonTech:hover,
-.buttonTheory:focus {
+.buttonTech:focus {
   background-color: #1f2c3f;
 }
 
@@ -52,12 +26,6 @@
   background-color: var(--accentColor);
   width: 400px;
   height: 212px;
-}
-
-@media screen and (max-width: 767px) {
-  .buttonTheory {
-    width: 280px;
-  }
 }
 
 .buttonTheory:hover,
@@ -69,7 +37,8 @@
   padding-top: 60px;
   height: 100%;
   display: block;
-  font-weight: 800;
+
+  font-weight: var(--extra-bold);
   font-size: 32px;
   line-height: 1;
   letter-spacing: 0.02em;
@@ -77,19 +46,41 @@
   color: var(--white);
 }
 
-@media screen and (max-width: 767px) {
-  .buttonDescription {
-    font-size: 24px;
-    line-height: 1.2;
-  }
-}
-
 .arrow {
   margin-top: 16px;
   margin-left: 188px;
 }
 
+@media screen and (max-width: 768px) {
+  .buttonContainer {
+    flex-direction: column;
+  }
+
+  .buttonTech {
+    margin-right: 0;
+    margin-bottom: 30px;
+  }
+}
+
 @media screen and (max-width: 767px) {
+  .buttonContainer {
+    padding-bottom: 33px;
+  }
+
+  .buttonTech {
+    margin-bottom: 20px;
+    width: 280px;
+  }
+
+  .buttonTheory {
+    width: 280px;
+  }
+
+  .buttonDescription {
+    font-size: 24px;
+    line-height: 1.2;
+  }
+
   .arrow {
     margin-top: 32px;
     margin-left: 128px;

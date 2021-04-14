@@ -7,38 +7,16 @@
   padding-top: 40px;
 }
 
-@media screen and (max-width: 767px) {
-  .wrapper {
-    margin-left: 0;
-    margin-right: 0;
-    padding-top: 0;
-  }
-}
-
-@media screen and (max-width: 1279px) {
-  .wrapper {
-    margin-left: 0;
-    margin-right: 0;
-  }
-}
-
 .testTitle {
   width: 190px;
 
-  font-weight: 500;
+  font-weight: var(--medium);
   font-size: 22px;
   line-height: 1.2;
   letter-spacing: 0.02em;
   color: var(--black);
 }
 
-@media screen and (max-width: 767px) {
-  .testTitle {
-    font-size: 14px;
-    padding-top: 30px;
-    width: 120px;
-  }
-}
 .testFinish {
   width: 190px;
   padding-top: 17px;
@@ -47,7 +25,7 @@
   text-decoration: none;
   color: var(--white);
   background-color: var(--accentColor);
-  font-weight: 500;
+  font-weight: var(--medium);
   font-size: 14px;
   line-height: 1.2;
   letter-spacing: 0.02em;
@@ -61,10 +39,29 @@
 }
 
 @media screen and (max-width: 767px) {
+  .wrapper {
+    margin-left: 0;
+    margin-right: 0;
+    padding-top: 0;
+  }
+
+  .testTitle {
+    font-size: 14px;
+    padding-top: 30px;
+    width: 120px;
+  }
+
   .testFinish {
     width: 130px;
     font-size: 10px;
     margin-top: 24px;
     padding-bottom: 17px;
+  }
+}
+
+@media screen and (max-width: 1279px) {
+  .wrapper {
+    margin-left: 0;
+    margin-right: 0;
   }
 }
