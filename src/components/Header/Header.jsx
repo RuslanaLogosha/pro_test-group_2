@@ -1,4 +1,3 @@
-import Container from 'components/Container/Container';
 import React, { useState } from 'react';
 import Burger from './Burger/Burger';
 import s from './Header.module.css';
