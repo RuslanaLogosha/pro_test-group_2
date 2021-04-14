@@ -110,7 +110,7 @@ function App() {
                   redirectTo="/register"
                   restricted
                 />
-                <Route
+                <PrivateRoute
                   exact
                   path="/materials"
                   component={UsefulInfoView}
