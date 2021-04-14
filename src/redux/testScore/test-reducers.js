@@ -70,15 +70,22 @@ export const testPageIndexSlice = createSlice({
   },
 });
 
+const initialStateResults = {
+  testType: '',
+  totalAnswersCount: 0,
+  correctAnswersCount: 0,
+  correctPercentage: 0,
+  incorrectPercentage: 0,
+  aboutResultTitle: '',
+  aboutResultSubtitle: '',
+};
+
 export const resultsOfTestSlice = createSlice({
   name: 'test',
-  initialState: { correctAnswers: null, totalQuestions: null },
+  initialState: { ...initialStateResults },
   extraReducers: {
     [testScoreOperations.sendAnswers.fulfilled](_state, { payload }) {
-      return {
-        correctAnswers: payload.data.correctAnswersCount,
-        totalQuestions: payload.data.totalAnswersCount,
-      };
+      return { ...payload.data };
     },
   },
 });
