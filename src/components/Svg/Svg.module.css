@@ -7,6 +7,23 @@
   fill: #e96105;
 }
 
+@keyframes reveal {
+  from {
+    stroke-dasharray: 0 100;
+    stroke-dashoffset: 0;
+  }
+
+  to {
+    stroke-dasharray: 100 0;
+    stroke-dashoffset: 100;
+  }
+}
+
+.anim {
+  animation: reveal 3s normal forwards ease-in-out;
+  animation-iteration-count: 1;
+}
+
 .arrowPrevious {
   margin-right: 11px;
   transform: rotate(180deg);
