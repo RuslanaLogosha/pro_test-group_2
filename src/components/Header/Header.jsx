@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Burger from './Burger/Burger';
 import s from './Header.module.css';
 import Logo from './Logo';
