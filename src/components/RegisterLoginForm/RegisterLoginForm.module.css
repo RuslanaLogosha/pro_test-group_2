@@ -121,6 +121,8 @@
 
   .googleBtn {
     margin-bottom: 30px;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .inputEmail {
@@ -129,6 +131,11 @@
 
   .inputPassword {
     margin-bottom: 20px;
+  }
+
+  .btn {
+    font-size: 10px;
+    line-height: 1.22;
   }
 }
 
