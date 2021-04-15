@@ -1,4 +1,4 @@
-import React, { Suspense, useEffect } from 'react';
+import React, { Suspense, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Route, Switch, useLocation, Redirect } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
@@ -25,9 +25,18 @@ function App() {
   const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
   const email = useSelector(authSelectors.getEmail);
   const isFetchingCurrentUser = useSelector(
-    authSelectors.getIsFetchingCurrentUser,
+    authSelectors.getIsFetchingCurrentUser
   );
   const ErrorUnauthorized = useSelector(authSelectors.getErrorUnauthorized);
+  const [isModalOpen, setModal] = useState(false);
+
+  const handleModal = () => {
+    setModal(!isModalOpen);
+  };
+
+  const closeModal = () => {
+    setModal(false);
+  };
 
   const handleSignOutBtnClick = () => {
     dispatch(authOperations.logOut());
@@ -80,8 +89,13 @@ function App() {
             isLoggedIn={isLoggedIn}
             userEmail={email}
             handleSignOutBtnClick={handleSignOutBtnClick}
+            handleModal={handleModal}
+            closeModal={closeModal}
+            isModalOpen={isModalOpen}
+            setModal={setModal}
           />
-          <div className="content">
+
+          <div className={isModalOpen ? 'content modalOpen' : 'content'}>
             <Switch>
               <Suspense fallback={<SpinnerLoader />}>
                 <PublicRoute
@@ -123,6 +137,7 @@ function App() {
               </Suspense>
             </Switch>
           </div>
+
           <Footer />
         </>
       )}
