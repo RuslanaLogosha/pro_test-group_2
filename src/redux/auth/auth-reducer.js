@@ -10,6 +10,7 @@ const initialState = {
   isLoggedIn: false,
   isFetchingCurrentUser: false,
   ErrorUnauthorized: null,
+  location: null,
 
   ErrorRegister: null,
   ErrorLogin: null,
@@ -27,6 +28,9 @@ const authSlice = createSlice({
       state.token = action.payload.token;
       state.refreshToken = action.payload.refreshToken;
       state.sessionId = action.payload.sessionId;
+    },
+    [authActions.setUserLocation](state, action) {
+      state.location = action.payload;
     },
     [authOperations.register.fulfilled](state, action) {
       state.user = action.payload.user;

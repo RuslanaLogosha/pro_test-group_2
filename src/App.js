@@ -1,6 +1,12 @@
 import React, { Suspense, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Route, Switch, useLocation, Redirect } from 'react-router-dom';
+import {
+  Route,
+  Switch,
+  useLocation,
+  Redirect,
+  useHistory,
+} from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import queryString from 'query-string';
 import 'react-toastify/dist/ReactToastify.css';
@@ -45,6 +51,9 @@ function App() {
   const location = useLocation();
   const parsedLocation = queryString.parse(location.search);
 
+  const history = useHistory();
+  const savedLocation = useSelector(authSelectors.getSavedLocation);
+
   useEffect(() => {
     const userFromGoogle = {
       email: parsedLocation.email,
@@ -77,6 +86,12 @@ function App() {
       dispatch(authOperations.fetchCurrentUser());
     }
   }, [dispatch, ErrorUnauthorized]);
+
+  useEffect(() => {
+    if (isLoggedIn && savedLocation) {
+      history.push(savedLocation);
+    }
+  }, [history, isLoggedIn, savedLocation]);
 
   return (
     <>
