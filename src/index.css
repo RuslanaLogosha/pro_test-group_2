@@ -18,9 +18,9 @@ code {
 }
 
 .activeLink {
-  border-bottom: 1px solid #FF6B09;
+  border-bottom: 1px solid #ff6b09;
 }
 
 .content {
-  min-height: calc(100vh - 108px);
+  min-height: calc(100vh - 109px);
 }
