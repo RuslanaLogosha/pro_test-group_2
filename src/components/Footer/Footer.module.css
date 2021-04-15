@@ -46,7 +46,7 @@
     margin-left: 3px;
 }
 
-@media (min-width: 321px) {
+@media (min-width: 768px) {
     .footer {
         font-size: 12px;
         line-height: 1.25;

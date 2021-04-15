@@ -24,3 +24,7 @@ code {
 .content {
   min-height: calc(100vh - 109px);
 }
+
+.modalOpen {
+  display: none;
+}
