@@ -84,40 +84,39 @@ function App() {
           <div className="content">
             <Switch>
               <Suspense fallback={<SpinnerLoader />}>
-                <PublicRoute
-                  path="/register"
-                  restricted
-                  component={RegisterView}
-                />
-                <PrivateRoute
-                  exact
-                  path="/"
-                  component={HomeView}
-                  redirectTo="/register"
-                  restricted
-                />
+                <PublicRoute path="/register" restricted>
+                  <RegisterView />
+                </PublicRoute>
+                <PrivateRoute exact path="/" redirectTo="/register" restricted>
+                  <HomeView />
+                </PrivateRoute>
                 <PrivateRoute
                   exact
                   path="/test"
-                  component={TestView}
                   redirectTo="/register"
                   restricted
-                />
+                >
+                  <TestView />
+                </PrivateRoute>
                 <PrivateRoute
                   exact
                   path="/results"
-                  component={ResultsView}
                   redirectTo="/register"
                   restricted
-                />
+                >
+                  <ResultsView />
+                </PrivateRoute>
                 <PrivateRoute
                   exact
                   path="/materials"
-                  component={UsefulInfoView}
                   redirectTo="/register"
                   restricted
-                />
-                <Route path="/contacts" component={ContactsView} />
+                >
+                  <UsefulInfoView />
+                </PrivateRoute>
+                <Route path="/contacts">
+                  <ContactsView />
+                </Route>
 
                 {isLoggedIn ? <Redirect to="/" /> : <Redirect to="/register" />}
               </Suspense>
