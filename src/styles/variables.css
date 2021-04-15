@@ -1,0 +1,33 @@
+/* для того, чтобы предварительно видеть цвет переменной, установите расширение colorize */
+
+:root {
+  /* sizes/breakpoints */
+  --mobile: 320px;
+  --tablet: 768px;
+  --desktop: 1280px;
+
+  /* fonts */
+  --mainFont: 'Montserrat', sans-serif;
+
+  /* fonts-weight */
+  --regular: 400;
+  --medium: 500;
+  --bold: 700;
+  --extra-bold: 800;
+
+  /* text colors */
+  --white: #ffffff;
+  --black: #000000;
+  --secondaryTextColor: #555555;
+  --accentColor: #ff6b09;
+  --footerTextColor: rgba(255, 255, 255, 0.4);
+  --headerBorderColor: #e2e3e5;
+  --vectorColor: #00122f;
+  --inputBorderColor: #ced2d1;
+  --labelTextColor: #bbbbbb;
+
+  --primeryBgColor: #f5f6fb;
+  --footerBgColor: #02172a;
+  --diagramWrongBgColor: #d7d7d7;
+  --btnGoogleBgColor: #fafafa;
+}

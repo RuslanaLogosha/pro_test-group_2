@@ -3,13 +3,29 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@testing-library/jest-dom": "^5.11.10",
-    "@testing-library/react": "^11.2.6",
-    "@testing-library/user-event": "^12.8.3",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
+    "@material-ui/core": "4.11.3",
+    "@reduxjs/toolkit": "1.5.1",
+    "@testing-library/jest-dom": "5.11.10",
+    "@testing-library/react": "11.2.6",
+    "@testing-library/user-event": "12.8.3",
+    "axios": "0.21.1",
+    "husky": "6.0.0",
+    "lint-staged": "10.5.4",
+    "modern-normalize": "1.0.0",
+    "nanoid": "3.1.22",
+    "prettier": "2.2.1",
+    "query-string": "7.0.0",
+    "react": "17.0.2",
+    "react-content-loader": "2.0.2",
+    "react-dom": "17.0.2",
+    "react-minimal-pie-chart": "8.2.0",
+    "react-redux": "7.2.3",
+    "react-router-dom": "5.2.0",
     "react-scripts": "4.0.3",
-    "web-vitals": "^1.1.1"
+    "react-spinners": "0.10.6",
+    "react-toastify": "7.0.3",
+    "redux-persist": "6.0.0",
+    "web-vitals": "1.1.1"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -21,7 +37,15 @@
     "extends": [
       "react-app",
       "react-app/jest"
-    ]
+    ],
+    "rules": {
+      "import/no-anonymous-default-export": [
+        "warn",
+        {
+          "allowCallExpression": false
+        }
+      ]
+    }
   },
   "browserslist": {
     "production": [

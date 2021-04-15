@@ -1,0 +1,119 @@
+.buttonWrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-right: 210px;
+  margin-left: 210px;
+  padding-bottom: 93px;
+}
+
+.buttonPrevious,
+.buttonNext {
+  display: flex;
+  align-items: center;
+  padding-top: 12px;
+  padding-bottom: 12px;
+
+  width: 210px;
+
+  border: none;
+  font-weight: var(--medium);
+  font-size: 12px;
+  line-height: 1.25;
+  background-color: var(--white);
+  color: var(--black);
+  fill: var(--black);
+  transition: all 150ms ease-in;
+  outline: none;
+}
+
+.buttonNext {
+  justify-content: space-between;
+  padding-right: 15px;
+  padding-left: 20px;
+  text-decoration: none;
+}
+
+.buttonPrevious {
+  padding-left: 15px;
+}
+
+.buttonPrevious:hover,
+.buttonNext:hover,
+.buttonPrevious:focus,
+.buttonNext:focus {
+  background-color: var(--accentColor);
+  color: var(--white);
+  fill: var(--white);
+}
+
+.disabledPrevBtn {
+  composes: buttonPrevious;
+  pointer-events: none;
+  background-color: var(--secondaryTextColor);
+  color: var(--white);
+  fill: var(--white);
+}
+
+.disabledNextBtn {
+  composes: buttonNext;
+  pointer-events: none;
+  background-color: var(--labelTextColor);
+}
+
+.disabledPrevBtn:focus,
+.disabledNextBtn:focus,
+.disabledSubmitBtn:focus,
+.disabledPrevBtn:hover,
+.disabledNextBtn:hover,
+.disabledSubmitBtn:hover {
+  background-color: var(--labelTextColor);
+  color: var(--black);
+}
+
+.buttonSubmit {
+  composes: buttonNext;
+  display: block;
+
+  text-align: center;
+}
+
+.disabledSubmitBtn {
+  composes: buttonSubmit;
+  pointer-events: none;
+  background-color: var(--labelTextColor);
+}
+
+@media screen and (max-width: 767px) {
+  .buttonWrapper {
+    margin: 0;
+    padding-bottom: 20px;
+  }
+
+  .buttonPrevious,
+  .buttonNext {
+    width: 55px;
+  }
+
+  .buttonPreviousName,
+  .buttonNextName {
+    display: none;
+  }
+
+  .buttonSubmit {
+    padding-left: 3px;
+    padding-right: 3px;
+
+    font-size: 11px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+}
+
+@media screen and (max-width: 1279px) {
+  .buttonWrapper {
+    margin-left: 0;
+    margin-right: 0;
+  }
+}

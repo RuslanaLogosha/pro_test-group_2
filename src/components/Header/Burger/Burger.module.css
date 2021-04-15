@@ -1,0 +1,27 @@
+.burger {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 17px 0 19px;
+    max-width: 56px;
+}
+
+.burgerBox {
+    height: 100%;
+    border-left: 1px solid var(--headerBorderColor);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@media (max-width: 767px) {
+    .burgerBox {
+        display: flex;
+    }
+}
+
+@media (min-width: 768px) {
+    .burgerBox {
+        display: none;
+    }
+}

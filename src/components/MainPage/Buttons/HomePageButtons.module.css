@@ -1,0 +1,88 @@
+.buttonContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 114px;
+}
+
+.button {
+  text-align: center;
+  align-items: center;
+}
+
+.buttonTech {
+  margin-right: 20px;
+  background-color: var(--footerBgColor);
+  width: 400px;
+  height: 212px;
+}
+
+.buttonTech:hover,
+.buttonTech:focus {
+  background-color: #1f2c3f;
+}
+
+.buttonTheory {
+  background-color: var(--accentColor);
+  width: 400px;
+  height: 212px;
+}
+
+.buttonTheory:hover,
+.buttonTheory:focus {
+  background-color: #e96105;
+}
+
+.buttonDescription {
+  padding-top: 60px;
+  height: 100%;
+  display: block;
+
+  font-weight: var(--extra-bold);
+  font-size: 32px;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  color: var(--white);
+}
+
+.arrow {
+  margin-top: 16px;
+  margin-left: 188px;
+}
+
+@media screen and (max-width: 1279px) {
+  .buttonContainer {
+    flex-direction: column;
+  }
+
+  .buttonTech {
+    margin-right: 0;
+    margin-bottom: 30px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .buttonContainer {
+    padding-bottom: 33px;
+  }
+
+  .buttonTech {
+    margin-bottom: 20px;
+    width: 280px;
+  }
+
+  .buttonTheory {
+    width: 280px;
+  }
+
+  .buttonDescription {
+    font-size: 24px;
+    line-height: 1.2;
+  }
+
+  .arrow {
+    margin-top: 32px;
+    margin-left: 128px;
+  }
+}

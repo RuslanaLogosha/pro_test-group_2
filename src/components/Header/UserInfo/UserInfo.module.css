@@ -1,0 +1,67 @@
+.userInfoBox {
+    display: flex;
+    margin-right: 20px;
+}
+
+.firstLetter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 30px;
+    height: 30px;
+    color: #555555;
+    text-transform: capitalize;
+
+    border: 0px solid var(--white);
+    border-radius: 50%;
+    background-color: var(--white);
+    box-shadow: 0px 1px 1px rgba(18, 29, 46, 0.1);
+
+    font-family: var(--mainFont);
+    font-style: normal;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 1.33;
+    margin-right: 7px;
+}
+
+.userEmail {
+    display: flex;
+    align-items: center;
+
+    font-family: var(--mainFont);
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 1.33;
+
+    letter-spacing: 0.02em;
+
+    color: var(--black);
+}
+
+@media (max-width: 767px) {
+    .userEmail {
+        display: none;
+    }
+}
+
+
+@media (min-width: 768px) {
+    .userEmail {
+        display: flex;
+    }
+}
+
+@media (min-width: 1280px) {
+    .userEmail {
+        display: flex;
+        font-size: 14px;
+
+    }
+
+    .firstLetter {
+        font-size: 14px;
+    }
+}

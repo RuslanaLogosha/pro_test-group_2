@@ -1,0 +1,50 @@
+.modal {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 71px;
+    left: 0;
+    z-index: 10;
+    background: var(--primeryBgColor);
+}
+
+
+.modalList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.modalList li:not(:last-child) {
+    border-bottom: 1px solid var(--headerBorderColor);
+}
+
+.listItem {
+    padding: 26px 0 26px 0;
+
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    letter-spacing: 0.02em;
+
+    color: var(--black);
+}
+
+.link {
+    text-decoration: none;
+    font-family: var(--mainFont);
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 1.14;
+    color: var(--black);
+}
+
+.link:hover {
+    cursor: pointer;
+}
+
+.activeLink {
+    border-bottom: 1px solid var(--accentColor);
+}

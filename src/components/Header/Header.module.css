@@ -1,0 +1,44 @@
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    height: 70px;
+
+    background: var(--primeryBgColor);
+}
+
+.container {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.box {
+    border-bottom: 1px solid var(--headerBorderColor);
+}
+
+
+.innerBox {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@media screen and (min-width: 320px) {
+    .innerBox {
+        width: 320px;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .innerBox {
+        width: 768px;
+    }
+}
+
+@media screen and (min-width: 1280px) {
+    .innerBox {
+        width: 1280px;
+    }
+}
