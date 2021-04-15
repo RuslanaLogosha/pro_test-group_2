@@ -11,7 +11,7 @@
 
 .title {
   padding: 0;
-  margin: 0 0 19px;
+  margin: 0 0 20px;
   font-weight: var(--extra-bold);
   font-size: 34px;
   line-height: 1.2;
@@ -37,10 +37,15 @@
   display: none;
 }
 
-
 @media (max-width: 767px) {
+  .title {
+    font-size: 20px;
+    margin: 0 0 10px;
+  }
+
   .text {
     font-size: 12px;
+    line-height: 1.67;
   }
 
   .description {
@@ -68,6 +73,10 @@
     margin-top: 80px;
   }
 
+  .title {
+    font-size: 30px;
+  }
+
   .text {
     font-size: 15.8px;
     line-height: 2.25;
@@ -77,6 +86,5 @@
   .description {
     width: 535px;
     margin: 0;
-
   }
 }
