@@ -35,7 +35,7 @@ const register = createAsyncThunk(
       if (
         error.response.data.message === 'Failed: email must be a valid email'
       ) {
-        toast.warning('❗❗ You must enter a valid email');
+        toast.warning('❗❗ Enter a valid email');
         return rejectWithValue(error.response.data.message);
       }
 
@@ -67,6 +67,11 @@ const logIn = createAsyncThunk(
       token.set(data.token);
       return data;
     } catch (error) {
+      if (error.response.data.message === `Email or password is wrong`) {
+        toast.error('❌ Email or password is wrong');
+        return rejectWithValue(error.response.data.message);
+      }
+
       if (
         error.response.data.message ===
         `Cannot read property 'validPassword' of null`
@@ -78,7 +83,7 @@ const logIn = createAsyncThunk(
       if (
         error.response.data.message === 'Failed: email must be a valid email'
       ) {
-        toast.warning('❗❗ You must enter a valid email');
+        toast.error('❌ Email or password is wrong');
         return rejectWithValue(error.response.data.message);
       }
 
@@ -86,9 +91,7 @@ const logIn = createAsyncThunk(
         error.response.data.message ===
         'Failed: password length must be at least 6 characters long'
       ) {
-        toast.warning(
-          '❗❗ Password length must be at least 6 characters long',
-        );
+        toast.error('❌ Email or password is wrong');
         return rejectWithValue(error.response.data.message);
       }
 
