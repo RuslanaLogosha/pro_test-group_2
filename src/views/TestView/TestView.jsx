@@ -1,3 +1,7 @@
+import { useDispatch } from 'react-redux';
+import { useLocation } from 'react-router';
+import { useEffect } from 'react';
+
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { Tooltip } from '@material-ui/core';
@@ -7,6 +11,7 @@ import TestPage from '../../components/TestPage/TestPage';
 import Container from '../../components/Container';
 import { getTestInfo } from '../../redux/testScore/test-selectors';
 import s from './TestView.module.css';
+import { authActions } from 'redux/auth';
 
 const MyTooltip = withStyles(() => ({
   tooltip: {
@@ -24,13 +29,27 @@ const MyTooltip = withStyles(() => ({
 }))(Tooltip);
 
 function TestView() {
+  const location = useLocation();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(authActions.setUserLocation(location.pathname));
+
+    // eslint-disable-next-line
+  }, []);
+
   const testName = useSelector(getTestInfo).quizName;
 
   return (
     <Container>
       <div className={s.wrapper}>
         <p className={s.testTitle}>[ {testName}_ ]</p>
-        <MyTooltip title="Return to Home page" TransitionProps={{ timeout: 600 }} placement={'top-end'} arrow>
+        <MyTooltip
+          title="Return to Home page"
+          TransitionProps={{ timeout: 600 }}
+          placement={'top-end'}
+          arrow
+        >
           <Link to="/" className={s.testFinish}>
             Finish test
           </Link>

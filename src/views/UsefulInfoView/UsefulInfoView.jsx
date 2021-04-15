@@ -1,6 +1,20 @@
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { useLocation } from 'react-router';
+
+import { authActions } from 'redux/auth';
 import s from './UsefulInfoView.module.css';
 
 function UsefulInfoView() {
+  const location = useLocation();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(authActions.setUserLocation(location.pathname));
+
+    // eslint-disable-next-line
+  }, []);
+
   return (
     <main className={s.mainContainer}>
       <div className={s.quoteContainer}>
