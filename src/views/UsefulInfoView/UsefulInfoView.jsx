@@ -13,13 +13,19 @@ function UsefulInfoView() {
         <h2 className={s.title}>Useful resources</h2>
         <ul className={s.list}>
           <li>
-            <a href="http://dou.ua" aria-label="сайт dou.ua" className={s.link}>
+            <a
+              href="http://dou.ua"
+              target="blank"
+              aria-label="сайт dou.ua"
+              className={s.link}
+            >
               1. dou.ua
             </a>
           </li>
           <li>
             <a
               href="https://habr.com/"
+              target="blank"
               aria-label="сайт Habr"
               className={s.link}
             >
@@ -29,6 +35,7 @@ function UsefulInfoView() {
           <li>
             <a
               href="http://facebook.com/QA"
+              target="blank"
               aria-label="сайт facebook.com/QA"
               className={s.link}
             >
@@ -36,7 +43,12 @@ function UsefulInfoView() {
             </a>
           </li>
           <li>
-            <a href="http://goit.ua" aria-label="goit.ua" className={s.link}>
+            <a
+              href="http://goit.ua"
+              target="blank"
+              aria-label="goit.ua"
+              className={s.link}
+            >
               4. goit.ua
             </a>
           </li>
