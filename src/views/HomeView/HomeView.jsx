@@ -1,8 +1,22 @@
+import { useDispatch } from 'react-redux';
+import { useLocation } from 'react-router';
+import { useEffect } from 'react';
+
 import HomePageButtons from '../../components/MainPage/Buttons/HomePageButtons';
 import Container from '../../components/Container';
 import s from './HomeView.module.css';
+import { authActions } from 'redux/auth';
 
 function HomeView() {
+  const location = useLocation();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(authActions.setUserLocation(location.pathname));
+
+    // eslint-disable-next-line
+  }, []);
+
   return (
     <Container>
       <div className={s.quoteContainer}>

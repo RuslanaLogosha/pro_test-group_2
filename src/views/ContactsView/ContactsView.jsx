@@ -1,10 +1,22 @@
-import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { useLocation } from 'react-router';
+import { useEffect, useState } from 'react';
 import s from './Contacts.module.css';
 import ContactCard from '../../components/ContactCard';
 import userContacts from './userContacts';
 import Container from '../../components/Container';
+import { authActions } from 'redux/auth';
 
 function ContactsView() {
+  const location = useLocation();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(authActions.setUserLocation(location.pathname));
+
+    // eslint-disable-next-line
+  }, []);
+
   const [card] = useState(userContacts);
   return (
     <Container>

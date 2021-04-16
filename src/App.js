@@ -1,6 +1,12 @@
-import React, { Suspense, useEffect } from 'react';
+import React, { Suspense, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Route, Switch, useLocation, Redirect } from 'react-router-dom';
+import {
+  Route,
+  Switch,
+  useLocation,
+  Redirect,
+  useHistory,
+} from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import queryString from 'query-string';
 import 'react-toastify/dist/ReactToastify.css';
@@ -25,9 +31,18 @@ function App() {
   const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
   const email = useSelector(authSelectors.getEmail);
   const isFetchingCurrentUser = useSelector(
-    authSelectors.getIsFetchingCurrentUser,
+    authSelectors.getIsFetchingCurrentUser
   );
   const ErrorUnauthorized = useSelector(authSelectors.getErrorUnauthorized);
+  const [isModalOpen, setModal] = useState(false);
+
+  const handleModal = () => {
+    setModal(!isModalOpen);
+  };
+
+  const closeModal = () => {
+    setModal(false);
+  };
 
   const handleSignOutBtnClick = () => {
     dispatch(authOperations.logOut());
@@ -35,6 +50,9 @@ function App() {
 
   const location = useLocation();
   const parsedLocation = queryString.parse(location.search);
+
+  const history = useHistory();
+  const savedLocation = useSelector(authSelectors.getSavedLocation);
 
   useEffect(() => {
     const userFromGoogle = {
@@ -69,6 +87,12 @@ function App() {
     }
   }, [dispatch, ErrorUnauthorized]);
 
+  useEffect(() => {
+    if (isLoggedIn && savedLocation) {
+      history.push(savedLocation);
+    }
+  }, [history, isLoggedIn, savedLocation]);
+
   return (
     <>
       <ToastContainer autoClose={3000} />
@@ -80,49 +104,54 @@ function App() {
             isLoggedIn={isLoggedIn}
             userEmail={email}
             handleSignOutBtnClick={handleSignOutBtnClick}
+            handleModal={handleModal}
+            closeModal={closeModal}
+            isModalOpen={isModalOpen}
+            setModal={setModal}
           />
-          <div className="content">
+
+          <div className={isModalOpen ? 'content modalOpen' : 'content'}>
             <Switch>
               <Suspense fallback={<SpinnerLoader />}>
-                <PublicRoute
-                  path="/register"
-                  restricted
-                  component={RegisterView}
-                />
-                <PrivateRoute
-                  exact
-                  path="/"
-                  component={HomeView}
-                  redirectTo="/register"
-                  restricted
-                />
+                <PublicRoute path="/register" restricted>
+                  <RegisterView />
+                </PublicRoute>
+                <PrivateRoute exact path="/" redirectTo="/register" restricted>
+                  <HomeView />
+                </PrivateRoute>
                 <PrivateRoute
                   exact
                   path="/test"
-                  component={TestView}
                   redirectTo="/register"
                   restricted
-                />
+                >
+                  <TestView />
+                </PrivateRoute>
                 <PrivateRoute
                   exact
                   path="/results"
-                  component={ResultsView}
                   redirectTo="/register"
                   restricted
-                />
+                >
+                  <ResultsView />
+                </PrivateRoute>
                 <PrivateRoute
                   exact
                   path="/materials"
-                  component={UsefulInfoView}
                   redirectTo="/register"
                   restricted
-                />
-                <Route path="/contacts" component={ContactsView} />
+                >
+                  <UsefulInfoView />
+                </PrivateRoute>
+                <Route path="/contacts">
+                  <ContactsView />
+                </Route>
 
                 {isLoggedIn ? <Redirect to="/" /> : <Redirect to="/register" />}
               </Suspense>
             </Switch>
           </div>
+
           <Footer />
         </>
       )}

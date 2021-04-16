@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Burger from './Burger/Burger';
 import s from './Header.module.css';
 import Logo from './Logo';
@@ -7,17 +7,15 @@ import Navigation from './Navigation/Navigation';
 import SignOut from './SignOut/SignOut';
 import UserInfo from './UserInfo/UserInfo';
 
-function Header({ isLoggedIn, userEmail, handleSignOutBtnClick }) {
-  const [isModalOpen, setModal] = useState(false);
-
-  const handleModal = () => {
-    setModal(!isModalOpen);
-  };
-
-  const closeModal = () => {
-    setModal(false);
-  };
-
+function Header({
+  isLoggedIn,
+  userEmail,
+  handleSignOutBtnClick,
+  handleModal,
+  closeModal,
+  isModalOpen,
+  setModal,
+}) {
   const handleLogOut = () => {
     handleSignOutBtnClick();
     setModal(false);
@@ -27,7 +25,7 @@ function Header({ isLoggedIn, userEmail, handleSignOutBtnClick }) {
     <div className={s.box}>
       <div className={s.innerBox}>
         <header className={s.header}>
-          <Logo />
+          <Logo onClick={closeModal} />
           <div className={s.container}>
             <Navigation isLoggedIn={isLoggedIn} />
             {isLoggedIn && <UserInfo userEmail={userEmail} />}

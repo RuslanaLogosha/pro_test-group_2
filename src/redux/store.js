@@ -16,7 +16,7 @@ import { authReducer } from './auth';
 const authPersistConfig = {
   key: 'auth',
   storage,
-  whitelist: ['token', 'refreshToken', 'sessionId'],
+  whitelist: ['token', 'refreshToken', 'sessionId', 'location'],
 };
 
 const testScorePersistConfig = {
@@ -27,6 +27,7 @@ const testScorePersistConfig = {
     'questionsListForTest',
     'testPageIndex',
     'currentTestInfo',
+    'resultsOfTest',
   ],
 };
 

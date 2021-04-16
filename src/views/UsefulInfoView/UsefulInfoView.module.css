@@ -9,6 +9,9 @@
   background-color: #f5f6fb;
   font-family: var(--mainFont);
 }
+.quoteContainer {
+  padding-bottom: 40px;
+}
 .link {
   text-decoration: none;
   color: #000000;
